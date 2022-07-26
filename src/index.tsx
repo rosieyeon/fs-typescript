@@ -6,20 +6,20 @@ import reportWebVitals from "./reportWebVitals";
 import { ThemeProvider } from "styled-components";
 import GlobalStyle from "./styles/globalStyle";
 import { theme } from "./styles/theme";
-import { Provider } from "react-redux";
-import { store } from "./store/configureStore";
+// import { Provider } from "react-redux";
+// import { store } from "./store/configureStore";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        <App />
-      </ThemeProvider>
-    </Provider>
+    {/* <Provider store={store}> */}
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <App />
+    </ThemeProvider>
+    {/* </Provider> */}
   </React.StrictMode>
 );
 reportWebVitals();

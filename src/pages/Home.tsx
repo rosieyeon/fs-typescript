@@ -1,6 +1,11 @@
-// import axios from "axios";
-import React from "react";
-import getSummonerInfo from "../api/getSummonerInfo";
+import { YoutubeList } from "features/youtubeList/youtubeListSlice";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getSummonerInfo,
+  // summoner,
+} from "../features/summonersList/summonerInfoSlice";
+import { useAppDispatch } from "../store/configureStore";
 // import riot from "../services/riot";
 // import { Summoner } from "../store/store.types";
 
@@ -55,7 +60,23 @@ import getSummonerInfo from "../api/getSummonerInfo";
 // };
 
 const Home = () => {
-  getSummonerInfo("hide on bush");
+  const dispatch = useAppDispatch();
+
+  // useEffect(() => {
+  //   dispatch(getSummonerInfo("hide on bush"));
+  // },[dispatch])
+  // getSummonerInfo("hide on bush");
+  dispatch(getSummonerInfo("hide on bush"));
+  console.log(getSummonerInfo("hide on bush"));
+  // const dispatch = useDispatch();
+  // dispatch(summoner({getSummonerInfo("hide on bush")}))
+  const summonerInfo = useSelector((state) => console.log(state));
+  console.log(summonerInfo);
+
+  YoutubeList("t1");
+  // useEffect(() => {
+
+  // })
   return (
     <>
       app

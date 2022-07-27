@@ -2,11 +2,14 @@ import { YoutubeList } from "features/youtubeList/youtubeListSlice";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  getSummonerInfo,
+  // getSummonerInfo,
+  summoner,
   // summoner,
 } from "../features/summonersList/summonerInfoSlice";
 import { useAppDispatch } from "../store/configureStore";
-// import riot from "../services/riot";
+import riot from "../services/riot";
+import { useState } from "react";
+import { Summoner } from "store/store.types";
 // import { Summoner } from "../store/store.types";
 
 // const headers = {
@@ -34,16 +37,11 @@ import { useAppDispatch } from "../store/configureStore";
 //   }
 // };
 
-// export const getSummonerInfo = async (summonerName: string) => {
-//   try {
-//     const response = await riot.get(
-//       `/summoner/v4/summoners/by-name/${summonerName}?api_key=${process.env.REACT_APP_RIOT_API_KEY}`
-//     );
-//     console.log(response);
-//   } catch (error: any) {
-//     return;
-//   }
-// };
+// const [id, setId] = useState("");
+// const [name, setName] = useState("");
+// const [profileIconId, setProfileIconId] = useState(0);
+// const [puuid, setPuuid] = useState("");
+// const [level, setLevel] = useState(0);
 
 // const getSummonerProfileInfo = async (summonerName: string) => {
 //   try {
@@ -60,29 +58,38 @@ import { useAppDispatch } from "../store/configureStore";
 // };
 
 const Home = () => {
-  const dispatch = useAppDispatch();
+  const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(getSummonerInfo("hide on bush"));
-  // },[dispatch])
-  // getSummonerInfo("hide on bush");
-  dispatch(getSummonerInfo("hide on bush"));
-  console.log(getSummonerInfo("hide on bush"));
-  // const dispatch = useDispatch();
-  // dispatch(summoner({getSummonerInfo("hide on bush")}))
-  const summonerInfo = useSelector((state) => console.log(state));
-  console.log(summonerInfo);
+  const getSummonerInfo = async (summonerName: string) => {
+    try {
+      const response = await riot.get(
+        `/summoner/v4/summoners/by-name/${summonerName}?api_key=${process.env.REACT_APP_RIOT_API_KEY}`
+      );
+      console.log(response);
+      dispatch(
+        summoner({
+          accountId: response.data.accountId,
+          id: response.data.id,
+          name: response.data.name,
+          profileIconId: response.data.profileIconId,
+          puuid: response.data.puuid,
+          revisionDate: response.data.revisionData,
+          summonerLevel: response.data.summonerLevel,
+        })
+      );
+    } catch (error) {
+      return;
+    }
+  };
 
-  YoutubeList("t1");
-  // useEffect(() => {
+  getSummonerInfo("hide on bush");
 
-  // })
-  return (
-    <>
-      app
-      {/* {getSummonerInfo("hide on bush")} */}
-    </>
-  );
+  // const test = useSelector<Record<string, string>>(
+  //   (state) => state.summonerInfo
+  // );
+  // console.log(test);
+
+  return <>app</>;
 };
 
 export default Home;

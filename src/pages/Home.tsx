@@ -4,7 +4,15 @@ import { useEffect } from "react";
 import YoutubeItem from "components/Youtube/YoutubeItem";
 import getYoutubeList from "api/getYoutubeList";
 import { useAppDispatch, useAppSelector } from "app/store";
-import { HomeLayout, HomeYoutubeItem } from "./Home.styled";
+import {
+  HomeLayout,
+  HomeLogo,
+  HomeSearchBar,
+  HomeSearchButton,
+  HomeYoutubeItem,
+} from "./Home.styled";
+import { useCallback } from "react";
+import { useState } from "react";
 
 // const headers = {
 //   "X-Riot-Token": `${process.env.REACT_APP_RIOT_API_KEY}`,
@@ -52,6 +60,8 @@ import { HomeLayout, HomeYoutubeItem } from "./Home.styled";
 // };
 
 const Home: React.FC = () => {
+  const [keyword, setKeyword] = useState("");
+  const [query, setQuery] = useState("");
   const { youtubeList, loading, error } = useAppSelector(
     (state) => state.youtubeList
   );
@@ -59,17 +69,29 @@ const Home: React.FC = () => {
   const dispatch = useAppDispatch();
 
   // 여기에 then으로 에러 분기 처리
+  console.log(query, keyword);
   useEffect(() => {
-    dispatch(getYoutubeList("t1"));
-  }, [dispatch]);
+    dispatch(getYoutubeList(keyword));
+  }, [query]);
 
-  // const test = useSelector<Record<string, string>>(
-  //   (state) => state.summonerInfo
-  // );
-  // console.log(test);
+  const onChangeSearch = useCallback(
+    (event: { target: { value: React.SetStateAction<string> } }) => {
+      setKeyword(event.target.value);
+    },
+    []
+  );
+
+  const onClickApply = () => {
+    console.log(keyword, query);
+    setQuery(keyword);
+    console.log("clicked");
+  };
 
   return (
     <HomeLayout>
+      <HomeLogo src="images/t1.jpeg" />
+      <HomeSearchBar placeholder="검색" onChange={onChangeSearch} />
+      <HomeSearchButton onClick={onClickApply}>SEARCH</HomeSearchButton>
       {loading === "pending" ? (
         "LOADING"
       ) : error ? (

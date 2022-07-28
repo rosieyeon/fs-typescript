@@ -8,6 +8,13 @@ export interface Summoner {
   summonerLevel: number;
 }
 
+export interface YoutubeItem {
+  id: string;
+  thumbnail: string;
+  title: string;
+  channelTitle: string;
+}
+
 export interface Youtube {
   kind: string;
   etag: string;

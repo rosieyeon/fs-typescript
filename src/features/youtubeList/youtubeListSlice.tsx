@@ -1,18 +1,15 @@
 import youtube from "services/youtube";
-import { Youtube } from "store/store.types";
-import React from "react";
+import { Youtube, YoutubeItem } from "store/store.types";
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface youtubeListState {
-  youtubeList: Youtube[];
-  keyQuery: string;
+  youtubeList: YoutubeItem[];
   loading: "idle" | "pending";
   error?: string;
 }
 
 const initialState: youtubeListState = {
   youtubeList: [],
-  keyQuery: "",
   loading: "idle",
 };
 
@@ -28,14 +25,12 @@ export const getYoutubeList = createAsyncThunk(
           regionCode: "KR",
         },
       });
-      console.log(response.data.items);
       return response.data.items.map((item: Youtube) => {
         return {
           id: item.id,
           title: item.snippet.title,
           channelTitle: item.snippet.channelTitle,
           thumbnail: item.snippet.thumbnails.medium.url,
-          duration: item.contentDetails.duration,
         };
       });
     } catch (error) {
@@ -47,11 +42,7 @@ export const getYoutubeList = createAsyncThunk(
 export const youtubeListSlice = createSlice({
   name: "youtubeList",
   initialState,
-  reducers: {
-    saveKeyQuery: (state, { payload }) => {
-      state.keyQuery = payload;
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(getYoutubeList.pending, (state) => {
@@ -59,8 +50,9 @@ export const youtubeListSlice = createSlice({
       })
       .addCase(
         getYoutubeList.fulfilled,
-        (state, { payload }: PayloadAction<Youtube[]>) => {
+        (state, { payload }: PayloadAction<YoutubeItem[]>) => {
           state.loading = "idle";
+          console.log(payload);
           state.youtubeList = payload;
         }
       )
@@ -71,5 +63,4 @@ export const youtubeListSlice = createSlice({
   },
 });
 
-export const { saveKeyQuery } = youtubeListSlice.actions;
 export default youtubeListSlice.reducer;

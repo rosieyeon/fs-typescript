@@ -1,9 +1,10 @@
 import React from "react";
-import getSummonerInfo from "api/getSummonerInfo";
+// import getSummonerInfo from "api/getSummonerInfo";
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "store/configureStore";
-import { useDispatch } from "react-redux";
 import { getYoutubeList } from "features/youtubeList/youtubeListSlice";
+import YoutubeItems from "components/Youtube/YoutubeItem";
+// import { YoutubeItem } from "store/store.types";
 
 // const headers = {
 //   "X-Riot-Token": `${process.env.REACT_APP_RIOT_API_KEY}`,
@@ -51,30 +52,34 @@ import { getYoutubeList } from "features/youtubeList/youtubeListSlice";
 // };
 
 const Home = () => {
-  getSummonerInfo("hide on bush");
-
-  const { youtubeList, keyQuery, loading } = useAppSelector(
+  const { youtubeList, loading, error } = useAppSelector(
     (state) => state.youtubeList
   );
-  console.log(youtubeList, keyQuery, loading);
+  console.log(youtubeList, loading);
+  // console.log(youtubeList[0].title);
   const dispatch = useAppDispatch();
 
+  // getSummonerInfo("hide on bush");
   useEffect(() => {
-    dispatch(getYoutubeList("t1"));
-  }, []);
-
-  // getYoutubeList("t1");
-
-  // useEffect(() => {
-  //   dispatch(getYoutubeList(YoutubeList("t1")))
-  // }, [dispatch])
+    dispatch(getYoutubeList("t1 official"));
+  }, [dispatch]);
 
   // const test = useSelector<Record<string, string>>(
   //   (state) => state.summonerInfo
   // );
   // console.log(test);
 
-  return <>app</>;
+  return (
+    <>
+      {loading === "pending"
+        ? "LOADING"
+        : error
+        ? { error }
+        : youtubeList.map((youtube, index) => (
+            <YoutubeItems youtube={youtube} key={index} />
+          ))}
+    </>
+  );
 };
 
 export default Home;

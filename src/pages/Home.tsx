@@ -1,9 +1,10 @@
 import React from "react";
 // import getSummonerInfo from "api/getSummonerInfo";
 import { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "store/configureStore";
-import { getYoutubeList } from "features/youtubeList/youtubeListSlice";
+import { useAppDispatch, useAppSelector } from "app/configureStore";
+// import { getYoutubeList } from "features/youtubeList/youtubeListSlice";
 import YoutubeItems from "components/Youtube/YoutubeItem";
+import getYoutubeList from "api/getYoutubeList";
 // import { YoutubeItem } from "store/store.types";
 
 // const headers = {
@@ -51,7 +52,7 @@ import YoutubeItems from "components/Youtube/YoutubeItem";
 //   }
 // };
 
-const Home = () => {
+const Home: React.FC = () => {
   const { youtubeList, loading, error } = useAppSelector(
     (state) => state.youtubeList
   );
@@ -60,6 +61,8 @@ const Home = () => {
   const dispatch = useAppDispatch();
 
   // getSummonerInfo("hide on bush");
+
+  // 여기에 then으로 에러 분기 처리
   useEffect(() => {
     dispatch(getYoutubeList("t1 official"));
   }, [dispatch]);

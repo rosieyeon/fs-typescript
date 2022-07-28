@@ -7,7 +7,7 @@ import { ThemeProvider } from "styled-components";
 import GlobalStyle from "./styles/globalStyle";
 import { theme } from "./styles/theme";
 import { Provider } from "react-redux";
-import { store } from "./store/configureStore";
+import { store } from "./app/configureStore";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

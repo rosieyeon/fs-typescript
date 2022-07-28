@@ -5,7 +5,6 @@ import YoutubeItem from "components/Youtube/YoutubeItem";
 import getYoutubeList from "api/getYoutubeList";
 import { useAppDispatch, useAppSelector } from "app/store";
 import { HomeLayout, HomeYoutubeItem } from "./Home.styled";
-import getChannelId from "api/getChannelId";
 
 // const headers = {
 //   "X-Riot-Token": `${process.env.REACT_APP_RIOT_API_KEY}`,
@@ -56,7 +55,6 @@ const Home: React.FC = () => {
   const { youtubeList, loading, error } = useAppSelector(
     (state) => state.youtubeList
   );
-  // getChannelId("T1");
 
   const dispatch = useAppDispatch();
 

@@ -1,10 +1,15 @@
-import youtube from "services/youtube";
-import { Youtube, YoutubeItem } from "store/store.types";
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import getYoutubeList from "api/getYoutubeList";
 
+export interface YoutubeData {
+  id: string;
+  thumbnail: string;
+  title: string;
+  channelTitle: string;
+}
+
 interface youtubeListState {
-  youtubeList: YoutubeItem[];
+  youtubeList: YoutubeData[];
   loading: "idle" | "pending";
   error?: string;
 }
@@ -13,32 +18,6 @@ const initialState: youtubeListState = {
   youtubeList: [],
   loading: "idle",
 };
-
-// export const getYoutubeList = createAsyncThunk(
-//   "youtube/getYoutubeList",
-//   async (query: string, { rejectWithValue }) => {
-//     try {
-//       const response = await youtube.get("/search", {
-//         params: {
-//           part: "snippet",
-//           q: query,
-//           masResults: 2,
-//           regionCode: "KR",
-//         },
-//       });
-//       return response.data.items.map((item: Youtube) => {
-//         return {
-//           id: item.id,
-//           title: item.snippet.title,
-//           channelTitle: item.snippet.channelTitle,
-//           thumbnail: item.snippet.thumbnails.medium.url,
-//         };
-//       });
-//     } catch (error) {
-//       return rejectWithValue("error!");
-//     }
-//   }
-// );
 
 export const youtubeListSlice = createSlice({
   name: "youtubeList",
@@ -51,7 +30,7 @@ export const youtubeListSlice = createSlice({
       })
       .addCase(
         getYoutubeList.fulfilled,
-        (state, { payload }: PayloadAction<YoutubeItem[]>) => {
+        (state, { payload }: PayloadAction<YoutubeData[]>) => {
           state.loading = "idle";
           console.log(payload);
           state.youtubeList = payload;

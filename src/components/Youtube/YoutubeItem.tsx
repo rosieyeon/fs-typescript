@@ -1,13 +1,12 @@
 import React from "react";
-import { YoutubeItem } from "store/store.types";
+import { YoutubeData } from "features/youtubeList/youtubeListSlice";
 import { Channel, Layout, Thumbnail, Title } from "./YoutubeItem.styled";
 
 interface YoutubeProps {
-  youtube: YoutubeItem;
+  youtube: YoutubeData;
 }
 
-const YoutubeItems = ({ youtube }: YoutubeProps) => {
-  // console.log(youtube);
+const YoutubeItem = ({ youtube }: YoutubeProps) => {
   return (
     <Layout>
       <Thumbnail src={youtube.thumbnail} />
@@ -17,4 +16,4 @@ const YoutubeItems = ({ youtube }: YoutubeProps) => {
   );
 };
 
-export default YoutubeItems;
+export default YoutubeItem;

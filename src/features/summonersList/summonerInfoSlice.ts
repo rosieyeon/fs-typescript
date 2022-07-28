@@ -1,6 +1,16 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import riot from "../../services/riot";
-import { Summoner } from "../../store/store.types";
+// import { Summoner } from "../../store/store.types";
+
+export interface Summoner {
+  accountId: string;
+  id: string;
+  name: string;
+  profileIconId: number;
+  puuid: string;
+  revisionDate: number;
+  summonerLevel: number;
+}
 
 interface summonerListState {
   summonerList: {

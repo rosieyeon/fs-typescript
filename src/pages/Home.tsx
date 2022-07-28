@@ -1,11 +1,9 @@
 import React from "react";
 // import getSummonerInfo from "api/getSummonerInfo";
 import { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "app/configureStore";
-// import { getYoutubeList } from "features/youtubeList/youtubeListSlice";
-import YoutubeItems from "components/Youtube/YoutubeItem";
+import YoutubeItem from "components/Youtube/YoutubeItem";
 import getYoutubeList from "api/getYoutubeList";
-// import { YoutubeItem } from "store/store.types";
+import { useAppDispatch, useAppSelector } from "app/store";
 
 // const headers = {
 //   "X-Riot-Token": `${process.env.REACT_APP_RIOT_API_KEY}`,
@@ -56,11 +54,8 @@ const Home: React.FC = () => {
   const { youtubeList, loading, error } = useAppSelector(
     (state) => state.youtubeList
   );
-  console.log(youtubeList, loading);
-  // console.log(youtubeList[0].title);
-  const dispatch = useAppDispatch();
 
-  // getSummonerInfo("hide on bush");
+  const dispatch = useAppDispatch();
 
   // 여기에 then으로 에러 분기 처리
   useEffect(() => {
@@ -79,7 +74,7 @@ const Home: React.FC = () => {
         : error
         ? { error }
         : youtubeList.map((youtube, index) => (
-            <YoutubeItems youtube={youtube} key={index} />
+            <YoutubeItem youtube={youtube} key={index} />
           ))}
     </>
   );

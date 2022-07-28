@@ -100,8 +100,7 @@ export const summonerInfoSlice = createSlice({
   name: "sumonnerInfo",
   initialState,
   reducers: {
-    summoner: (state, { payload }: PayloadAction<Summoner>) => {
-      console.log(payload);
+    getSummoner: (state, { payload }: PayloadAction<Summoner>) => {
       state.summonerList = payload;
     },
   },
@@ -116,5 +115,5 @@ export const summonerInfoSlice = createSlice({
   // },
 });
 
-export const { summoner } = summonerInfoSlice.actions;
+export const { getSummoner } = summonerInfoSlice.actions;
 export default summonerInfoSlice.reducer;

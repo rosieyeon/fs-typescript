@@ -1,5 +1,9 @@
 import React from "react";
 import getSummonerInfo from "api/getSummonerInfo";
+import { useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "store/configureStore";
+import { useDispatch } from "react-redux";
+import { getYoutubeList } from "features/youtubeList/youtubeListSlice";
 
 // const headers = {
 //   "X-Riot-Token": `${process.env.REACT_APP_RIOT_API_KEY}`,
@@ -47,31 +51,23 @@ import getSummonerInfo from "api/getSummonerInfo";
 // };
 
 const Home = () => {
-  // const dispatch = useDispatch();
-
-  // const getSummonerInfo = async (summonerName: string) => {
-  //   try {
-  //     const response = await riot.get(
-  //       `/summoner/v4/summoners/by-name/${summonerName}?api_key=${process.env.REACT_APP_RIOT_API_KEY}`
-  //     );
-  //     console.log(response);
-  //     dispatch(
-  //       summoner({
-  //         accountId: response.data.accountId,
-  //         id: response.data.id,
-  //         name: response.data.name,
-  //         profileIconId: response.data.profileIconId,
-  //         puuid: response.data.puuid,
-  //         revisionDate: response.data.revisionData,
-  //         summonerLevel: response.data.summonerLevel,
-  //       })
-  //     );
-  //   } catch (error) {
-  //     return;
-  //   }
-  // };
-
   getSummonerInfo("hide on bush");
+
+  const { youtubeList, keyQuery, loading } = useAppSelector(
+    (state) => state.youtubeList
+  );
+  console.log(youtubeList, keyQuery, loading);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(getYoutubeList("t1"));
+  }, []);
+
+  // getYoutubeList("t1");
+
+  // useEffect(() => {
+  //   dispatch(getYoutubeList(YoutubeList("t1")))
+  // }, [dispatch])
 
   // const test = useSelector<Record<string, string>>(
   //   (state) => state.summonerInfo

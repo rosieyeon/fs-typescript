@@ -4,6 +4,8 @@ import { useEffect } from "react";
 import YoutubeItem from "components/Youtube/YoutubeItem";
 import getYoutubeList from "api/getYoutubeList";
 import { useAppDispatch, useAppSelector } from "app/store";
+import { HomeLayout, HomeYoutubeItem } from "./Home.styled";
+import getChannelId from "api/getChannelId";
 
 // const headers = {
 //   "X-Riot-Token": `${process.env.REACT_APP_RIOT_API_KEY}`,
@@ -54,12 +56,13 @@ const Home: React.FC = () => {
   const { youtubeList, loading, error } = useAppSelector(
     (state) => state.youtubeList
   );
+  // getChannelId("T1");
 
   const dispatch = useAppDispatch();
 
   // 여기에 then으로 에러 분기 처리
   useEffect(() => {
-    dispatch(getYoutubeList("t1 official"));
+    dispatch(getYoutubeList("t1"));
   }, [dispatch]);
 
   // const test = useSelector<Record<string, string>>(
@@ -68,15 +71,19 @@ const Home: React.FC = () => {
   // console.log(test);
 
   return (
-    <>
-      {loading === "pending"
-        ? "LOADING"
-        : error
-        ? { error }
-        : youtubeList.map((youtube, index) => (
+    <HomeLayout>
+      {loading === "pending" ? (
+        "LOADING"
+      ) : error ? (
+        "ERROR"
+      ) : (
+        <HomeYoutubeItem>
+          {youtubeList.map((youtube, index) => (
             <YoutubeItem youtube={youtube} key={index} />
           ))}
-    </>
+        </HomeYoutubeItem>
+      )}
+    </HomeLayout>
   );
 };
 

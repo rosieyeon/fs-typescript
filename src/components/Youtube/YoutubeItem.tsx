@@ -1,7 +1,8 @@
 import React from "react";
 import { YoutubeData } from "features/youtubeList/youtubeListSlice";
 import {
-  YoutubeItemChannel,
+  // YoutubeItemChannel,
+  // YoutubeItemContent,
   YoutubeItemLayout,
   YoutubeItemThumbnail,
   YoutubeItemTitle,
@@ -14,9 +15,11 @@ interface YoutubeProps {
 const YoutubeItem = ({ youtube }: YoutubeProps) => {
   return (
     <YoutubeItemLayout>
+      {/* <YoutubeItemContent> */}
       <YoutubeItemThumbnail src={youtube.thumbnail} />
       <YoutubeItemTitle>{youtube.title}</YoutubeItemTitle>
-      <YoutubeItemChannel>{youtube.channelTitle}</YoutubeItemChannel>
+      {/* <YoutubeItemChannel>{youtube.channelTitle}</YoutubeItemChannel> */}
+      {/* </YoutubeItemContent> */}
     </YoutubeItemLayout>
   );
 };

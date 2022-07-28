@@ -58,9 +58,11 @@ const getYoutubeList = createAsyncThunk(
       const response = await youtube.get("/search", {
         params: {
           part: "snippet",
+          type: "video",
           q: query,
-          masResults: 2,
+          maxResults: 10,
           regionCode: "KR",
+          channelId: "UCJprx3bX49vNl6Bcw01Cwfg",
         },
       });
       console.log(response);

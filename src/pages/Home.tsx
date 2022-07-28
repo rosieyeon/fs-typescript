@@ -1,16 +1,5 @@
-import { YoutubeList } from "features/youtubeList/youtubeListSlice";
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  // getSummonerInfo,
-  summoner,
-  // summoner,
-} from "../features/summonersList/summonerInfoSlice";
-import { useAppDispatch } from "../store/configureStore";
-import riot from "../services/riot";
-import { useState } from "react";
-import { Summoner } from "store/store.types";
-// import { Summoner } from "../store/store.types";
+import React from "react";
+import getSummonerInfo from "api/getSummonerInfo";
 
 // const headers = {
 //   "X-Riot-Token": `${process.env.REACT_APP_RIOT_API_KEY}`,
@@ -58,29 +47,29 @@ import { Summoner } from "store/store.types";
 // };
 
 const Home = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  const getSummonerInfo = async (summonerName: string) => {
-    try {
-      const response = await riot.get(
-        `/summoner/v4/summoners/by-name/${summonerName}?api_key=${process.env.REACT_APP_RIOT_API_KEY}`
-      );
-      console.log(response);
-      dispatch(
-        summoner({
-          accountId: response.data.accountId,
-          id: response.data.id,
-          name: response.data.name,
-          profileIconId: response.data.profileIconId,
-          puuid: response.data.puuid,
-          revisionDate: response.data.revisionData,
-          summonerLevel: response.data.summonerLevel,
-        })
-      );
-    } catch (error) {
-      return;
-    }
-  };
+  // const getSummonerInfo = async (summonerName: string) => {
+  //   try {
+  //     const response = await riot.get(
+  //       `/summoner/v4/summoners/by-name/${summonerName}?api_key=${process.env.REACT_APP_RIOT_API_KEY}`
+  //     );
+  //     console.log(response);
+  //     dispatch(
+  //       summoner({
+  //         accountId: response.data.accountId,
+  //         id: response.data.id,
+  //         name: response.data.name,
+  //         profileIconId: response.data.profileIconId,
+  //         puuid: response.data.puuid,
+  //         revisionDate: response.data.revisionData,
+  //         summonerLevel: response.data.summonerLevel,
+  //       })
+  //     );
+  //   } catch (error) {
+  //     return;
+  //   }
+  // };
 
   getSummonerInfo("hide on bush");
 

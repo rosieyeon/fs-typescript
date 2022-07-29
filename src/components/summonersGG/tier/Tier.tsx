@@ -21,9 +21,11 @@ const Tier = () => {
 
   return (
     <>
-      {tierData.map((tier, idx) => (
-        <TierItem key={idx} tierInfo={tier} />
-      ))}
+      {loading === "pending"
+        ? "Loading"
+        : error
+        ? "error"
+        : tierData.map((tier, idx) => <TierItem key={idx} tierInfo={tier} />)}
     </>
   );
 };

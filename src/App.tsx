@@ -1,3 +1,4 @@
+import SummonerGG from "pages/SummonerGG";
 import React from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import styled from "styled-components";
@@ -13,6 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="summoners" element={<Summoners />} />
+          <Route path=":summonerName" element={<SummonerGG />} />
           <Route path="search" element={<Search />} />
         </Routes>
       </Router>

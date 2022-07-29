@@ -8,7 +8,7 @@ const Summoners: React.FC = () => {
   const { summonerData, loading, error } = useAppSelector(
     (state) => state.summonerInfo
   );
-  console.log(summonerData, loading, error);
+  // console.log(summonerData, loading, error);
   const dispatch = useAppDispatch();
 
   useEffect(() => {

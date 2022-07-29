@@ -1,6 +1,7 @@
 import getSummonerInfo from "api/getSummonerInfo";
 import getSummonerTier from "api/getSummonerTier";
 import { useAppDispatch, useAppSelector } from "app/store";
+import Profile from "components/summonersGG/profile/Profile";
 import Tier from "components/summonersGG/tier/Tier";
 import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
@@ -25,7 +26,7 @@ const SummonerGG = () => {
     (state) => state.summonerInfo
   );
 
-  // console.log(summonerData, loading, error);
+  console.log(summonerData, loading, error);
   const dispatch = useAppDispatch();
   const { pathname } = useLocation();
 
@@ -39,11 +40,7 @@ const SummonerGG = () => {
 
   return (
     <SummonerGGLayout>
-      <SummonerGGIcon
-        src={`${RIOT_ICON}/profileIcon${summonerData.profileIconId}.jpg`}
-      />
-      <SummonerGGLevel>{summonerData.summonerLevel}</SummonerGGLevel>
-      <SummonerGGName>{summonerData.name}</SummonerGGName>
+      <Profile />
       <Tier />
     </SummonerGGLayout>
   );

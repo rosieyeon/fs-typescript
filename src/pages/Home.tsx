@@ -88,7 +88,7 @@ const Home: React.FC = () => {
 
   return (
     <HomeLayout>
-      <HomeLogo src="images/t1.jpeg" />
+      <HomeLogo src="images/logo/t1.jpeg" />
       <HomeSearch>
         <HomeSearchBar placeholder="검색" onChange={onChangeSearch} />
         <HomeSearchButton onClick={onClickApply}>SEARCH</HomeSearchButton>

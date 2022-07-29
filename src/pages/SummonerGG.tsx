@@ -1,9 +1,15 @@
 import getSummonerInfo from "api/getSummonerInfo";
+import getSummonerTier from "api/getSummonerTier";
 import { useAppDispatch, useAppSelector } from "app/store";
 import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { RIOT_ICON } from "services/cdnValue";
-import { SummonerGGIcon, SummonerGGLayout } from "./SummonerGG.styled";
+import {
+  SummonerGGIcon,
+  SummonerGGLayout,
+  SummonerGGLevel,
+  SummonerGGName,
+} from "./SummonerGG.styled";
 
 export const t1Player = [
   { player: "zeus", name: "자연계곡나무하늘" },
@@ -18,7 +24,7 @@ const SummonerGG = () => {
     (state) => state.summonerInfo
   );
 
-  console.log(summonerData, loading, error);
+  // console.log(summonerData, loading, error);
   const dispatch = useAppDispatch();
   const { pathname } = useLocation();
 
@@ -30,11 +36,19 @@ const SummonerGG = () => {
     );
   }, []);
 
+  useEffect(() => {
+    dispatch(getSummonerTier("Ltc8nxpnPYmsTMNzLjR7styggH7Q_5_u8CsO3_Y8XTtXSQ"));
+  }, [dispatch]);
+
+  const { tierData } = useAppSelector((state) => state.summonerTier);
+  console.log(tierData);
   return (
     <SummonerGGLayout>
       <SummonerGGIcon
         src={`${RIOT_ICON}/profileIcon${summonerData.profileIconId}.jpg`}
       />
+      <SummonerGGLevel>{summonerData.summonerLevel}</SummonerGGLevel>
+      <SummonerGGName>{summonerData.name}</SummonerGGName>
     </SummonerGGLayout>
   );
 };

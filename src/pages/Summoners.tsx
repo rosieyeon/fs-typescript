@@ -5,7 +5,6 @@ import getSummonerInfo from "api/getSummonerInfo";
 import { useAppDispatch, useAppSelector } from "app/store";
 import { Link, useNavigate } from "react-router-dom";
 import { t1Player } from "./SummonerGG";
-import { getSummonerName } from "features/summonerNameSlice";
 
 const Summoners: React.FC = () => {
   const { summonerData, loading, error } = useAppSelector(
@@ -20,9 +19,9 @@ const Summoners: React.FC = () => {
     navigate(`/${player}`);
   };
 
-  useEffect(() => {
-    dispatch(getSummonerInfo("hide on bush"));
-  }, []);
+  // useEffect(() => {
+  //   dispatch(getSummonerInfo("싫어하는이유"));
+  // }, []);
 
   return (
     <>

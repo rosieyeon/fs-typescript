@@ -2,6 +2,8 @@ import getSummonerInfo from "api/getSummonerInfo";
 import { useAppDispatch, useAppSelector } from "app/store";
 import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { RIOT_ICON } from "services/cdnValue";
+import { SummonerGGIcon, SummonerGGLayout } from "./SummonerGG.styled";
 
 export const t1Player = [
   { player: "zeus", name: "자연계곡나무하늘" },
@@ -28,7 +30,13 @@ const SummonerGG = () => {
     );
   }, []);
 
-  return <>hi</>;
+  return (
+    <SummonerGGLayout>
+      <SummonerGGIcon
+        src={`${RIOT_ICON}/profileIcon${summonerData.profileIconId}.jpg`}
+      />
+    </SummonerGGLayout>
+  );
 };
 
 export default SummonerGG;

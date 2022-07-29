@@ -7,6 +7,7 @@ import { useAppDispatch, useAppSelector } from "app/store";
 import {
   HomeLayout,
   HomeLogo,
+  HomeSearch,
   HomeSearchBar,
   HomeSearchButton,
   HomeYoutubeItem,
@@ -82,16 +83,16 @@ const Home: React.FC = () => {
   );
 
   const onClickApply = () => {
-    console.log(keyword, query);
     setQuery(keyword);
-    console.log("clicked");
   };
 
   return (
     <HomeLayout>
       <HomeLogo src="images/t1.jpeg" />
-      <HomeSearchBar placeholder="검색" onChange={onChangeSearch} />
-      <HomeSearchButton onClick={onClickApply}>SEARCH</HomeSearchButton>
+      <HomeSearch>
+        <HomeSearchBar placeholder="검색" onChange={onChangeSearch} />
+        <HomeSearchButton onClick={onClickApply}>SEARCH</HomeSearchButton>
+      </HomeSearch>
       {loading === "pending" ? (
         "LOADING"
       ) : error ? (

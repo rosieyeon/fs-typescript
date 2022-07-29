@@ -3,7 +3,9 @@ import { useEffect } from "react";
 
 import getSummonerInfo from "api/getSummonerInfo";
 import { useAppDispatch, useAppSelector } from "app/store";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { t1Player } from "./SummonerGG";
+import { getSummonerName } from "features/summonerNameSlice";
 
 const Summoners: React.FC = () => {
   const { summonerData, loading, error } = useAppSelector(
@@ -11,6 +13,12 @@ const Summoners: React.FC = () => {
   );
   // console.log(summonerData, loading, error);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const t1PlayerList = t1Player;
+
+  const onClickNav = (player: string) => {
+    navigate(`/${player}`);
+  };
 
   useEffect(() => {
     dispatch(getSummonerInfo("hide on bush"));
@@ -18,6 +26,11 @@ const Summoners: React.FC = () => {
 
   return (
     <>
+      {t1PlayerList.map((t1Player, idx) => (
+        <button key={idx} onClick={() => onClickNav(`${t1Player.player}`)}>
+          {t1Player.player}
+        </button>
+      ))}
       <Link to="/faker">Faker</Link>
       <Link to="/zeus">Zeus</Link>
       <Link to="/oner">Oner</Link>

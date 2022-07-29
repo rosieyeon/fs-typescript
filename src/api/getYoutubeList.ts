@@ -62,7 +62,7 @@ const getYoutubeList = createAsyncThunk(
           q: query,
           maxResults: 10,
           regionCode: "KR",
-          // order: "date",
+          order: "date",
           channelId: "UCJprx3bX49vNl6Bcw01Cwfg",
         },
       });

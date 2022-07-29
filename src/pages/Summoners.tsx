@@ -19,9 +19,9 @@ const Summoners: React.FC = () => {
     navigate(`/${player}`);
   };
 
-  useEffect(() => {
-    dispatch(getSummonerInfo("싫어하는이유"));
-  }, []);
+  // useEffect(() => {
+  //   dispatch(getSummonerInfo("싫어하는이유"));
+  // }, []);
 
   return (
     <>

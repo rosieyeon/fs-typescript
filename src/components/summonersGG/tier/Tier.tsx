@@ -1,9 +1,9 @@
 import React from "react";
 
 import { useAppDispatch, useAppSelector } from "app/store";
-import { TierLayout, TierRank, TierTier } from "./Tier.styled";
 import { useEffect } from "react";
 import getSummonerTier from "api/getSummonerTier";
+import TierItem from "./TierItem";
 
 const Tier = () => {
   const { tierData, loading, error } = useAppSelector(
@@ -11,16 +11,20 @@ const Tier = () => {
   );
   const { summonerData } = useAppSelector((state) => state.summonerInfo);
   const dispatch = useAppDispatch();
-  // console.log(summonerData);
+  console.log(summonerData.id);
+
   useEffect(() => {
-    dispatch(getSummonerTier(summonerData.id));
-  }, [dispatch]);
+    if (summonerData.id) {
+      dispatch(getSummonerTier(summonerData.id));
+    }
+  }, [summonerData.id]);
 
   return (
-    <TierLayout>
-      <TierTier></TierTier>
-      <TierRank></TierRank>
-    </TierLayout>
+    <>
+      {tierData.map((tier, idx) => (
+        <TierItem key={idx} tierInfo={tier} />
+      ))}
+    </>
   );
 };
 export default Tier;

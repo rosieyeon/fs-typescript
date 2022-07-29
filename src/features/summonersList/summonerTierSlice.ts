@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import getSummonerTier from "api/getSummonerTier";
 
-interface SummonerTier {
+export interface SummonerTier {
   queueType: string;
   tier: string;
   rank: string;

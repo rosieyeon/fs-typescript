@@ -37,12 +37,6 @@ const SummonerGG = () => {
     );
   }, []);
 
-  useEffect(() => {
-    dispatch(getSummonerTier("Ltc8nxpnPYmsTMNzLjR7styggH7Q_5_u8CsO3_Y8XTtXSQ"));
-  }, [dispatch]);
-
-  const { tierData } = useAppSelector((state) => state.summonerTier);
-  console.log(tierData);
   return (
     <SummonerGGLayout>
       <SummonerGGIcon

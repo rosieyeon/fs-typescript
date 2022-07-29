@@ -1,6 +1,6 @@
 import React from "react";
 import { SummonerTier } from "features/summonersList/summonerTierSlice";
-import { TierLayout, TierRank, TierTier } from "./TierItem.styled";
+import { TierImg, TierLayout, TierRank, TierTier } from "./TierItem.styled";
 import toCapitalize from "util/toCapitalize";
 
 interface TierProps {
@@ -11,8 +11,12 @@ const TierItem = ({ tierInfo }: TierProps) => {
   console.log(tierInfo);
   return (
     <TierLayout>
+      <TierImg src={`/images/ranked-emblems/${tierInfo.tier}.png`} />
       <TierTier>{toCapitalize(tierInfo.tier)}</TierTier>
-      <TierRank> {tierInfo.rank}</TierRank>
+      {tierInfo.rank ===
+        ("IRON" || "SILVER" || "GOLD" || "PLATINUM" || "DIAMOND") && (
+        <TierRank> {tierInfo.rank}</TierRank>
+      )}
     </TierLayout>
   );
 };

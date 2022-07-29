@@ -1,17 +1,11 @@
 import getSummonerInfo from "api/getSummonerInfo";
-import getSummonerTier from "api/getSummonerTier";
 import { useAppDispatch, useAppSelector } from "app/store";
 import Profile from "components/summonersGG/profile/Profile";
 import Tier from "components/summonersGG/tier/Tier";
+import { getSummonerName } from "features/summonerNameSlice";
 import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { RIOT_ICON } from "services/cdnValue";
-import {
-  SummonerGGIcon,
-  SummonerGGLayout,
-  SummonerGGLevel,
-  SummonerGGName,
-} from "./SummonerGG.styled";
+import { SummonerGGLayout } from "./SummonerGG.styled";
 
 export const t1Player = [
   { player: "zeus", name: "자연계곡나무하늘" },
@@ -36,7 +30,16 @@ const SummonerGG = () => {
         pathname.substr(1) === lolplayer.player &&
         dispatch(getSummonerInfo(lolplayer.name))
     );
-  }, []);
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(
+      getSummonerName({
+        player: `${pathname.substr(1)}`,
+        name: `${summonerData.name}`,
+      })
+    );
+  }, [summonerData.name]);
 
   return (
     <SummonerGGLayout>

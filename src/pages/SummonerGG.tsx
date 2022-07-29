@@ -1,6 +1,7 @@
 import getSummonerInfo from "api/getSummonerInfo";
 import getSummonerTier from "api/getSummonerTier";
 import { useAppDispatch, useAppSelector } from "app/store";
+import Tier from "components/summonersGG/tier/Tier";
 import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { RIOT_ICON } from "services/cdnValue";
@@ -49,6 +50,7 @@ const SummonerGG = () => {
       />
       <SummonerGGLevel>{summonerData.summonerLevel}</SummonerGGLevel>
       <SummonerGGName>{summonerData.name}</SummonerGGName>
+      <Tier />
     </SummonerGGLayout>
   );
 };

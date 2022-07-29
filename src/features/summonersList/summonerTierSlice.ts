@@ -27,13 +27,21 @@ export const summonerTierSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(
-      getSummonerTier.fulfilled,
-      (state, { payload }: PayloadAction<SummonerTier[]>) => {
+    builder
+      .addCase(getSummonerTier.pending, (state) => {
+        state.loading = "pending";
+      })
+      .addCase(
+        getSummonerTier.fulfilled,
+        (state, { payload }: PayloadAction<SummonerTier[]>) => {
+          state.loading = "idle";
+          state.tierData = payload;
+        }
+      )
+      .addCase(getSummonerTier.rejected, (state, { error }) => {
         state.loading = "idle";
-        state.tierData = payload;
-      }
-    );
+        state.error = error.message;
+      });
   },
 });
 

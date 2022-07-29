@@ -3,6 +3,7 @@ import { useEffect } from "react";
 
 import getSummonerInfo from "api/getSummonerInfo";
 import { useAppDispatch, useAppSelector } from "app/store";
+import { Link } from "react-router-dom";
 
 const Summoners: React.FC = () => {
   const { summonerData, loading, error } = useAppSelector(
@@ -15,7 +16,15 @@ const Summoners: React.FC = () => {
     dispatch(getSummonerInfo("hide on bush"));
   }, []);
 
-  return <>summoners</>;
+  return (
+    <>
+      <Link to="/faker">Faker</Link>
+      <Link to="/zeus">Zeus</Link>
+      <Link to="/oner">Oner</Link>
+      <Link to="/gumayusi">Gumayusi</Link>
+      <Link to="/keria">Keria</Link>
+    </>
+  );
 };
 
 export default Summoners;

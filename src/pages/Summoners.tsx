@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import getSummonerInfo from "api/getSummonerInfo";
 import { useAppDispatch, useAppSelector } from "app/store";
 import { Link, useNavigate } from "react-router-dom";
-import { t1Player } from "./SummonerGG";
+import { t1Player } from "app/t1Player";
 
 const Summoners: React.FC = () => {
   const { summonerData, loading, error } = useAppSelector(

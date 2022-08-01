@@ -5,14 +5,7 @@ export const TierLayout = styled.div`
   border-radius: 4px;
   background-color: #31313c;
   width: 332px;
-`;
-export const TierQueue = styled.div`
-  line-height: 35px;
-  padding: 0 12px;
-  font-size: 14px;
-`;
 
-export const TierContent = styled.div`
   display: flex;
   align-items: center;
   padding: 12px;

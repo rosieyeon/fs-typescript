@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const HomeLayout = styled.div`
+  font-family: "Roboto", sans-serif;
   /* text-align: center; */
   /* display: flex; */
 `;

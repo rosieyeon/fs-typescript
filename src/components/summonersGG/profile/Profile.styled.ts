@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const ProfileLayout = styled.div`
   display: flex;
+  font-family: "Roboto";
 `;
 
 export const ProfileImg = styled.div`

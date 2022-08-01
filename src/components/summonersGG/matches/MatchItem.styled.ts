@@ -41,4 +41,31 @@ export const MatchItemWinLose = styled.div`
 `;
 
 export const MatchItemInfo = styled.div``;
+
+export const MatchItemChamp = styled.div`
+  position: relative;
+  display: block;
+  width: 48px;
+  height: 48px;
+`;
+export const MatchItemChampImg = styled.img`
+  display: block;
+
+  max-width: 100%;
+  border-radius: 50%;
+`;
+export const MatchItemChampLv = styled.span`
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  font-size: 11px;
+  background: rgb(32, 45, 55);
+`;
+
 export const MatchItemParticipants = styled.div``;

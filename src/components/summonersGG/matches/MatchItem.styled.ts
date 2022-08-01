@@ -95,7 +95,7 @@ export const MatchItemPerk = styled.img`
   background-color: black;
 `;
 
-export const MatchItemKDA = styled.div`
+export const MatchItemKDA = styled.div<{ winlose: boolean }>`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -104,6 +104,10 @@ export const MatchItemKDA = styled.div`
   padding-right: 12px;
   margin-right: 8px;
   margin-left: 12px;
+
+  border-right-width: 1px;
+  border-right-style: solid;
+  border-right-color: ${(props) => (props.winlose ? "#2f436e" : "#703C47")};
 `;
 export const MatchItemKDACnt = styled.div`
   color: #7b7a8e;
@@ -128,6 +132,7 @@ export const MatchItemKDARatio = styled.div`
 
 export const MatchItemItemBox = styled.div`
   display: flex;
+  gap: 1px;
   margin-top: 8px;
 `;
 export const MatchItemSlot = styled.div<{ winlose: boolean }>`
@@ -139,6 +144,18 @@ export const MatchItemSlot = styled.div<{ winlose: boolean }>`
 `;
 export const MatchItemItem = styled.img`
   max-width: 100%;
+  border-radius: 4px;
 `;
 
-export const MatchItemParticipants = styled.div``;
+export const MatchItemDetailBox = styled.div`
+  font-size: 11px;
+  color: #9e9eb1;
+  line-height: 12.5px;
+`;
+export const MatchItemPKill = styled.div`
+  color: #e84057;
+`;
+export const MatchItemStats = styled.div``;
+export const MatchItemLane = styled.div`
+  font-weight: bold;
+`;

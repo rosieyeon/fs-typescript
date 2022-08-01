@@ -4,6 +4,7 @@ import { useAppSelector } from "app/store";
 import {
   matchData,
   matchParticipants,
+  TeamObjectives,
 } from "features/matchList/matchDetailSlice";
 import timeForToday from "util/timeForToday";
 import {
@@ -12,6 +13,7 @@ import {
   MatchItemChampImg,
   MatchItemChampLv,
   MatchItemDeaths,
+  MatchItemDetailBox,
   MatchItemGame,
   MatchItemInfo,
   MatchItemInfoBox,
@@ -21,18 +23,21 @@ import {
   MatchItemKDACnt,
   MatchItemKDARatio,
   MatchItemKillAssis,
+  MatchItemLane,
   MatchItemLayout,
-  MatchItemParticipants,
   MatchItemPerk,
   MatchItemPerksBox,
+  MatchItemPKill,
   MatchItemQueueType,
   MatchItemSlot,
   MatchItemSpell,
   MatchItemSpellBox,
+  MatchItemStats,
   MatchItemTime,
   MatchItemWinLose,
 } from "./MatchItem.styled";
 import { RIOT_CDN, RIOT_CHAMP_IMG } from "services/cdnValue";
+import toCapitalize from "util/toCapitalize";
 
 interface matchIDProps {
   match: matchData;
@@ -42,6 +47,7 @@ interface matchIDProps {
 const MatchItem = ({ match }: matchIDProps) => {
   console.log(match);
   const [myData, setMyData] = useState<matchParticipants>();
+  const [objectives, setObjectives] = useState<TeamObjectives>();
   const [itemsList, setItemsList] = useState<string[]>([]);
   const { summonerData } = useAppSelector((state) => state.summonerInfo);
 
@@ -66,8 +72,15 @@ const MatchItem = ({ match }: matchIDProps) => {
         String(myData.item6)
       );
       setItemsList(items);
+
+      for (let i = 0; i < 2; i++) {
+        if (myData.win == match.teams[i].win) {
+          setObjectives(match.teams[i].objectives);
+        }
+      }
     }
   }, [myData]);
+  console.log(objectives);
 
   return myData ? (
     <MatchItemLayout winlose={myData.win}>
@@ -113,7 +126,7 @@ const MatchItem = ({ match }: matchIDProps) => {
             <MatchItemPerk src={`${RIOT_CDN}/perkStyle/${myData.perks2}.png`} />
           </MatchItemPerksBox>
 
-          <MatchItemKDA>
+          <MatchItemKDA winlose={myData.win}>
             <MatchItemKDACnt>
               <MatchItemKillAssis>{myData.kills}</MatchItemKillAssis> /
               <MatchItemDeaths> {myData.deaths}</MatchItemDeaths> /
@@ -121,6 +134,30 @@ const MatchItem = ({ match }: matchIDProps) => {
             </MatchItemKDACnt>
             <MatchItemKDARatio>{myData.kda}:1 KDA</MatchItemKDARatio>
           </MatchItemKDA>
+
+          <MatchItemDetailBox>
+            {objectives && (
+              <MatchItemPKill>
+                P/Kill{" "}
+                {parseInt(
+                  String(
+                    ((myData.kills + myData.assists) /
+                      objectives?.champion.kills) *
+                      100
+                  )
+                )}
+                %
+              </MatchItemPKill>
+            )}
+            <MatchItemStats>
+              Control Ward {myData.visionWardsBoughtInGame}
+            </MatchItemStats>
+            <MatchItemStats>
+              CS {myData.cs} (
+              {(myData.cs / (match.gameDuration / 60)).toFixed(1)})
+            </MatchItemStats>
+            <MatchItemLane>{toCapitalize(myData.lane)}</MatchItemLane>
+          </MatchItemDetailBox>
         </MatchItemInfo>
 
         <MatchItemItemBox>
@@ -135,7 +172,7 @@ const MatchItem = ({ match }: matchIDProps) => {
           )}
         </MatchItemItemBox>
       </MatchItemInfoBox>
-      <MatchItemParticipants></MatchItemParticipants>
+      {/* <MatchItemParticipants></MatchItemParticipants> */}
     </MatchItemLayout>
   ) : (
     <></>

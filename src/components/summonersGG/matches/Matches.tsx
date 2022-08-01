@@ -1,10 +1,9 @@
 import getMatchData from "api/getMatchData";
 import { useAppDispatch, useAppSelector } from "app/store";
-import { match } from "assert";
 import React from "react";
 import { useEffect } from "react";
 
-import { MatchesLayout } from "./Matches.styled";
+import { MatchesContent, MatchesLayout } from "./Matches.styled";
 import MatchItem from "./MatchItem";
 
 const Matches = () => {
@@ -28,10 +27,9 @@ const Matches = () => {
       ) : (
         <>
           {matchDetail.map((match, index) => (
-            <>
-              {match.gameDuration}
+            <MatchesContent key={index}>
               <MatchItem match={match} key={index} />
-            </>
+            </MatchesContent>
           ))}
         </>
       )}

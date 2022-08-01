@@ -1,24 +1,35 @@
-import getMatchDetails from "api/getMatchDetails";
 import { useAppDispatch, useAppSelector } from "app/store";
+import { match } from "assert";
+import { matchData } from "features/matchList/matchDetailSlice";
 import React from "react";
+import { useState } from "react";
 import { useEffect } from "react";
 
 interface matchIDProps {
-  matchId: string;
+  match: matchData;
   key: number;
 }
-const MatchItem = ({ matchId }: matchIDProps) => {
+const MatchItem = ({ match }: matchIDProps) => {
   const { matchDetail, loading, error } = useAppSelector(
     (state) => state.matchDetails
   );
+  console.log(match);
+
+  const [duration, setDuration] = useState(0);
 
   // console.log(matchDetail, loading, error);
   const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    dispatch(getMatchDetails(matchId));
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getMatchDetails(matchId));
+  // }, [matchId]);
 
-  return <>hi</>;
+  // useEffect(() => {
+  //   if (matchDetail) {
+  //     setDuration(matchDetail.gameDuration);
+  //   }
+  // }, [matchDetail]);
+
+  return <>hihi</>;
 };
 export default MatchItem;

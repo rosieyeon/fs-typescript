@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import getMatchDetails from "api/getMatchDetails";
+import getMatchData from "api/getMatchData";
 
 export interface matchData {
   gameDuration: number;
@@ -68,19 +68,20 @@ export interface matchParticipants {
 }
 
 interface matchDetailState {
-  matchDetail: matchData;
+  matchDetail: matchData[];
   loading: "idle" | "pending";
   error?: string;
 }
 
 const initialState: matchDetailState = {
-  matchDetail: {
-    gameDuration: 0,
-    gameEndTimestamp: 0,
-    participants: [],
-    teams: [],
-    // participantsId: [],
-  },
+  matchDetail: [],
+  // matchDetail: {
+  //   gameDuration: 0,
+  //   gameEndTimestamp: 0,
+  //   participants: [],
+  //   teams: [],
+  //   // participantsId: [],
+  // },
   loading: "idle",
 };
 
@@ -90,19 +91,19 @@ export const matchDetailSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(getMatchDetails.pending, (state) => {
+      .addCase(getMatchData.pending, (state) => {
         state.loading = "pending";
         // console.log("pending");
       })
       .addCase(
-        getMatchDetails.fulfilled,
-        (state, { payload }: PayloadAction<matchData>) => {
+        getMatchData.fulfilled,
+        (state, { payload }: PayloadAction<matchData[]>) => {
           state.loading = "idle";
           // console.log(payload);
           state.matchDetail = payload;
         }
       )
-      .addCase(getMatchDetails.rejected, (state, { error }) => {
+      .addCase(getMatchData.rejected, (state, { error }) => {
         state.loading = "idle";
         state.error = error.message;
         // console.log("error");

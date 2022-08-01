@@ -8,15 +8,15 @@ import { getSummonerName } from "features/summonerNameSlice";
 import { SummonerGGLayout } from "./SummonerGG.styled";
 import Profile from "components/summonersGG/profile/Profile";
 import Tier from "components/summonersGG/tier/Tier";
+import Matches from "components/summonersGG/matches/Matches";
 
 const SummonerGG = () => {
   const { summonerData, loading, error } = useAppSelector(
     (state) => state.summonerInfo
   );
 
-  console.log(loading, error);
-
   // console.log(summonerData, loading, error);
+
   const dispatch = useAppDispatch();
   const { pathname } = useLocation();
 
@@ -26,7 +26,7 @@ const SummonerGG = () => {
         pathname.substr(1) === lolplayer.player &&
         dispatch(getSummonerInfo(lolplayer.name))
     );
-  }, [dispatch]);
+  }, []);
 
   useEffect(() => {
     dispatch(
@@ -41,6 +41,7 @@ const SummonerGG = () => {
     <SummonerGGLayout>
       <Profile />
       <Tier />
+      <Matches />
     </SummonerGGLayout>
   );
 };

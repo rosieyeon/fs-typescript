@@ -92,20 +92,20 @@ export const matchDetailSlice = createSlice({
     builder
       .addCase(getMatchDetails.pending, (state) => {
         state.loading = "pending";
-        console.log("pending");
+        // console.log("pending");
       })
       .addCase(
         getMatchDetails.fulfilled,
         (state, { payload }: PayloadAction<matchData>) => {
           state.loading = "idle";
-          console.log(payload);
+          // console.log(payload);
           state.matchDetail = payload;
         }
       )
       .addCase(getMatchDetails.rejected, (state, { error }) => {
         state.loading = "idle";
         state.error = error.message;
-        console.log("error");
+        // console.log("error");
       });
   },
   // extraReducers: (builder) => {

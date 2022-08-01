@@ -1,25 +1,42 @@
+import { createAsyncThunk } from "@reduxjs/toolkit";
 import riotMatch from "services/riotMatch";
 
-const getMatchIds = async (puuId: string) => {
-  try {
-    const matchIdsResult = await riotMatch.get(
-      `/match/v5/matches/by-puuid/${puuId}/ids`,
-      {
-        params: {
-          count: 10,
-        },
-      }
-    );
-    console.log(matchIdsResult);
-
-    // const matchDetailsResult = matchIdsResult.data.map(async (item: string) => {
-    //   const response = await riotMatch.get(`match/v5/matches/${item}`);
-    //   console.log(response, item);
-    // });
-    return matchIdsResult.data;
-  } catch (error) {
-    error;
+const getMatchIds = createAsyncThunk(
+  "matchId/getMatchId",
+  async (puuId: string, { rejectWithValue }) => {
+    try {
+      const matchIdsResult = await riotMatch.get(
+        `/match/v5/matches/by-puuid/${puuId}/ids`,
+        {
+          params: {
+            count: 9,
+          },
+        }
+      );
+      // console.log(typeof matchIdsResult.data);
+      return matchIdsResult.data;
+    } catch (error) {
+      return rejectWithValue("error!");
+    }
   }
-};
+);
+
+// const getMatchIds = async (puuId: string) => {
+//   try {
+//     const matchIdsResult = await riotMatch.get(
+//       `/match/v5/matches/by-puuid/${puuId}/ids`,
+//       {
+//         params: {
+//           count: 10,
+//         },
+//       }
+//     );
+//     console.log(typeof matchIdsResult.data);
+//     console.log(matchIdsResult);
+//     return matchIdsResult.data;
+//   } catch (error) {
+//     error;
+//   }
+// };
 
 export default getMatchIds;

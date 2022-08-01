@@ -1,30 +1,30 @@
-import getMatchDetails from "api/getMatchDetails";
 import getMatchIds from "api/getMatchIds";
 import { useAppDispatch, useAppSelector } from "app/store";
 import React from "react";
 import { useEffect } from "react";
-import timeForToday from "util/timeForToday";
+import { MatchesLayout } from "./Matches.styled";
+import MatchItem from "./MatchItem";
 
 const Matches = () => {
-  const { matchDetail, loading, error } = useAppSelector(
-    (state) => state.matchDetails
-  );
-
-  console.log(matchDetail, loading, error);
+  const { summonerData } = useAppSelector((state) => state.summonerInfo);
+  const { matchIds } = useAppSelector((state) => state.matchIds);
   const dispatch = useAppDispatch();
-  useEffect(() => {
-    // getMatchIds(
-    //   "_TKsGvBGiPJPk33dNrkkj7obgjhkdUxAuf3IiX1zABa1ZMe2MYIlcsWHp_adPCgy0roiMcscV6gkUw"
-    // );
-    // getMatchDetails("");
-    dispatch(getMatchDetails(""));
-  }, [dispatch]);
-  // getMatchDetails();
-  // const time = new Date(1659294653362);
-  // console.log(typeof time, time);
-  // console.log(timeForToday(1659294653362));
 
-  return <>HIHI</>;
+  useEffect(() => {
+    if (summonerData.puuid) {
+      dispatch(getMatchIds(summonerData.puuid));
+    }
+  }, [summonerData]);
+
+  // console.log(matchIds);
+  return (
+    <MatchesLayout>
+      {matchIds &&
+        matchIds.map((matchId: string, idx) => (
+          <MatchItem key={idx} matchId={matchId} />
+        ))}
+    </MatchesLayout>
+  );
 };
 
 export default Matches;

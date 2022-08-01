@@ -1,9 +1,10 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import getMatchDetails from "api/getMatchDetails";
 
-export interface matchDetail {
+export interface matchData {
   gameDuration: number;
   gameEndTimeStamp: number;
-  participants: [];
+  participants: matchParticipants[];
   teams: [];
   participantsId: [];
 }
@@ -45,10 +46,42 @@ export interface matchParticipants {
   spell2: number; // summoner2Id
 }
 
-export interface matchChallenges {
-  kda: number;
+interface matchDetailState {
+  matchDetail: matchData;
+  loading: "idle" | "pending";
+  error?: string;
 }
-// export const matchDetailSlice = createSlice({
-//   name: "matchDetail",
-//   initialState
-// });
+
+const initialState: matchDetailState = {
+  matchDetail: {
+    gameDuration: 0,
+    gameEndTimeStamp: 0,
+    participants: [],
+    teams: [],
+    participantsId: [],
+  },
+  loading: "idle",
+};
+
+export const matchDetailSlice = createSlice({
+  name: "matchDetail",
+  initialState,
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(
+      getMatchDetails.fulfilled,
+      (state, { payload }: PayloadAction<matchData>) => {
+        state.loading = "idle";
+        console.log(payload);
+      }
+    );
+  },
+  // extraReducers: (builder) => {
+  //   builder.addCase(getMatchDetails.fulfilled, (state, { payload }: PayloadAction<matchData>) => {
+  //     state.loading = "idle"
+  //     console.log(payload)
+  //   })
+  // }
+});
+
+export default matchDetailSlice.reducer;

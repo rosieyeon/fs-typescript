@@ -181,59 +181,63 @@ interface PerksSelectionsDto {
 //   }
 // );
 
-const getMatchDetails = async () => {
-  const participants: matchParticipants[] = [];
-  try {
-    const response = await riotMatch.get(`match/v5/matches/KR_6050345030`);
-    // console.log(response);
-    const res = response.data;
-    res.info.participants.map((player: ParticipantsDto) => {
-      participants.push({
-        assists: player.assists,
-        kda: player.challenges.kda.toFixed(1),
-        champLevel: player.champLevel,
-        championId: player.championId,
-        championName: player.championName,
-        kills: player.kills,
-        deaths: player.deaths,
-        visionWardsBoughtInGame: player.visionWardsBoughtInGame,
-        wardsKilled: player.wardsKilled,
-        wardsPlaced: player.wardsPlaced,
-        visionScore: player.visionScore,
-        doubleKills: player.doubleKills,
-        item0: player.item0,
-        item1: player.item1,
-        item2: player.item2,
-        item3: player.item3,
-        item4: player.item4,
-        item5: player.item5,
-        item6: player.item6,
-        lane: player.lane,
-        participantId: player.participantId,
-        pentaKills: player.pentaKills,
-        perks1: player.perks.styles[0].selections[0].perk, // perks.styles[0].selections[0].perk
-        perks2: player.perks.styles[1].style, // perks.styles[1].style
-        win: player.win,
-        puuid: player.puuid,
-        summonerId: player.summonerId,
-        summonerName: player.summonerName,
-        teamId: player.teamId,
-        tripleKills: player.tripleKills,
-        cs: player.totalMinionsKilled + player.neutralMinionsKilled, // totalMiniosKilled +neutralMiniosKilled
-        spell1: player.summoner1Id, // summoner1Id
-        spell2: player.summoner2Id, // summoner2Id
+const getMatchDetails = createAsyncThunk(
+  "matchDetails/getMatchDetails",
+  async (matchId: string, { rejectWithValue }) => {
+    console.log(matchId);
+    const participants: matchParticipants[] = [];
+    try {
+      const response = await riotMatch.get(`match/v5/matches/KR_6050345030`);
+      // console.log(response);
+      const res = response.data;
+      res.info.participants.map((player: ParticipantsDto) => {
+        participants.push({
+          assists: player.assists,
+          kda: player.challenges.kda.toFixed(1),
+          champLevel: player.champLevel,
+          championId: player.championId,
+          championName: player.championName,
+          kills: player.kills,
+          deaths: player.deaths,
+          visionWardsBoughtInGame: player.visionWardsBoughtInGame,
+          wardsKilled: player.wardsKilled,
+          wardsPlaced: player.wardsPlaced,
+          visionScore: player.visionScore,
+          doubleKills: player.doubleKills,
+          item0: player.item0,
+          item1: player.item1,
+          item2: player.item2,
+          item3: player.item3,
+          item4: player.item4,
+          item5: player.item5,
+          item6: player.item6,
+          lane: player.lane,
+          participantId: player.participantId,
+          pentaKills: player.pentaKills,
+          perks1: player.perks.styles[0].selections[0].perk, // perks.styles[0].selections[0].perk
+          perks2: player.perks.styles[1].style, // perks.styles[1].style
+          win: player.win,
+          puuid: player.puuid,
+          summonerId: player.summonerId,
+          summonerName: player.summonerName,
+          teamId: player.teamId,
+          tripleKills: player.tripleKills,
+          cs: player.totalMinionsKilled + player.neutralMinionsKilled, // totalMiniosKilled +neutralMiniosKilled
+          spell1: player.summoner1Id, // summoner1Id
+          spell2: player.summoner2Id, // summoner2Id
+        });
       });
-    });
-    return {
-      gameDuration: res.info.gameDuration,
-      gameEndTimeStamp: res.info.gameEndTimeStamp,
-      participants: participants,
-      teams: res.info.teams,
-      participantsId: res.metaData.participants,
-    };
-  } catch (error) {
-    error;
+      return {
+        gameDuration: res.info.gameDuration,
+        gameEndTimeStamp: res.info.gameEndTimeStamp,
+        participants: participants,
+        teams: res.info.teams,
+        participantsId: res.metaData.participants,
+      };
+    } catch (error) {
+      return rejectWithValue("error!");
+    }
   }
-};
+);
 
 export default getMatchDetails;

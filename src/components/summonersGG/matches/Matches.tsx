@@ -9,7 +9,7 @@ const Matches = () => {
     // getMatchIds(
     //   "_TKsGvBGiPJPk33dNrkkj7obgjhkdUxAuf3IiX1zABa1ZMe2MYIlcsWHp_adPCgy0roiMcscV6gkUw"
     // );
-    getMatchDetails();
+    getMatchDetails("");
   }, []);
   // getMatchDetails();
   // const time = new Date(1659294653362);

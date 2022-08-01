@@ -19,7 +19,7 @@ interface TierProps {
 }
 
 const TierItem = ({ tierInfo }: TierProps) => {
-  console.log(tierInfo);
+  // console.log(tierInfo);
   const winRates = (tierInfo.wins / (tierInfo.wins + tierInfo.losses)) * 100;
 
   return (

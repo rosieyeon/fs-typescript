@@ -1,19 +1,22 @@
-import getSummonerInfo from "api/getSummonerInfo";
-import { useAppDispatch, useAppSelector } from "app/store";
-import { t1Player } from "app/t1Player";
-import Profile from "components/summonersGG/profile/Profile";
-import Tier from "components/summonersGG/tier/Tier";
-import { getSummonerName } from "features/summonerNameSlice";
 import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "app/store";
+
+import getSummonerInfo from "api/getSummonerInfo";
+import { t1Player } from "app/t1Player";
+import { getSummonerName } from "features/summonerNameSlice";
 import { SummonerGGLayout } from "./SummonerGG.styled";
+import Profile from "components/summonersGG/profile/Profile";
+import Tier from "components/summonersGG/tier/Tier";
 
 const SummonerGG = () => {
   const { summonerData, loading, error } = useAppSelector(
     (state) => state.summonerInfo
   );
 
-  console.log(summonerData, loading, error);
+  console.log(loading, error);
+
+  // console.log(summonerData, loading, error);
   const dispatch = useAppDispatch();
   const { pathname } = useLocation();
 

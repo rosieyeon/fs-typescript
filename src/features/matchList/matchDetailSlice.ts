@@ -3,10 +3,31 @@ import getMatchDetails from "api/getMatchDetails";
 
 export interface matchData {
   gameDuration: number;
-  gameEndTimeStamp: number;
+  gameEndTimestamp: number;
   participants: matchParticipants[];
-  teams: [];
-  participantsId: [];
+  teams: Teams[];
+  // participantsId: [];
+}
+
+export interface Teams {
+  bans: [];
+  objectives: TeamObjectives;
+  teamId: number;
+  win: boolean;
+}
+
+export interface TeamObjectives {
+  baron: ObjectiveData;
+  champion: ObjectiveData;
+  dragon: ObjectiveData;
+  inhibitor: ObjectiveData;
+  riftHerald: ObjectiveData;
+  tower: ObjectiveData;
+}
+
+export interface ObjectiveData {
+  first: boolean;
+  kills: number;
 }
 
 export interface matchParticipants {
@@ -55,10 +76,10 @@ interface matchDetailState {
 const initialState: matchDetailState = {
   matchDetail: {
     gameDuration: 0,
-    gameEndTimeStamp: 0,
+    gameEndTimestamp: 0,
     participants: [],
     teams: [],
-    participantsId: [],
+    // participantsId: [],
   },
   loading: "idle",
 };
@@ -68,13 +89,24 @@ export const matchDetailSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(
-      getMatchDetails.fulfilled,
-      (state, { payload }: PayloadAction<matchData>) => {
+    builder
+      .addCase(getMatchDetails.pending, (state) => {
+        state.loading = "pending";
+        console.log("pending");
+      })
+      .addCase(
+        getMatchDetails.fulfilled,
+        (state, { payload }: PayloadAction<matchData>) => {
+          state.loading = "idle";
+          console.log(payload);
+          state.matchDetail = payload;
+        }
+      )
+      .addCase(getMatchDetails.rejected, (state, { error }) => {
         state.loading = "idle";
-        console.log(payload);
-      }
-    );
+        state.error = error.message;
+        console.log("error");
+      });
   },
   // extraReducers: (builder) => {
   //   builder.addCase(getMatchDetails.fulfilled, (state, { payload }: PayloadAction<matchData>) => {

@@ -188,7 +188,7 @@ const getMatchDetails = createAsyncThunk(
     const participants: matchParticipants[] = [];
     try {
       const response = await riotMatch.get(`match/v5/matches/KR_6050345030`);
-      // console.log(response);
+      console.log(response);
       const res = response.data;
       res.info.participants.map((player: ParticipantsDto) => {
         participants.push({
@@ -229,10 +229,10 @@ const getMatchDetails = createAsyncThunk(
       });
       return {
         gameDuration: res.info.gameDuration,
-        gameEndTimeStamp: res.info.gameEndTimeStamp,
+        gameEndTimestamp: res.info.gameEndTimestamp,
         participants: participants,
         teams: res.info.teams,
-        participantsId: res.metaData.participants,
+        // participantsId: res.metaData.participants,
       };
     } catch (error) {
       return rejectWithValue("error!");

@@ -1,3 +1,4 @@
+import { matchDetailSlice } from "features/matchList/matchDetailSlice";
 import { summonerNameSlice } from "features/summonerNameSlice";
 import { summonerInfoSlice } from "features/summonersList/summonerInfoSlice";
 import { summonerTierSlice } from "features/summonersList/summonerTierSlice";
@@ -9,6 +10,7 @@ const rootReducer = combineReducers({
   youtubeList: youtubeListSlice.reducer,
   summonerName: summonerNameSlice.reducer,
   summonerTier: summonerTierSlice.reducer,
+  matchDetails: matchDetailSlice.reducer,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

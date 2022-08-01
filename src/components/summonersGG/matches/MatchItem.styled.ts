@@ -17,6 +17,7 @@ export const MatchItemLayout = styled.div<{ winlose: boolean }>`
 
 export const MatchItemGame = styled.div`
   color: #9e9eb1;
+  width: 105px;
   font-size: 12px;
   line-height: 16px;
 
@@ -39,6 +40,8 @@ export const MatchItemTime = styled.div``;
 export const MatchItemWinLose = styled.div`
   font-weight: bold;
 `;
+
+export const MatchItemInfoBox = styled.div``;
 
 export const MatchItemInfo = styled.div`
   display: flex;
@@ -92,8 +95,40 @@ export const MatchItemPerk = styled.img`
   background-color: black;
 `;
 
+export const MatchItemKDA = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  width: 107px;
+  padding-right: 12px;
+  margin-right: 8px;
+  margin-left: 12px;
+`;
+export const MatchItemKDACnt = styled.div`
+  color: #7b7a8e;
+`;
+export const MatchItemKillAssis = styled.span`
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 22px;
+  color: white;
+`;
+export const MatchItemDeaths = styled.span`
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 22px;
+  color: #e84057;
+`;
+export const MatchItemKDARatio = styled.div`
+  line-height: 16px;
+  color: #9e9eb1;
+  font-size: 12px;
+`;
+
 export const MatchItemItemBox = styled.div`
   display: flex;
+  margin-top: 8px;
 `;
 export const MatchItemSlot = styled.div<{ winlose: boolean }>`
   width: 22px;

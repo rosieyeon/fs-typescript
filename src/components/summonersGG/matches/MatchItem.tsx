@@ -11,10 +11,16 @@ import {
   MatchItemChamp,
   MatchItemChampImg,
   MatchItemChampLv,
+  MatchItemDeaths,
   MatchItemGame,
   MatchItemInfo,
+  MatchItemInfoBox,
   MatchItemItem,
   MatchItemItemBox,
+  MatchItemKDA,
+  MatchItemKDACnt,
+  MatchItemKDARatio,
+  MatchItemKillAssis,
   MatchItemLayout,
   MatchItemParticipants,
   MatchItemPerk,
@@ -84,36 +90,51 @@ const MatchItem = ({ match }: matchIDProps) => {
         </MatchItemTime>
       </MatchItemGame>
 
-      <MatchItemInfo>
-        <MatchItemChamp>
-          <MatchItemChampImg
-            src={`${RIOT_CHAMP_IMG}/${myData.championName}.png`}
-          />
-          <MatchItemChampLv>{myData.champLevel}</MatchItemChampLv>
-        </MatchItemChamp>
+      <MatchItemInfoBox>
+        <MatchItemInfo>
+          <MatchItemChamp>
+            <MatchItemChampImg
+              src={`${RIOT_CHAMP_IMG}/${myData.championName}.png`}
+            />
+            <MatchItemChampLv>{myData.champLevel}</MatchItemChampLv>
+          </MatchItemChamp>
 
-        <MatchItemSpellBox>
-          <MatchItemSpell src={`/images/SummonerSpell/${myData.spell1}.png`} />
-          <MatchItemSpell src={`/images/SummonerSpell/${myData.spell2}.png`} />
-        </MatchItemSpellBox>
+          <MatchItemSpellBox>
+            <MatchItemSpell
+              src={`/images/SummonerSpell/${myData.spell1}.png`}
+            />
+            <MatchItemSpell
+              src={`/images/SummonerSpell/${myData.spell2}.png`}
+            />
+          </MatchItemSpellBox>
 
-        <MatchItemPerksBox>
-          <MatchItemPerk src={`${RIOT_CDN}/perk/${myData.perks1}.png`} />
-          <MatchItemPerk src={`${RIOT_CDN}/perkStyle/${myData.perks2}.png`} />
-        </MatchItemPerksBox>
+          <MatchItemPerksBox>
+            <MatchItemPerk src={`${RIOT_CDN}/perk/${myData.perks1}.png`} />
+            <MatchItemPerk src={`${RIOT_CDN}/perkStyle/${myData.perks2}.png`} />
+          </MatchItemPerksBox>
+
+          <MatchItemKDA>
+            <MatchItemKDACnt>
+              <MatchItemKillAssis>{myData.kills}</MatchItemKillAssis> /
+              <MatchItemDeaths> {myData.deaths}</MatchItemDeaths> /
+              <MatchItemKillAssis> {myData.assists}</MatchItemKillAssis>
+            </MatchItemKDACnt>
+            <MatchItemKDARatio>{myData.kda}:1 KDA</MatchItemKDARatio>
+          </MatchItemKDA>
+        </MatchItemInfo>
 
         <MatchItemItemBox>
           {itemsList.map((item, idx) =>
             item !== "0" ? (
-              <MatchItemSlot winlose={myData.win}>
-                <MatchItemItem key={idx} src={`${RIOT_CDN}/item/${item}.png`} />
+              <MatchItemSlot key={idx} winlose={myData.win}>
+                <MatchItemItem src={`${RIOT_CDN}/item/${item}.png`} />
               </MatchItemSlot>
             ) : (
               <MatchItemSlot winlose={myData.win} key={idx}></MatchItemSlot>
             )
           )}
         </MatchItemItemBox>
-      </MatchItemInfo>
+      </MatchItemInfoBox>
       <MatchItemParticipants></MatchItemParticipants>
     </MatchItemLayout>
   ) : (

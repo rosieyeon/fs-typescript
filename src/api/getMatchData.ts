@@ -153,7 +153,7 @@ const getMatchData = createAsyncThunk(
           res.info.participants.map((player: ParticipantsDto) => {
             participants.push({
               assists: player.assists,
-              kda: player.challenges.kda.toFixed(1),
+              kda: player.challenges.kda.toFixed(2),
               champLevel: player.champLevel,
               championId: player.championId,
               championName: player.championName,

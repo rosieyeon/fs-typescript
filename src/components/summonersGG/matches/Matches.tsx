@@ -5,26 +5,36 @@ import React from "react";
 import { useEffect } from "react";
 
 import { MatchesLayout } from "./Matches.styled";
+import MatchItem from "./MatchItem";
 
 const Matches = () => {
-  const { matchDetail } = useAppSelector((state) => state.matchDetails);
+  const { summonerData } = useAppSelector((state) => state.summonerInfo);
+  const { matchDetail, loading, error } = useAppSelector(
+    (state) => state.matchDetails
+  );
   const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch(
-      getMatchData(
-        "_TKsGvBGiPJPk33dNrkkj7obgjhkdUxAuf3IiX1zABa1ZMe2MYIlcsWHp_adPCgy0roiMcscV6gkUw"
-      )
-    );
-  }, []);
+    if (summonerData.puuid) {
+      dispatch(getMatchData(summonerData.puuid));
+    }
+  }, [summonerData.puuid]);
   console.log(matchDetail);
   return (
     <MatchesLayout>
-      hihi
-      {/* {matchList.length === matchIds.length &&
-        matchList.map(
-          (match, idx) => <>{match.gameDuration}</>
-          // <MatchItem key={idx} match={match} />
-        )} */}
+      {loading === "pending" ? (
+        "LOADING"
+      ) : error ? (
+        "ERROR"
+      ) : (
+        <>
+          {matchDetail.map((match, index) => (
+            <>
+              {match.gameDuration}
+              <MatchItem match={match} key={index} />
+            </>
+          ))}
+        </>
+      )}
     </MatchesLayout>
   );
 };

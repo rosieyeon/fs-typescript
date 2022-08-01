@@ -149,6 +149,7 @@ const getMatchData = createAsyncThunk(
           const participants: matchParticipants[] = [];
           const response = await riotMatch.get(`match/v5/matches/${matchId}`);
           const res = response.data;
+          console.log(res);
           res.info.participants.map((player: ParticipantsDto) => {
             participants.push({
               assists: player.assists,

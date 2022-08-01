@@ -40,7 +40,9 @@ export const MatchItemWinLose = styled.div`
   font-weight: bold;
 `;
 
-export const MatchItemInfo = styled.div``;
+export const MatchItemInfo = styled.div`
+  display: flex;
+`;
 
 export const MatchItemChamp = styled.div`
   position: relative;
@@ -66,6 +68,42 @@ export const MatchItemChampLv = styled.span`
   border-radius: 50%;
   font-size: 11px;
   background: rgb(32, 45, 55);
+`;
+export const MatchItemSpellBox = styled.div`
+  margin-left: 4px;
+`;
+export const MatchItemSpell = styled.img`
+  display: block;
+  width: 22px;
+  height: 22px;
+  margin-bottom: 2px;
+  border-radius: 4px;
+`;
+
+export const MatchItemPerksBox = styled.div``;
+export const MatchItemPerk = styled.img`
+  display: block;
+  margin-bottom: 2px;
+  width: 22px;
+  height: 22px;
+  margin-bottom: 2px;
+  border-radius: 50%;
+
+  background-color: black;
+`;
+
+export const MatchItemItemBox = styled.div`
+  display: flex;
+`;
+export const MatchItemSlot = styled.div<{ winlose: boolean }>`
+  width: 22px;
+  height: 22px;
+  margin-left: 2px;
+  border-radius: 4px;
+  background-color: ${(props) => (props.winlose ? "#2F436E" : "#703C47")};
+`;
+export const MatchItemItem = styled.img`
+  max-width: 100%;
 `;
 
 export const MatchItemParticipants = styled.div``;

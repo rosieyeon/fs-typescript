@@ -4,3 +4,4 @@ export const RIOT_RANK_EMBLEM =
   "https://opgg-static.akamaized.net/images/medals_new";
 export const RIOT_CHAMP_IMG =
   "https://opgg-static.akamaized.net/images/lol/champion";
+export const RIOT_CDN = "https://opgg-static.akamaized.net/images/lol/";

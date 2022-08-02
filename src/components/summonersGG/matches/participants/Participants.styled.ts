@@ -22,8 +22,11 @@ export const ParticipantImg = styled.img`
   border-radius: 4px;
 `;
 export const ParticipantName = styled.span`
-  max-width: 60px;
+  width: 64px;
   color: #9e9eb1;
   font-size: 12px;
   vertical-align: middle;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 `;

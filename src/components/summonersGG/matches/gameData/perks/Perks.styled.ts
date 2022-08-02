@@ -16,7 +16,6 @@ export const Spell = styled.img`
 export const PerksBox = styled.div``;
 export const Perk = styled.img`
   display: block;
-  margin-bottom: 2px;
   width: 22px;
   height: 22px;
   margin-bottom: 2px;

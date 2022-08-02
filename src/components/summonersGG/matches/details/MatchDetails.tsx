@@ -1,4 +1,5 @@
 import { useAppSelector } from "app/store";
+import { LargeNumberLike } from "crypto";
 import {
   matchData,
   matchParticipants,
@@ -8,11 +9,14 @@ import findRedBlue from "util/findRedBlue";
 import {
   DetailsLayout,
   DetailsTable,
+  DetailsTBody,
   DetailsTh,
   DetailsThead,
   DetailsTr,
   DetailWinLose,
 } from "./MatchDetails.styled";
+import DetailChamp from "./tableData/champ/DetailChamp";
+import TableRow from "./tableData/TableRow";
 
 interface matchProps {
   myData: matchParticipants;
@@ -24,16 +28,8 @@ const tableHead = ["OPScore", "KDA", "Damage", "Wards", "CS", "Item"];
 const MatchDetails = (data: matchProps) => {
   // console.log(data.match);
   const match = data.gameData;
-  const [myData, setMyData] = useState<matchParticipants>();
-  const { summonerData } = useAppSelector((state) => state.summonerInfo);
-
-  useEffect(() => {
-    for (let i = 0; i < 10; i++) {
-      if (match.participants[i].summonerName == summonerData.name) {
-        setMyData(match.participants[i]);
-      }
-    }
-  }, []);
+  const myData = data.myData;
+  console.log(match, myData);
 
   // const participants = findRedBlue(match.participants);
   return (
@@ -55,6 +51,17 @@ const MatchDetails = (data: matchProps) => {
             ))}
           </DetailsTr>
         </DetailsThead>
+        <DetailsTBody>
+          <TableRow matchData={myData} />
+          {/* <DetailsTr>
+            <DetailsTh>
+              <DetailChamp
+                name={myData.championName}
+                level={myData.champLevel}
+              />
+            </DetailsTh>
+          </DetailsTr> */}
+        </DetailsTBody>
       </DetailsTable>
     </DetailsLayout>
   );

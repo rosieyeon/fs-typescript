@@ -65,6 +65,10 @@ export interface matchParticipants {
   // csPerMin: number // cs / duration
   spell1: number; // summoner1Id
   spell2: number; // summoner2Id
+  totalDamageDealt: number;
+  totalDamageDealtToChampions: number;
+  totalDamageTaken: number;
+  goldEarned: number;
 }
 
 interface matchDetailState {

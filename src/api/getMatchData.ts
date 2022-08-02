@@ -149,6 +149,7 @@ const getMatchData = createAsyncThunk(
           const participants: matchParticipants[] = [];
           const response = await riotMatch.get(`match/v5/matches/${matchId}`);
           const res = response.data;
+          console.log(res);
           res.info.participants.map((player: ParticipantsDto) => {
             participants.push({
               assists: player.assists,
@@ -184,6 +185,10 @@ const getMatchData = createAsyncThunk(
               cs: player.totalMinionsKilled + player.neutralMinionsKilled, // totalMiniosKilled +neutralMiniosKilled
               spell1: player.summoner1Id, // summoner1Id
               spell2: player.summoner2Id, // summoner2Id
+              totalDamageDealt: player.totalDamageDealt,
+              totalDamageDealtToChampions: player.totalDamageDealtToChampions,
+              totalDamageTaken: player.totalDamageTaken,
+              goldEarned: player.goldEarned,
             });
           });
           return {

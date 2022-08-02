@@ -8,7 +8,6 @@ import {
 } from "features/matchList/matchDetailSlice";
 import {
   MatchItemDeaths,
-  MatchItemDetailBox,
   MatchItemInfo,
   MatchItemInfoBox,
   MatchItemItem,
@@ -17,14 +16,10 @@ import {
   MatchItemKDACnt,
   MatchItemKDARatio,
   MatchItemKillAssis,
-  MatchItemLane,
   MatchItemLayout,
-  MatchItemPKill,
   MatchItemSlot,
-  MatchItemStats,
 } from "./MatchItem.styled";
 import { RIOT_CDN } from "services/cdnValue";
-import toCapitalize from "util/toCapitalize";
 import MatchInfo from "./matchInfo/MatchInfo";
 import GameData from "./gameData/GameData";
 
@@ -38,6 +33,7 @@ const MatchItem = ({ match }: matchIDProps) => {
   const [myData, setMyData] = useState<matchParticipants>();
   const [objectives, setObjectives] = useState<TeamObjectives>();
   const [itemsList, setItemsList] = useState<string[]>([]);
+  const [pkill, setpkill] = useState(0);
   const { summonerData } = useAppSelector((state) => state.summonerInfo);
 
   useEffect(() => {
@@ -69,6 +65,14 @@ const MatchItem = ({ match }: matchIDProps) => {
       }
     }
   }, [myData]);
+
+  useEffect(() => {
+    if (myData && objectives) {
+      setpkill(
+        ((myData.kills + myData.assists) / objectives.champion.kills) * 100
+      );
+    }
+  }, [objectives]);
   console.log(objectives);
 
   return myData ? (
@@ -81,7 +85,11 @@ const MatchItem = ({ match }: matchIDProps) => {
 
       <MatchItemInfoBox>
         <MatchItemInfo>
-          <GameData data={myData} />
+          <GameData
+            data={myData}
+            pkill={pkill}
+            duration={match.gameDuration / 60}
+          />
 
           <MatchItemKDA winlose={myData.win}>
             <MatchItemKDACnt>
@@ -92,7 +100,7 @@ const MatchItem = ({ match }: matchIDProps) => {
             <MatchItemKDARatio>{myData.kda}:1 KDA</MatchItemKDARatio>
           </MatchItemKDA>
 
-          <MatchItemDetailBox>
+          {/* <MatchItemDetailBox>
             {objectives && (
               <MatchItemPKill>
                 P/Kill{" "}
@@ -114,7 +122,7 @@ const MatchItem = ({ match }: matchIDProps) => {
               {(myData.cs / (match.gameDuration / 60)).toFixed(1)})
             </MatchItemStats>
             <MatchItemLane>{toCapitalize(myData.lane)}</MatchItemLane>
-          </MatchItemDetailBox>
+          </MatchItemDetailBox> */}
         </MatchItemInfo>
 
         <MatchItemItemBox>

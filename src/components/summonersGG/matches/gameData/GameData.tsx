@@ -1,13 +1,19 @@
-import { matchParticipants } from "features/matchList/matchDetailSlice";
+import {
+  matchParticipants,
+  TeamObjectives,
+} from "features/matchList/matchDetailSlice";
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import ChampInfo from "./champ/ChampInfo";
+import Details from "./details/Details";
 import { GameDataLayout } from "./GameData.styled";
 import Perks from "./perks/Perks";
 
 interface dataProps {
   data: matchParticipants;
+  pkill: number;
+  duration: number;
 }
 const GameData = (data: dataProps) => {
   const gameData = data.data;
@@ -27,6 +33,7 @@ const GameData = (data: dataProps) => {
         perk1={gameData.perks1}
         perk2={gameData.perks2}
       />
+      <Details data={gameData} pkill={data.pkill} duration={data.duration} />
     </GameDataLayout>
   );
 };

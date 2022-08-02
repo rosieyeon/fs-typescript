@@ -72,16 +72,3 @@ export const MatchItemItem = styled.img`
   max-width: 100%;
   border-radius: 4px;
 `;
-
-export const MatchItemDetailBox = styled.div`
-  font-size: 11px;
-  color: #9e9eb1;
-  line-height: 12.5px;
-`;
-export const MatchItemPKill = styled.div`
-  color: #e84057;
-`;
-export const MatchItemStats = styled.div``;
-export const MatchItemLane = styled.div`
-  font-weight: bold;
-`;

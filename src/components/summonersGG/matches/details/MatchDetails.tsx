@@ -79,7 +79,7 @@ const MatchDetails = (data: matchProps) => {
             <TableRow
               key={idx}
               matchData={player}
-              pkill={data.pkill}
+              pkill={match.teams[0].objectives.champion.kills}
               maxDmg={maxDamage}
               maxDmgTkn={maxDamageTaken}
               duration={match.gameDuration / 60}

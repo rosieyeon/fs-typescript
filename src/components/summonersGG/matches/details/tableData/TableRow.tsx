@@ -92,6 +92,10 @@ const TableRow = (data: rowDataProps) => {
     }
   };
 
+  const getPKills = (num: number) => {
+    return parseInt(String((num / data.pkill) * 100));
+  };
+
   return (
     <DetailTR win={data.win}>
       <DetailTD>
@@ -115,7 +119,7 @@ const TableRow = (data: rowDataProps) => {
       <DetailTD>
         <DetailKDA>
           {matchData.kills}/{matchData.deaths}/{matchData.assists} (
-          {parseInt(String(data.pkill))}%)
+          {getPKills(matchData.kills + matchData.assists)}%)
         </DetailKDA>
         <DetailKDARatio ratio={getColors(Number(matchData.kda))}>
           {matchData.kda}:1
@@ -151,7 +155,7 @@ const TableRow = (data: rowDataProps) => {
 
       <DetailTD>
         <DetailWard>
-          {matchData.visionWardsBoughtInGame} ({matchData.visionScore})
+          {matchData.visionScore} ({matchData.visionWardsBoughtInGame})
         </DetailWard>
         <DetailWard>
           {matchData.wardsPlaced} / {matchData.wardsKilled}

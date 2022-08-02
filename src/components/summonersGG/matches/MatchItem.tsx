@@ -7,6 +7,8 @@ import {
   TeamObjectives,
 } from "features/matchList/matchDetailSlice";
 import {
+  MatchDetailLayout,
+  MatchItemDiv,
   MatchItemGameData,
   MatchItemLayout,
   MatchItemMore,
@@ -17,13 +19,16 @@ import GameData from "./gameData/GameData";
 import Items from "./items/Items";
 import Participants from "./participants/Participants";
 import { ARROW_DOWN } from "services/cdnValue";
+import MatchDetails from "./details/MatchDetails";
 
 interface matchIDProps {
   match: matchData;
-  key: number;
+  // open: React.Dispatch<React.SetStateAction<boolean>>;
+  // isOpen: boolean;
 }
 
-const MatchItem = ({ match }: matchIDProps) => {
+const MatchItem = (data: matchIDProps) => {
+  const match = data.match;
   const [isOpen, setIsOpen] = useState(false);
   const [myData, setMyData] = useState<matchParticipants>();
   const [objectives, setObjectives] = useState<TeamObjectives>();
@@ -70,42 +75,50 @@ const MatchItem = ({ match }: matchIDProps) => {
   }, [objectives]);
 
   const onClickMore = () => {
+    // data.open(!data.isOpen);
     setIsOpen(!isOpen);
   };
 
   return myData ? (
-    <MatchItemLayout winlose={myData.win}>
-      <MatchInfo
-        endTime={match.gameEndTimestamp}
-        myData={myData}
-        duration={match.gameDuration}
-      />
-
-      <MatchItemGameData>
-        <GameData
-          data={myData}
-          pkill={pkill}
-          duration={match.gameDuration / 60}
+    <MatchItemDiv>
+      <MatchItemLayout winlose={myData.win}>
+        <MatchInfo
+          endTime={match.gameEndTimestamp}
+          myData={myData}
+          duration={match.gameDuration}
         />
-        <Items items={itemsList} win={myData.win} />
-      </MatchItemGameData>
 
-      <Participants participants={match.participants} />
+        <MatchItemGameData>
+          <GameData
+            data={myData}
+            pkill={pkill}
+            duration={match.gameDuration / 60}
+          />
+          <Items items={itemsList} win={myData.win} />
+        </MatchItemGameData>
 
-      <MatchItemMore winlose={myData.win}>
-        {myData.win ? (
-          <MatchItemMoreBtn
-            onClick={onClickMore}
-            src={`${ARROW_DOWN}blue.svg`}
-          />
-        ) : (
-          <MatchItemMoreBtn
-            onClick={onClickMore}
-            src={`${ARROW_DOWN}red.svg`}
-          />
-        )}
-      </MatchItemMore>
-    </MatchItemLayout>
+        <Participants participants={match.participants} />
+
+        <MatchItemMore winlose={myData.win}>
+          {myData.win ? (
+            <MatchItemMoreBtn
+              onClick={onClickMore}
+              src={`${ARROW_DOWN}blue.svg`}
+            />
+          ) : (
+            <MatchItemMoreBtn
+              onClick={onClickMore}
+              src={`${ARROW_DOWN}red.svg`}
+            />
+          )}
+        </MatchItemMore>
+      </MatchItemLayout>
+      {isOpen && (
+        <MatchDetailLayout>
+          <MatchDetails myData={myData} gameData={match} />
+        </MatchDetailLayout>
+      )}
+    </MatchItemDiv>
   ) : (
     <></>
   );

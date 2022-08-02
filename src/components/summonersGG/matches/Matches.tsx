@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "app/store";
 
 import MatchItem from "./MatchItem";
@@ -10,12 +10,14 @@ const Matches = () => {
   const { matchDetail, loading, error } = useAppSelector(
     (state) => state.matchDetails
   );
+
   const dispatch = useAppDispatch();
   useEffect(() => {
     if (summonerData.puuid) {
       dispatch(getMatchData(summonerData.puuid));
     }
   }, [summonerData.puuid]);
+
   return (
     <MatchesLayout>
       {loading === "pending" ? (
@@ -26,7 +28,7 @@ const Matches = () => {
         <>
           {matchDetail.map((match, index) => (
             <MatchesContent key={index}>
-              <MatchItem match={match} key={index} />
+              <MatchItem match={match} />
             </MatchesContent>
           ))}
         </>

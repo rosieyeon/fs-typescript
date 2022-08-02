@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+export const MatchItemDiv = styled.div``;
+
 export const MatchItemLayout = styled.div<{ winlose: boolean }>`
   font-family: "Roboto", sans-serif;
   display: flex;
@@ -32,3 +34,5 @@ export const MatchItemMoreBtn = styled.img`
   left: 8px;
   cursor: pointer;
 `;
+
+export const MatchDetailLayout = styled.div``;

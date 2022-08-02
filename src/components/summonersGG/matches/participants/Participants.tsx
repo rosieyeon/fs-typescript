@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { matchParticipants } from "features/matchList/matchDetailSlice";
 import { RIOT_CHAMP_IMG } from "services/cdnValue";
 import {
@@ -8,6 +8,7 @@ import {
   ParticipantsLayout,
   ParticipantTeam,
 } from "./Participants.styled";
+import findRedBlue from "util/findRedBlue";
 
 interface partiProps {
   participants: matchParticipants[];
@@ -15,27 +16,12 @@ interface partiProps {
 
 const Participants = (data: partiProps) => {
   const players = data.participants;
-  const [blueSide, setBlueSide] = useState<matchParticipants[]>();
-  const [redSide, setRedSide] = useState<matchParticipants[]>();
-
-  useEffect(() => {
-    const blue: matchParticipants[] = [];
-    const red: matchParticipants[] = [];
-    for (let i = 0; i < 10; i++) {
-      if (i < 5) {
-        blue.push(players[i]);
-      } else {
-        red.push(players[i]);
-      }
-    }
-    setBlueSide(blue);
-    setRedSide(red);
-  }, []);
+  const redBlue = findRedBlue(players);
 
   return (
     <ParticipantsLayout>
       <ParticipantTeam>
-        {blueSide?.map((player, idx) => (
+        {redBlue.blue?.map((player, idx) => (
           <Participant key={idx}>
             <ParticipantImg
               src={`${RIOT_CHAMP_IMG}/${player.championName}.png`}
@@ -45,7 +31,7 @@ const Participants = (data: partiProps) => {
         ))}
       </ParticipantTeam>
       <ParticipantTeam>
-        {redSide?.map((player, idx) => (
+        {redBlue.red?.map((player, idx) => (
           <Participant key={idx}>
             <ParticipantImg
               src={`${RIOT_CHAMP_IMG}/${player.championName}.png`}

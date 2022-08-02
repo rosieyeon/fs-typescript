@@ -16,3 +16,19 @@ export const MatchItemLayout = styled.div<{ winlose: boolean }>`
 `;
 
 export const MatchItemGameData = styled.div``;
+
+export const MatchItemMore = styled.div<{ winlose: boolean }>`
+  position: relative;
+  width: 40px;
+  height: 96px;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  background-color: ${(props) => (props.winlose ? "#2f436e" : "#703c47")};
+`;
+
+export const MatchItemMoreBtn = styled.img`
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  cursor: pointer;
+`;

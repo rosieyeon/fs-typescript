@@ -6,11 +6,17 @@ import {
   matchParticipants,
   TeamObjectives,
 } from "features/matchList/matchDetailSlice";
-import { MatchItemGameData, MatchItemLayout } from "./MatchItem.styled";
+import {
+  MatchItemGameData,
+  MatchItemLayout,
+  MatchItemMore,
+  MatchItemMoreBtn,
+} from "./MatchItem.styled";
 import MatchInfo from "./matchInfo/MatchInfo";
 import GameData from "./gameData/GameData";
 import Items from "./items/Items";
 import Participants from "./participants/Participants";
+import { ARROW_DOWN } from "services/cdnValue";
 
 interface matchIDProps {
   match: matchData;
@@ -18,7 +24,7 @@ interface matchIDProps {
 }
 
 const MatchItem = ({ match }: matchIDProps) => {
-  // console.log(match);
+  const [isOpen, setIsOpen] = useState(false);
   const [myData, setMyData] = useState<matchParticipants>();
   const [objectives, setObjectives] = useState<TeamObjectives>();
   const [itemsList, setItemsList] = useState<string[]>([]);
@@ -63,6 +69,10 @@ const MatchItem = ({ match }: matchIDProps) => {
     }
   }, [objectives]);
 
+  const onClickMore = () => {
+    setIsOpen(!isOpen);
+  };
+
   return myData ? (
     <MatchItemLayout winlose={myData.win}>
       <MatchInfo
@@ -79,7 +89,22 @@ const MatchItem = ({ match }: matchIDProps) => {
         />
         <Items items={itemsList} win={myData.win} />
       </MatchItemGameData>
+
       <Participants participants={match.participants} />
+
+      <MatchItemMore winlose={myData.win}>
+        {myData.win ? (
+          <MatchItemMoreBtn
+            onClick={onClickMore}
+            src={`${ARROW_DOWN}blue.svg`}
+          />
+        ) : (
+          <MatchItemMoreBtn
+            onClick={onClickMore}
+            src={`${ARROW_DOWN}red.svg`}
+          />
+        )}
+      </MatchItemMore>
     </MatchItemLayout>
   ) : (
     <></>

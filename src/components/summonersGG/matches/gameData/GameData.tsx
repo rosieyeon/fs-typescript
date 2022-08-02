@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import ChampInfo from "./champ/ChampInfo";
 import Perks from "./perks/Perks";
 import KDA from "./kda/KDA";
-import Details from "./details/Details";
+import Stats from "./stats/Stats";
 
 import { matchParticipants } from "features/matchList/matchDetailSlice";
 import { GameDataLayout } from "./GameData.styled";
@@ -33,7 +33,7 @@ const GameData = (data: dataProps) => {
         perk2={gameData.perks2}
       />
       <KDA data={gameData} />
-      <Details data={gameData} pkill={data.pkill} duration={data.duration} />
+      <Stats data={gameData} pkill={data.pkill} duration={data.duration} />
     </GameDataLayout>
   );
 };

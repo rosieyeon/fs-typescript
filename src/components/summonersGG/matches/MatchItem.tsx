@@ -6,7 +6,6 @@ import {
   matchParticipants,
   TeamObjectives,
 } from "features/matchList/matchDetailSlice";
-import timeForToday from "util/timeForToday";
 import {
   MatchItemChamp,
   MatchItemChampImg,
@@ -34,6 +33,7 @@ import {
 import { RIOT_CDN, RIOT_CHAMP_IMG } from "services/cdnValue";
 import toCapitalize from "util/toCapitalize";
 import MatchInfo from "./matchInfo/MatchInfo";
+import GameData from "./gameData/GameData";
 
 interface matchIDProps {
   match: matchData;
@@ -88,12 +88,13 @@ const MatchItem = ({ match }: matchIDProps) => {
 
       <MatchItemInfoBox>
         <MatchItemInfo>
-          <MatchItemChamp>
+          <GameData data={myData} />
+          {/* <MatchItemChamp>
             <MatchItemChampImg
               src={`${RIOT_CHAMP_IMG}/${myData.championName}.png`}
             />
             <MatchItemChampLv>{myData.champLevel}</MatchItemChampLv>
-          </MatchItemChamp>
+          </MatchItemChamp> */}
 
           <MatchItemSpellBox>
             <MatchItemSpell

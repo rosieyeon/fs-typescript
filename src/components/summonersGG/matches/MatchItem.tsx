@@ -7,15 +7,9 @@ import {
   TeamObjectives,
 } from "features/matchList/matchDetailSlice";
 import {
-  MatchItemDeaths,
-  MatchItemInfo,
   MatchItemInfoBox,
   MatchItemItem,
   MatchItemItemBox,
-  MatchItemKDA,
-  MatchItemKDACnt,
-  MatchItemKDARatio,
-  MatchItemKillAssis,
   MatchItemLayout,
   MatchItemSlot,
 } from "./MatchItem.styled";
@@ -73,7 +67,6 @@ const MatchItem = ({ match }: matchIDProps) => {
       );
     }
   }, [objectives]);
-  console.log(objectives);
 
   return myData ? (
     <MatchItemLayout winlose={myData.win}>
@@ -84,46 +77,11 @@ const MatchItem = ({ match }: matchIDProps) => {
       />
 
       <MatchItemInfoBox>
-        <MatchItemInfo>
-          <GameData
-            data={myData}
-            pkill={pkill}
-            duration={match.gameDuration / 60}
-          />
-
-          <MatchItemKDA winlose={myData.win}>
-            <MatchItemKDACnt>
-              <MatchItemKillAssis>{myData.kills}</MatchItemKillAssis> /
-              <MatchItemDeaths> {myData.deaths}</MatchItemDeaths> /
-              <MatchItemKillAssis> {myData.assists}</MatchItemKillAssis>
-            </MatchItemKDACnt>
-            <MatchItemKDARatio>{myData.kda}:1 KDA</MatchItemKDARatio>
-          </MatchItemKDA>
-
-          {/* <MatchItemDetailBox>
-            {objectives && (
-              <MatchItemPKill>
-                P/Kill{" "}
-                {parseInt(
-                  String(
-                    ((myData.kills + myData.assists) /
-                      objectives?.champion.kills) *
-                      100
-                  )
-                )}
-                %
-              </MatchItemPKill>
-            )}
-            <MatchItemStats>
-              Control Ward {myData.visionWardsBoughtInGame}
-            </MatchItemStats>
-            <MatchItemStats>
-              CS {myData.cs} (
-              {(myData.cs / (match.gameDuration / 60)).toFixed(1)})
-            </MatchItemStats>
-            <MatchItemLane>{toCapitalize(myData.lane)}</MatchItemLane>
-          </MatchItemDetailBox> */}
-        </MatchItemInfo>
+        <GameData
+          data={myData}
+          pkill={pkill}
+          duration={match.gameDuration / 60}
+        />
 
         <MatchItemItemBox>
           {itemsList.map((item, idx) =>

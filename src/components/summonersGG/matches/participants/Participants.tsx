@@ -1,7 +1,5 @@
+import React, { useEffect, useState } from "react";
 import { matchParticipants } from "features/matchList/matchDetailSlice";
-import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
 import { RIOT_CHAMP_IMG } from "services/cdnValue";
 import {
   Participant,
@@ -15,10 +13,6 @@ interface partiProps {
   participants: matchParticipants[];
 }
 
-// interface teamProps {
-//   blue: matchParticipants[];
-//   red: matchParticipants[];
-// }
 const Participants = (data: partiProps) => {
   const players = data.participants;
   const [blueSide, setBlueSide] = useState<matchParticipants[]>();
@@ -38,7 +32,6 @@ const Participants = (data: partiProps) => {
     setRedSide(red);
   }, []);
 
-  console.log(redSide, blueSide);
   return (
     <ParticipantsLayout>
       <ParticipantTeam>

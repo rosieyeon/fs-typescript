@@ -38,11 +38,19 @@ const SummonerGG = () => {
   }, [summonerData.name]);
 
   return (
-    <SummonerGGLayout>
-      <Profile />
-      <Tier />
-      <Matches />
-    </SummonerGGLayout>
+    <>
+      {loading === "pending" ? (
+        "LOADING"
+      ) : error ? (
+        "ERROR"
+      ) : (
+        <SummonerGGLayout>
+          <Profile />
+          <Tier />
+          <Matches />
+        </SummonerGGLayout>
+      )}
+    </>
   );
 };
 

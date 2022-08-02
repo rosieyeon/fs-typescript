@@ -8,13 +8,11 @@ import {
 } from "features/matchList/matchDetailSlice";
 import timeForToday from "util/timeForToday";
 import {
-  MatchItemBar,
   MatchItemChamp,
   MatchItemChampImg,
   MatchItemChampLv,
   MatchItemDeaths,
   MatchItemDetailBox,
-  MatchItemGame,
   MatchItemInfo,
   MatchItemInfoBox,
   MatchItemItem,
@@ -28,16 +26,14 @@ import {
   MatchItemPerk,
   MatchItemPerksBox,
   MatchItemPKill,
-  MatchItemQueueType,
   MatchItemSlot,
   MatchItemSpell,
   MatchItemSpellBox,
   MatchItemStats,
-  MatchItemTime,
-  MatchItemWinLose,
 } from "./MatchItem.styled";
 import { RIOT_CDN, RIOT_CHAMP_IMG } from "services/cdnValue";
 import toCapitalize from "util/toCapitalize";
+import MatchInfo from "./matchInfo/MatchInfo";
 
 interface matchIDProps {
   match: matchData;
@@ -84,24 +80,11 @@ const MatchItem = ({ match }: matchIDProps) => {
 
   return myData ? (
     <MatchItemLayout winlose={myData.win}>
-      <MatchItemGame>
-        <MatchItemQueueType winlose={myData.win}>
-          Ranked Solo
-        </MatchItemQueueType>
-
-        <MatchItemTime>{timeForToday(match.gameEndTimestamp)}</MatchItemTime>
-        <MatchItemBar winlose={myData.win}></MatchItemBar>
-
-        {myData.win ? (
-          <MatchItemWinLose>Victory</MatchItemWinLose>
-        ) : (
-          <MatchItemWinLose>Defeat</MatchItemWinLose>
-        )}
-        <MatchItemTime>
-          {parseInt(String(match.gameDuration / 60))}m {match.gameDuration % 60}
-          s
-        </MatchItemTime>
-      </MatchItemGame>
+      <MatchInfo
+        endTime={match.gameEndTimestamp}
+        myData={myData}
+        duration={match.gameDuration}
+      />
 
       <MatchItemInfoBox>
         <MatchItemInfo>

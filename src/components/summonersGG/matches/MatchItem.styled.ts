@@ -15,32 +15,6 @@ export const MatchItemLayout = styled.div<{ winlose: boolean }>`
   margin-bottom: 8px;
 `;
 
-export const MatchItemGame = styled.div`
-  color: #9e9eb1;
-  width: 105px;
-  font-size: 12px;
-  line-height: 16px;
-
-  margin-left: 12px;
-`;
-
-export const MatchItemBar = styled.div<{ winlose: boolean }>`
-  width: 48px;
-  height: 1px;
-  margin: 8px 0px 4px;
-  background-color: ${(props) => (props.winlose ? "#2f436e" : "#703C47")};
-`;
-
-export const MatchItemQueueType = styled.div<{ winlose: boolean }>`
-  font-weight: bold;
-  color: ${(props) => (props.winlose ? "#5383e8" : "#e84057")};
-`;
-
-export const MatchItemTime = styled.div``;
-export const MatchItemWinLose = styled.div`
-  font-weight: bold;
-`;
-
 export const MatchItemInfoBox = styled.div``;
 
 export const MatchItemInfo = styled.div`

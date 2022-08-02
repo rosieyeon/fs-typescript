@@ -21,15 +21,31 @@ import TableRow from "./tableData/TableRow";
 interface matchProps {
   myData: matchParticipants;
   gameData: matchData;
+  pkill: number;
 }
 
-const tableHead = ["OPScore", "KDA", "Damage", "Wards", "CS", "Item"];
+const tableHead = ["KDA", "Damage", "Wards", "CS", "Item"];
 
 const MatchDetails = (data: matchProps) => {
   // console.log(data.match);
   const match = data.gameData;
   const myData = data.myData;
+  const [maxDamage, setMaxDamage] = useState(0);
+  const [maxDamageTaken, setMaxDagameTaken] = useState(0);
   console.log(match, myData);
+
+  useEffect(() => {
+    const damage: number[] = [];
+    const damageTaken: number[] = [];
+    for (let i = 0; i < 10; i++) {
+      damage.push(match.participants[i].totalDamageDealtToChampions);
+      damageTaken.push(match.participants[i].totalDamageTaken);
+    }
+    const maxDmgVal = Math.max.apply(null, damage);
+    const maxDmgTknVal = Math.max.apply(null, damageTaken);
+    setMaxDamage(maxDmgVal);
+    setMaxDagameTaken(maxDmgTknVal);
+  }, []);
 
   // const participants = findRedBlue(match.participants);
   return (
@@ -38,13 +54,9 @@ const MatchDetails = (data: matchProps) => {
         <DetailsThead>
           <DetailsTr>
             {myData?.win ? (
-              <DetailsTh>
-                <DetailWinLose>Victory</DetailWinLose> (Blue Team)
-              </DetailsTh>
+              <DetailWinLose>Victory</DetailWinLose>
             ) : (
-              <DetailsTh>
-                <DetailWinLose>Defeat</DetailWinLose> (Blue Team)
-              </DetailsTh>
+              <DetailWinLose>Defeat</DetailWinLose>
             )}
             {tableHead.map((th, idx) => (
               <DetailsTh key={idx}>{th}</DetailsTh>
@@ -52,15 +64,13 @@ const MatchDetails = (data: matchProps) => {
           </DetailsTr>
         </DetailsThead>
         <DetailsTBody>
-          <TableRow matchData={myData} />
-          {/* <DetailsTr>
-            <DetailsTh>
-              <DetailChamp
-                name={myData.championName}
-                level={myData.champLevel}
-              />
-            </DetailsTh>
-          </DetailsTr> */}
+          <TableRow
+            matchData={myData}
+            pkill={data.pkill}
+            maxDmg={maxDamage}
+            maxDmgTkn={maxDamageTaken}
+            duration={match.gameDuration / 60}
+          />
         </DetailsTBody>
       </DetailsTable>
     </DetailsLayout>

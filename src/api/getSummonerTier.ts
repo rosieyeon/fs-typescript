@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import riot from "services/riot";
 
-interface SummonerTierDto {
+export interface SummonerTierDto {
   freshBlood: boolean;
   hotStreak: boolean;
   inactive: boolean;

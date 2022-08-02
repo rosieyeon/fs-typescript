@@ -115,7 +115,7 @@ const MatchItem = (data: matchIDProps) => {
       </MatchItemLayout>
       {isOpen && (
         <MatchDetailLayout>
-          <MatchDetails myData={myData} gameData={match} />
+          <MatchDetails myData={myData} gameData={match} pkill={pkill} />
         </MatchDetailLayout>
       )}
     </MatchItemDiv>

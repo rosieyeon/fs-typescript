@@ -6,16 +6,10 @@ import {
   matchParticipants,
   TeamObjectives,
 } from "features/matchList/matchDetailSlice";
-import {
-  MatchItemInfoBox,
-  MatchItemItem,
-  MatchItemItemBox,
-  MatchItemLayout,
-  MatchItemSlot,
-} from "./MatchItem.styled";
-import { RIOT_CDN } from "services/cdnValue";
+import { MatchItemGameData, MatchItemLayout } from "./MatchItem.styled";
 import MatchInfo from "./matchInfo/MatchInfo";
 import GameData from "./gameData/GameData";
+import Items from "./items/Items";
 
 interface matchIDProps {
   match: matchData;
@@ -76,25 +70,14 @@ const MatchItem = ({ match }: matchIDProps) => {
         duration={match.gameDuration}
       />
 
-      <MatchItemInfoBox>
+      <MatchItemGameData>
         <GameData
           data={myData}
           pkill={pkill}
           duration={match.gameDuration / 60}
         />
-
-        <MatchItemItemBox>
-          {itemsList.map((item, idx) =>
-            item !== "0" ? (
-              <MatchItemSlot key={idx} winlose={myData.win}>
-                <MatchItemItem src={`${RIOT_CDN}/item/${item}.png`} />
-              </MatchItemSlot>
-            ) : (
-              <MatchItemSlot winlose={myData.win} key={idx}></MatchItemSlot>
-            )
-          )}
-        </MatchItemItemBox>
-      </MatchItemInfoBox>
+        <Items items={itemsList} win={myData.win} />
+      </MatchItemGameData>
       {/* <MatchItemParticipants></MatchItemParticipants> */}
     </MatchItemLayout>
   ) : (

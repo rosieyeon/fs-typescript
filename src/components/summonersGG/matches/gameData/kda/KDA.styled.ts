@@ -5,7 +5,7 @@ export const KDALayout = styled.div<{ winlose: boolean }>`
   flex-direction: column;
   justify-content: center;
   position: relative;
-  width: 107px;
+  width: 120px;
   padding-right: 12px;
   margin-right: 8px;
   margin-left: 12px;

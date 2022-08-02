@@ -24,7 +24,6 @@ const getSummonerTier = createAsyncThunk(
       const response = await riot.get(
         `/league/v4/entries/by-summoner/${summonerId}`
       );
-      console.log(response);
       return response.data.map((item: SummonerTierDto) => {
         return {
           queueType: item.queueType,

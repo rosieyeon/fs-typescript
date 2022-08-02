@@ -1,5 +1,5 @@
-import { matchParticipants } from "features/matchList/matchDetailSlice";
 import React from "react";
+import { matchParticipants } from "features/matchList/matchDetailSlice";
 import toCapitalize from "util/toCapitalize";
 import {
   DetailsLane,

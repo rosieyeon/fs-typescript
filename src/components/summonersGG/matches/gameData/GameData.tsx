@@ -1,18 +1,19 @@
-import { matchParticipants } from "features/matchList/matchDetailSlice";
-import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
+
 import ChampInfo from "./champ/ChampInfo";
-import Details from "./details/Details";
-import { GameDataLayout } from "./GameData.styled";
-import KDA from "./kda/KDA";
 import Perks from "./perks/Perks";
+import KDA from "./kda/KDA";
+import Details from "./details/Details";
+
+import { matchParticipants } from "features/matchList/matchDetailSlice";
+import { GameDataLayout } from "./GameData.styled";
 
 interface dataProps {
   data: matchParticipants;
   pkill: number;
   duration: number;
 }
+
 const GameData = (data: dataProps) => {
   const gameData = data.data;
   const [spellsList, setSpellsList] = useState<number[]>([]);

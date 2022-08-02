@@ -18,7 +18,7 @@ interface matchIDProps {
 }
 
 const MatchItem = ({ match }: matchIDProps) => {
-  console.log(match);
+  // console.log(match);
   const [myData, setMyData] = useState<matchParticipants>();
   const [objectives, setObjectives] = useState<TeamObjectives>();
   const [itemsList, setItemsList] = useState<string[]>([]);

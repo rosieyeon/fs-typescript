@@ -1,10 +1,9 @@
-import getMatchData from "api/getMatchData";
+import React, { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "app/store";
-import React from "react";
-import { useEffect } from "react";
 
-import { MatchesContent, MatchesLayout } from "./Matches.styled";
 import MatchItem from "./MatchItem";
+import getMatchData from "api/getMatchData";
+import { MatchesContent, MatchesLayout } from "./Matches.styled";
 
 const Matches = () => {
   const { summonerData } = useAppSelector((state) => state.summonerInfo);
@@ -17,7 +16,6 @@ const Matches = () => {
       dispatch(getMatchData(summonerData.puuid));
     }
   }, [summonerData.puuid]);
-  console.log(matchDetail);
   return (
     <MatchesLayout>
       {loading === "pending" ? (

@@ -7,9 +7,6 @@ import {
   TeamObjectives,
 } from "features/matchList/matchDetailSlice";
 import {
-  MatchItemChamp,
-  MatchItemChampImg,
-  MatchItemChampLv,
   MatchItemDeaths,
   MatchItemDetailBox,
   MatchItemInfo,
@@ -22,15 +19,11 @@ import {
   MatchItemKillAssis,
   MatchItemLane,
   MatchItemLayout,
-  MatchItemPerk,
-  MatchItemPerksBox,
   MatchItemPKill,
   MatchItemSlot,
-  MatchItemSpell,
-  MatchItemSpellBox,
   MatchItemStats,
 } from "./MatchItem.styled";
-import { RIOT_CDN, RIOT_CHAMP_IMG } from "services/cdnValue";
+import { RIOT_CDN } from "services/cdnValue";
 import toCapitalize from "util/toCapitalize";
 import MatchInfo from "./matchInfo/MatchInfo";
 import GameData from "./gameData/GameData";
@@ -89,26 +82,6 @@ const MatchItem = ({ match }: matchIDProps) => {
       <MatchItemInfoBox>
         <MatchItemInfo>
           <GameData data={myData} />
-          {/* <MatchItemChamp>
-            <MatchItemChampImg
-              src={`${RIOT_CHAMP_IMG}/${myData.championName}.png`}
-            />
-            <MatchItemChampLv>{myData.champLevel}</MatchItemChampLv>
-          </MatchItemChamp> */}
-
-          <MatchItemSpellBox>
-            <MatchItemSpell
-              src={`/images/SummonerSpell/${myData.spell1}.png`}
-            />
-            <MatchItemSpell
-              src={`/images/SummonerSpell/${myData.spell2}.png`}
-            />
-          </MatchItemSpellBox>
-
-          <MatchItemPerksBox>
-            <MatchItemPerk src={`${RIOT_CDN}/perk/${myData.perks1}.png`} />
-            <MatchItemPerk src={`${RIOT_CDN}/perkStyle/${myData.perks2}.png`} />
-          </MatchItemPerksBox>
 
           <MatchItemKDA winlose={myData.win}>
             <MatchItemKDACnt>

@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const ItemsLayout = styled.div`
   display: flex;
   gap: 1px;
-  margin-top: 8px;
 `;
 export const ItemsSlot = styled.div<{ winlose: boolean }>`
   width: 22px;

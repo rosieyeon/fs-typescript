@@ -1,25 +1,22 @@
 import styled, { css } from "styled-components";
 
-export const DetailTR = styled.tr`
+export const DetailTR = styled.tr<{ win: boolean }>`
   font-family: "Roboto", sans-serif;
   vertical-align: middle;
   height: 41.5px;
+  /* background-color: ; */
 `;
 export const DetailTD = styled.td`
-  /* width: 98px; */
   text-align: center;
-  /* white-space: nowrap; */
   vertical-align: middle;
-  /* padding: 4px 0px 3px; */
 `;
-export const DetailContents = styled.td`
+export const DetailContents = styled.div`
   display: flex;
   vertical-align: middle;
   align-items: center;
-  /* padding-top: 5px; */
-  /* width: 175px; */
+  padding-left: 15px;
 `;
-export const DetailSummoner = styled.td`
+export const DetailSummoner = styled.div`
   padding: 4px 0 3px 5px;
 `;
 export const DetailName = styled.div`
@@ -38,8 +35,6 @@ export const DetailKDA = styled.div`
   font-size: 11px;
   line-height: 14px;
   color: #9e9eb1;
-  /* white-space: nowrap; */
-  /* vertical-align: middle; */
 `;
 export const DetailKDARatio = styled.div<{ ratio: string }>`
   font-size: 11px;
@@ -47,19 +42,16 @@ export const DetailKDARatio = styled.div<{ ratio: string }>`
   color: ${(props) => props.ratio};
 `;
 
-export const DetailDamage = styled.td`
+export const DetailDamage = styled.div`
   display: flex;
-  width: 120px;
+  justify-content: center;
   font-size: 11px;
   line-height: 14px;
   color: #9e9eb1;
-  /* vertical-align: middle; */
 `;
 export const DetailDamageBox = styled.div`
   width: 50px;
-  text-align: center;
   margin: 0 4px;
-  /* vertical-align: middle; */
 `;
 export const DetailDamageTxt = styled.span`
   line-height: 14px;
@@ -85,10 +77,17 @@ export const DetailWard = styled.div`
   font-size: 11px;
   line-height: 14px;
   color: #9e9eb1;
+  padding: 0 10px;
 `;
 
 export const DetailCS = styled.div`
   font-size: 11px;
   line-height: 14px;
   color: #9e9eb1;
+  padding: 0 5px;
+`;
+
+export const DetailItem = styled.div`
+  display: flex;
+  justify-content: center;
 `;

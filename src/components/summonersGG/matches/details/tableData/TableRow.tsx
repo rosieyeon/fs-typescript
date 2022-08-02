@@ -4,6 +4,7 @@ import { matchParticipants } from "features/matchList/matchDetailSlice";
 import React, { useEffect, useState } from "react";
 import riot from "services/riot";
 import toCapitalize from "util/toCapitalize";
+import Items from "../../items/Items";
 import DetailChamp from "./champ/DetailChamp";
 import DetailPerks from "./perks/DetailPerks";
 import {
@@ -14,6 +15,7 @@ import {
   DetailDamageBox,
   DetailDamageFill,
   DetailDamageTxt,
+  DetailItem,
   DetailKDA,
   DetailKDARatio,
   DetailName,
@@ -30,10 +32,12 @@ interface rowDataProps {
   maxDmg: number;
   maxDmgTkn: number;
   duration: number;
+  win: boolean;
 }
 
 const TableRow = (data: rowDataProps) => {
   const matchData = data.matchData;
+  const [itemsList, setItemsList] = useState<string[]>([]);
   const [tier, setTier] = useState("");
   const [spellsList, setSpellsList] = useState<number[]>([]);
 
@@ -43,6 +47,20 @@ const TableRow = (data: rowDataProps) => {
     setSpellsList(spells);
 
     getPlayerTier(matchData.summonerId);
+
+    if (matchData) {
+      const items = [];
+      items.push(
+        String(matchData.item0),
+        String(matchData.item1),
+        String(matchData.item2),
+        String(matchData.item3),
+        String(matchData.item4),
+        String(matchData.item5),
+        String(matchData.item6)
+      );
+      setItemsList(items);
+    }
   }, []);
 
   const getPlayerTier = async (summonerId: string) => {
@@ -73,7 +91,7 @@ const TableRow = (data: rowDataProps) => {
   };
 
   return (
-    <DetailTR>
+    <DetailTR win={data.win}>
       <DetailTD>
         <DetailContents>
           <DetailChamp
@@ -141,7 +159,11 @@ const TableRow = (data: rowDataProps) => {
         <DetailCS> {matchData.cs}</DetailCS>
         <DetailCS>{(matchData.cs / data.duration).toFixed(1)}/m</DetailCS>
       </DetailTD>
-      <DetailTD></DetailTD>
+      <DetailTD>
+        <DetailItem>
+          <Items items={itemsList} win={matchData.win} />
+        </DetailItem>
+      </DetailTD>
     </DetailTR>
   );
 };

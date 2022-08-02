@@ -30,9 +30,18 @@ const MatchDetails = (data: matchProps) => {
   // console.log(data.match);
   const match = data.gameData;
   const myData = data.myData;
+  const [redBlue, setRedBlue] = useState({});
   const [maxDamage, setMaxDamage] = useState(0);
   const [maxDamageTaken, setMaxDagameTaken] = useState(0);
   console.log(match, myData);
+
+  const findWinLose = (win: boolean) => {
+    if (win) {
+      return "Victory";
+    } else {
+      return "Defeat";
+    }
+  };
 
   useEffect(() => {
     const damage: number[] = [];
@@ -45,19 +54,18 @@ const MatchDetails = (data: matchProps) => {
     const maxDmgTknVal = Math.max.apply(null, damageTaken);
     setMaxDamage(maxDmgVal);
     setMaxDagameTaken(maxDmgTknVal);
+
+    setRedBlue(findRedBlue(match.participants));
   }, []);
+  console.log(redBlue);
 
   // const participants = findRedBlue(match.participants);
   return (
     <DetailsLayout>
       <DetailsTable>
         <DetailsThead>
-          <DetailsTr>
-            {myData?.win ? (
-              <DetailWinLose>Victory</DetailWinLose>
-            ) : (
-              <DetailWinLose>Defeat</DetailWinLose>
-            )}
+          <DetailsTr win={myData.win}>
+            <DetailWinLose>{findWinLose(myData.win)}</DetailWinLose>
             {tableHead.map((th, idx) => (
               <DetailsTh key={idx}>{th}</DetailsTh>
             ))}
@@ -70,6 +78,7 @@ const MatchDetails = (data: matchProps) => {
             maxDmg={maxDamage}
             maxDmgTkn={maxDamageTaken}
             duration={match.gameDuration / 60}
+            win={myData.win}
           />
         </DetailsTBody>
       </DetailsTable>

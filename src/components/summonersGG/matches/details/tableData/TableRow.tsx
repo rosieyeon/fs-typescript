@@ -33,6 +33,7 @@ interface rowDataProps {
   maxDmgTkn: number;
   duration: number;
   win: boolean;
+  key: number;
 }
 
 const TableRow = (data: rowDataProps) => {
@@ -62,6 +63,7 @@ const TableRow = (data: rowDataProps) => {
       setItemsList(items);
     }
   }, []);
+  // console.log(itemsList);
 
   const getPlayerTier = async (summonerId: string) => {
     const response = await riot.get(

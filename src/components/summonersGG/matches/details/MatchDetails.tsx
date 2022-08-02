@@ -24,13 +24,17 @@ interface matchProps {
   pkill: number;
 }
 
+interface redBlueProps {
+  blue: matchParticipants[];
+  red: matchParticipants[];
+}
 const tableHead = ["KDA", "Damage", "Wards", "CS", "Item"];
 
 const MatchDetails = (data: matchProps) => {
   // console.log(data.match);
   const match = data.gameData;
   const myData = data.myData;
-  const [redBlue, setRedBlue] = useState({});
+  const [redBlue, setRedBlue] = useState<redBlueProps>();
   const [maxDamage, setMaxDamage] = useState(0);
   const [maxDamageTaken, setMaxDagameTaken] = useState(0);
   console.log(match, myData);
@@ -57,9 +61,8 @@ const MatchDetails = (data: matchProps) => {
 
     setRedBlue(findRedBlue(match.participants));
   }, []);
-  console.log(redBlue);
+  console.log(redBlue?.blue);
 
-  // const participants = findRedBlue(match.participants);
   return (
     <DetailsLayout>
       <DetailsTable>
@@ -72,14 +75,17 @@ const MatchDetails = (data: matchProps) => {
           </DetailsTr>
         </DetailsThead>
         <DetailsTBody>
-          <TableRow
-            matchData={myData}
-            pkill={data.pkill}
-            maxDmg={maxDamage}
-            maxDmgTkn={maxDamageTaken}
-            duration={match.gameDuration / 60}
-            win={myData.win}
-          />
+          {redBlue?.blue.map((player, idx) => (
+            <TableRow
+              key={idx}
+              matchData={player}
+              pkill={data.pkill}
+              maxDmg={maxDamage}
+              maxDmgTkn={maxDamageTaken}
+              duration={match.gameDuration / 60}
+              win={myData.win}
+            />
+          ))}
         </DetailsTBody>
       </DetailsTable>
     </DetailsLayout>

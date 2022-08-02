@@ -35,6 +35,7 @@ export const DetailKDA = styled.div`
   font-size: 11px;
   line-height: 14px;
   color: #9e9eb1;
+  padding: 0 5px;
 `;
 export const DetailKDARatio = styled.div<{ ratio: string }>`
   font-size: 11px;

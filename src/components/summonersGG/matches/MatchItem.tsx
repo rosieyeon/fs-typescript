@@ -10,6 +10,7 @@ import { MatchItemGameData, MatchItemLayout } from "./MatchItem.styled";
 import MatchInfo from "./matchInfo/MatchInfo";
 import GameData from "./gameData/GameData";
 import Items from "./items/Items";
+import Participants from "./participants/Participants";
 
 interface matchIDProps {
   match: matchData;
@@ -78,7 +79,7 @@ const MatchItem = ({ match }: matchIDProps) => {
         />
         <Items items={itemsList} win={myData.win} />
       </MatchItemGameData>
-      {/* <MatchItemParticipants></MatchItemParticipants> */}
+      <Participants participants={match.participants} />
     </MatchItemLayout>
   ) : (
     <></>

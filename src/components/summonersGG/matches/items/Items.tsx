@@ -1,4 +1,3 @@
-import { matchParticipants } from "features/matchList/matchDetailSlice";
 import React from "react";
 import { RIOT_CDN } from "services/cdnValue";
 import { ItemsImg, ItemsLayout, ItemsSlot } from "./Items.styled";

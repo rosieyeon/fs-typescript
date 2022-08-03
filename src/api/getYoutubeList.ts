@@ -60,7 +60,7 @@ const getYoutubeList = createAsyncThunk(
           part: "snippet",
           type: "video",
           q: query,
-          maxResults: 10,
+          maxResults: 12,
           regionCode: "KR",
           order: "date",
           channelId: "UCJprx3bX49vNl6Bcw01Cwfg",

@@ -2,9 +2,9 @@ import styled from "styled-components";
 
 export const HomeLayout = styled.div`
   font-family: "Roboto", sans-serif;
-  /* text-align: center; */
-  /* display: flex; */
 `;
+
+export const HomeNavbar = styled.div``;
 
 export const HomeLogo = styled.img`
   display: block;
@@ -28,6 +28,8 @@ export const HomeSearchButton = styled.button`
   width: 100px;
   background-color: #d12d35;
   color: white;
+  cursor: pointer;
+  border: none;
 `;
 export const HomeYoutubeItem = styled.div`
   display: grid;

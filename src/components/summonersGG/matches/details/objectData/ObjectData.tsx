@@ -1,5 +1,4 @@
 import React from "react";
-import { useEffect } from "react";
 import { RIOT_OBJ } from "services/cdnValue";
 import { sortObjProps } from "../ObjectDetails";
 import {

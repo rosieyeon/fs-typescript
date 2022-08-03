@@ -11,11 +11,6 @@ interface objProps {
   win: boolean;
 }
 
-// interface graphProps {
-//   kills: number;
-//   gold: number;
-// }
-
 export interface sortObjProps {
   name: string;
   kills: number;
@@ -28,14 +23,10 @@ export interface barGraphProps {
 }
 
 const ObjectDetails = (data: objProps) => {
-  console.log(data);
   const teams = data.data;
   const [graphData, setGraphData] = useState<barGraphProps[]>();
   const [myObj, setMyObj] = useState<sortObjProps[]>();
   const [notMyObj, setNotMyObj] = useState<sortObjProps[]>();
-
-  // const [myTeamStats, setMyTeamStats] = useState<graphProps>();
-  // const [yourTeamStats, setYouTeamStats] = useS
 
   useEffect(() => {
     const mine = [];
@@ -86,7 +77,7 @@ const ObjectDetails = (data: objProps) => {
       { name: "Total Gold", mine: myTotalGold, yours: yourTotalGold },
     ]);
   }, []);
-  console.log(graphData);
+
   return (
     <ObjectDetailsLayout>
       {myObj && <ObjectData data={myObj} win={data.win} />}

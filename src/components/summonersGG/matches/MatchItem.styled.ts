@@ -35,4 +35,6 @@ export const MatchItemMoreBtn = styled.img`
   cursor: pointer;
 `;
 
-export const MatchDetailLayout = styled.div``;
+export const MatchDetailLayout = styled.div`
+  margin-bottom: 16px;
+`;

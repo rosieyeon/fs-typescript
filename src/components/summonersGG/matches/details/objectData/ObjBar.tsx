@@ -14,7 +14,6 @@ interface graphProps {
 }
 
 const ObjBar = (dataProps: graphProps) => {
-  // console.log(graphData);
   const graphData = dataProps.graphData;
 
   return (

@@ -6,7 +6,6 @@ import React, { useEffect, useState } from "react";
 import findRedBlue from "util/findRedBlue";
 import toCapitalize from "util/toCapitalize";
 import {
-  DetailsLayout,
   DetailsTable,
   DetailsTBody,
   DetailsTh,
@@ -37,7 +36,7 @@ const MatchDetails = (data: matchProps) => {
   const [teamData, setTeamData] = useState<matchParticipants[]>();
   const [maxDamage, setMaxDamage] = useState(0);
   const [maxDamageTaken, setMaxDagameTaken] = useState(0);
-  // console.log(match, myData);
+  console.log(match, myData);
 
   const findWinLose = (win: boolean) => {
     if (win) {
@@ -73,34 +72,32 @@ const MatchDetails = (data: matchProps) => {
   }, [redBlue]);
 
   return (
-    <DetailsLayout>
-      <DetailsTable>
-        <DetailsThead>
-          <DetailsTr win={data.win}>
-            <DetailWinLose>
-              {findWinLose(data.win)} ({toCapitalize(data.myTeam)} Team)
-            </DetailWinLose>
-            {tableHead.map((th, idx) => (
-              <DetailsTh key={idx}>{th}</DetailsTh>
-            ))}
-          </DetailsTr>
-        </DetailsThead>
-        <DetailsTBody win={data.win}>
-          {teamData?.map((player, idx) => (
-            <TableRow
-              key={idx}
-              matchData={player}
-              pkill={match.teams[0].objectives.champion.kills}
-              maxDmg={maxDamage}
-              maxDmgTkn={maxDamageTaken}
-              duration={match.gameDuration / 60}
-              win={myData.win}
-              summoner={myData.summonerName}
-            />
+    <DetailsTable isMine={data.win === myData.win}>
+      <DetailsThead>
+        <DetailsTr win={data.win}>
+          <DetailWinLose>
+            {findWinLose(data.win)} ({toCapitalize(data.myTeam)} Team)
+          </DetailWinLose>
+          {tableHead.map((th, idx) => (
+            <DetailsTh key={idx}>{th}</DetailsTh>
           ))}
-        </DetailsTBody>
-      </DetailsTable>
-    </DetailsLayout>
+        </DetailsTr>
+      </DetailsThead>
+      <DetailsTBody win={data.win}>
+        {teamData?.map((player, idx) => (
+          <TableRow
+            key={idx}
+            matchData={player}
+            pkill={match.teams[0].objectives.champion.kills}
+            maxDmg={maxDamage}
+            maxDmgTkn={maxDamageTaken}
+            duration={match.gameDuration / 60}
+            win={myData.win}
+            summoner={myData.summonerName}
+          />
+        ))}
+      </DetailsTBody>
+    </DetailsTable>
   );
 };
 export default MatchDetails;

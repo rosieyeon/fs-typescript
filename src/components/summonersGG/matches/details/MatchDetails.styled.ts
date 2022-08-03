@@ -1,16 +1,27 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-export const DetailsLayout = styled.div`
+export const DetailsTable = styled.table<{ isMine: boolean }>`
   font-family: "Roboto", sans-serif;
-`;
-export const DetailsTable = styled.table`
   width: 740px;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
+
+  ${(props) =>
+    props.isMine
+      ? css`
+          border-top-left-radius: 4px;
+          border-top-right-radius: 4px;
+        `
+      : css`
+          border-bottom-left-radius: 4px;
+          border-bottom-right-radius: 4px;
+        `}
+  overflow: hidden;
+
   background-color: #31313c;
 `;
 export const DetailsThead = styled.thead``;
 export const DetailsTr = styled.tr<{ win: boolean }>`
+  /* background-color: yellow; */
+  /* border-top-left-radius: 100px; */
   height: 32px;
   font-size: 12px;
   font-weight: normal;

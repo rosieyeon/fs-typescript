@@ -3,7 +3,11 @@ import { useAppDispatch, useAppSelector } from "app/store";
 
 import MatchItem from "./MatchItem";
 import getMatchData from "api/getMatchData";
-import { MatchesContent, MatchesLayout } from "./Matches.styled";
+import {
+  LoadingSkeleton,
+  MatchesContent,
+  MatchesLayout,
+} from "./Matches.styled";
 
 const Matches = () => {
   const { summonerData } = useAppSelector((state) => state.summonerInfo);
@@ -21,9 +25,9 @@ const Matches = () => {
   return (
     <MatchesLayout>
       {loading === "pending" ? (
-        "LOADING"
+        <LoadingSkeleton>LOADING</LoadingSkeleton>
       ) : error ? (
-        "ERROR"
+        <LoadingSkeleton>ERROR</LoadingSkeleton>
       ) : (
         <>
           {matchDetail.map((match, index) => (

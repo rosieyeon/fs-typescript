@@ -22,7 +22,7 @@ export const SummonersBox = styled.div<{ sec: number }>`
   animation-delay: ${(props) => (props.sec + 1) * 0.2}s;
 `;
 export const SummonersImg = styled.img`
-  width: 300px;
+  width: 240px;
   height: auto;
   cursor: pointer;
 `;

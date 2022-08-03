@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "app/store";
 import getSummonerTier from "api/getSummonerTier";
 import TierItem from "./TierItem";
-import { TierBox, TierQueueType } from "./Tier.styled";
+import { TierBox, TierLayout, TierQueueType } from "./Tier.styled";
 import { useState } from "react";
 import { SummonerTier } from "features/summonersList/summonerTierSlice";
 
@@ -39,13 +39,13 @@ const Tier = () => {
   }, [tierData]);
 
   return (
-    <>
+    <TierLayout>
       {loading === "pending" ? (
         "Loading"
       ) : error ? (
         "error"
       ) : (
-        <>
+        <TierLayout>
           <TierBox>
             <TierQueueType>Ranked Solo</TierQueueType>
             {soloRank && <TierItem tierInfo={soloRank} />}
@@ -54,9 +54,9 @@ const Tier = () => {
             <TierQueueType>Ranked Flex</TierQueueType>
             {flexRank && <TierItem tierInfo={flexRank} />}
           </TierBox>
-        </>
+        </TierLayout>
       )}
-    </>
+    </TierLayout>
   );
 };
 export default Tier;

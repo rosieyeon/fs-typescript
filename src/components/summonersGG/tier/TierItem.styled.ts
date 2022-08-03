@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const TierLayout = styled.div`
+export const TierItemLayout = styled.div`
   font-family: "Roboto", sans-serif;
   border-radius: 4px;
   background-color: #31313c;

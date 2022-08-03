@@ -3,7 +3,7 @@ import { SummonerTier } from "features/summonersList/summonerTierSlice";
 import {
   TierImg,
   TierImgBox,
-  TierLayout,
+  TierItemLayout,
   TierPoint,
   TierRankBox,
   TierTier,
@@ -22,7 +22,7 @@ const TierItem = ({ tierInfo }: TierProps) => {
   const winRates = (tierInfo.wins / (tierInfo.wins + tierInfo.losses)) * 100;
 
   return (
-    <TierLayout>
+    <TierItemLayout>
       <TierImgBox>
         <TierImg
           src={`${RIOT_RANK_EMBLEM}/${tierInfo.tier.toLowerCase()}.png`}
@@ -44,7 +44,7 @@ const TierItem = ({ tierInfo }: TierProps) => {
         </TierWinLose>
         <TierWinRates>{parseInt(String(winRates))}%</TierWinRates>
       </TierWinBox>
-    </TierLayout>
+    </TierItemLayout>
   );
 };
 export default TierItem;

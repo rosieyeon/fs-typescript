@@ -1,8 +1,6 @@
-import { useAppSelector } from "app/store";
-import { mostChampData, t1PlayChampProps, t1PlayerChamp } from "app/t1Player";
+import { mostChampData } from "app/t1Player";
 import React from "react";
-import { useState } from "react";
-import { useEffect } from "react";
+
 import { RIOT_CHAMP_IMG } from "services/cdnValue";
 import {
   MostChampBottom,
@@ -24,7 +22,9 @@ interface champsProps {
 const MostChampItem = ({ champs }: champsProps) => {
   return (
     <MostChampItemLayout>
-      <MostChampFace src={`${RIOT_CHAMP_IMG}/${champs.name}.png`} />
+      <MostChampFace
+        src={`${RIOT_CHAMP_IMG}/${champs.name.replace(/(\s*)/g, "")}.png`}
+      />
       <MostChampBox>
         <MostChampName>{champs.name}</MostChampName>
         <MostChampCS>

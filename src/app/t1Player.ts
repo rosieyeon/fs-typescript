@@ -71,7 +71,7 @@ export const t1PlayerChamp: t1PlayChampProps[] = [
         game: 50,
       },
       {
-        name: "LeBlanc",
+        name: "Leblanc",
         cs: 189.5,
         csPerMin: 7.6,
         kdaRatio: 4.01,

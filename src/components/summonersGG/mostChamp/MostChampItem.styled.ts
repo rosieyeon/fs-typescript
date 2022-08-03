@@ -7,6 +7,9 @@ export const MostChampItemLayout = styled.div`
   align-items: center;
   font-family: "Roboto", sans-serif;
   padding: 0 8px;
+
+  background-color: #31313c;
+  border-bottom: 1px solid #1c1c1f;
 `;
 export const MostChampFace = styled.img`
   width: 32px;

@@ -7,3 +7,4 @@ export const RIOT_CHAMP_IMG =
 export const RIOT_CDN = "https://opgg-static.akamaized.net/images/lol/";
 export const ARROW_DOWN =
   "https://s-lol-web.op.gg/images/icon/icon-arrow-down-";
+export const RIOT_OBJ = "https://s-lol-web.op.gg/images/icon/";

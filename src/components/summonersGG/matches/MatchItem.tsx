@@ -20,6 +20,7 @@ import Items from "./items/Items";
 import Participants from "./participants/Participants";
 import { ARROW_DOWN } from "services/cdnValue";
 import MatchDetails from "./details/MatchDetails";
+import ObjectDetails from "./details/ObjectDetails";
 
 interface matchIDProps {
   match: matchData;
@@ -27,9 +28,17 @@ interface matchIDProps {
   // isOpen: boolean;
 }
 
+export interface teamProps {
+  side: string;
+  objectives: TeamObjectives;
+  goldEarned: number;
+  win: boolean;
+}
+
 const MatchItem = (data: matchIDProps) => {
   const match = data.match;
   const [isOpen, setIsOpen] = useState(false);
+  const [teamData, setTeamData] = useState<teamProps[]>();
   const [myTeam, setMyTeam] = useState("red");
   const [notMyTeam, setNotMyTeam] = useState("blue");
   const [myData, setMyData] = useState<matchParticipants>();
@@ -39,6 +48,8 @@ const MatchItem = (data: matchIDProps) => {
   const { summonerData } = useAppSelector((state) => state.summonerInfo);
 
   useEffect(() => {
+    let goldEarnedB = 0;
+    let goldEarnedR = 0;
     for (let i = 0; i < 10; i++) {
       if (match.participants[i].summonerName == summonerData.name) {
         setMyData(match.participants[i]);
@@ -47,7 +58,25 @@ const MatchItem = (data: matchIDProps) => {
           setNotMyTeam("red");
         }
       }
+      if (i < 5) {
+        goldEarnedB += match.participants[i].goldEarned;
+      } else {
+        goldEarnedR += match.participants[i].goldEarned;
+      }
     }
+    const blueside = {
+      side: "blue",
+      objectives: match.teams[0].objectives,
+      goldEarned: goldEarnedB,
+      win: match.teams[0].win,
+    };
+    const redside = {
+      side: "red",
+      objectives: match.teams[1].objectives,
+      goldEarned: goldEarnedR,
+      win: match.teams[1].win,
+    };
+    setTeamData([blueside, redside]);
   }, []);
 
   useEffect(() => {
@@ -127,6 +156,7 @@ const MatchItem = (data: matchIDProps) => {
             myTeam={myTeam}
             win={myData.win}
           />
+          {teamData && <ObjectDetails data={teamData} win={myData.win} />}
           <MatchDetails
             myData={myData}
             gameData={match}

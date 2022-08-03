@@ -10,7 +10,6 @@ export const DetailTR = styled.tr<isMeProps>`
   height: 41.5px;
   background-color: ${(props) =>
     !props.me ? "" : props.win ? "#2f436e" : "#703c47"};
-  /* background-color: ; */
 `;
 export const DetailTD = styled.td`
   text-align: center;

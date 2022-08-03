@@ -10,6 +10,7 @@ import {
   ProfileLevelBox,
   ProfileName,
   ProfilePlayer,
+  ProfileText,
 } from "./Profile.styled";
 import toCapitalize from "util/toCapitalize";
 
@@ -26,8 +27,10 @@ const Profile = () => {
           <ProfileLevel>{summonerData.summonerLevel}</ProfileLevel>
         </ProfileLevelBox>
       </ProfileImg>
-      <ProfileName>{summonerData.name}</ProfileName>
-      <ProfilePlayer>T1 {toCapitalize(user.player)}</ProfilePlayer>
+      <ProfileText>
+        <ProfileName>{summonerData.name}</ProfileName>
+        <ProfilePlayer>T1 {toCapitalize(user.player)}</ProfilePlayer>
+      </ProfileText>
     </ProfileLayout>
   );
 };

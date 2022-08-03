@@ -2,7 +2,10 @@ import styled from "styled-components";
 
 export const ProfileLayout = styled.div`
   display: flex;
-  font-family: "Roboto";
+  align-items: flex-end;
+  width: 1096px;
+  font-family: "Roboto", sans-serif;
+  padding: 40px 0;
 `;
 
 export const ProfileImg = styled.div`
@@ -32,9 +35,16 @@ export const ProfileLevel = styled.span`
   font-family: "Roboto", sans-serif;
 `;
 
+export const ProfileText = styled.div`
+  padding: 20px 16px;
+`;
 export const ProfileName = styled.div`
   font-size: 24px;
   font-weight: bold;
 `;
 
-export const ProfilePlayer = styled.div``;
+export const ProfilePlayer = styled.div`
+  font-size: 14px;
+  line-height: 16px;
+  color: #9e9eb1;
+`;

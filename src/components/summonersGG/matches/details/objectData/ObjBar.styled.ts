@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const ObjBarLayout = styled.div`
   /* position: relative; */
+  font-family: "Roboto", sans-serif;
 `;
 
 export const ObjBarBackground = styled.div<{ win: boolean }>`

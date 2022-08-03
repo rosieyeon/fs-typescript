@@ -23,6 +23,8 @@ function App() {
 
 const Layout = styled.div`
   color: white;
+  margin: 0 auto;
+  /* text-align: center; */
 `;
 
 export default App;

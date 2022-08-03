@@ -14,12 +14,9 @@ interface YoutubeProps {
 
 const YoutubeItem = ({ youtube }: YoutubeProps) => {
   return (
-    <YoutubeItemLayout>
-      {/* <YoutubeItemContent> */}
+    <YoutubeItemLayout href={`https://www.youtube.com/embed/${youtube.id}`}>
       <YoutubeItemThumbnail src={youtube.thumbnail} />
       <YoutubeItemTitle>{youtube.title}</YoutubeItemTitle>
-      {/* <YoutubeItemChannel>{youtube.channelTitle}</YoutubeItemChannel> */}
-      {/* </YoutubeItemContent> */}
     </YoutubeItemLayout>
   );
 };

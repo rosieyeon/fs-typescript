@@ -69,7 +69,7 @@ const getYoutubeList = createAsyncThunk(
       console.log(response);
       return response.data.items.map((item: YoutubeDto) => {
         return {
-          id: item.id,
+          id: item.id.videoId,
           title: item.snippet.title,
           channelTitle: item.snippet.channelTitle,
           thumbnail: item.snippet.thumbnails.medium.url,

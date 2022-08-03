@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { t1Player } from "app/t1Player";
 import { SummonersLayout, SummonersLogo } from "./Summoners.styled";
 
@@ -12,10 +12,6 @@ const Summoners: React.FC = () => {
     navigate(`/${player}`);
   };
 
-  // useEffect(() => {
-  //   dispatch(getSummonerInfo("싫어하는이유"));
-  // }, []);
-
   return (
     <SummonersLayout>
       <SummonersLogo src="images/logo/t1.jpeg" />
@@ -24,11 +20,6 @@ const Summoners: React.FC = () => {
           {t1Player.player}
         </button>
       ))}
-      {/* <Link to="/summoners/faker">Faker</Link>
-      <Link to="/zeus">Zeus</Link>
-      <Link to="/oner">Oner</Link>
-      <Link to="/gumayusi">Gumayusi</Link>
-      <Link to="/keria">Keria</Link> */}
     </SummonersLayout>
   );
 };

@@ -12,6 +12,7 @@ import {
   HomeSearchButton,
   HomeYoutubeItem,
 } from "./Home.styled";
+import { useNavigate } from "react-router-dom";
 
 const Home: React.FC = () => {
   const [keyword, setKeyword] = useState("");
@@ -21,9 +22,11 @@ const Home: React.FC = () => {
   );
 
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   // 여기에 then으로 에러 분기 처리
   console.log(query, keyword);
+  console.log(youtubeList);
   useEffect(() => {
     dispatch(getYoutubeList(keyword));
   }, [query]);
@@ -37,6 +40,11 @@ const Home: React.FC = () => {
 
   const onClickApply = () => {
     setQuery(keyword);
+  };
+
+  const onClickPlay = (id: string) => {
+    navigate(`https://www.youtube.com/embed/${id}`);
+    console.log("??");
   };
 
   return (

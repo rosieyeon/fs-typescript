@@ -5,10 +5,15 @@ import { useAppDispatch, useAppSelector } from "app/store";
 import getSummonerInfo from "api/getSummonerInfo";
 import { t1Player } from "app/t1Player";
 import { getSummonerName } from "features/summonerNameSlice";
-import { SummonerGGData, SummonerGGLayout } from "./SummonerGG.styled";
+import {
+  SummonerGGData,
+  SummonerGGLayout,
+  SummonerGGStatistics,
+} from "./SummonerGG.styled";
 import Profile from "components/summonersGG/profile/Profile";
 import Tier from "components/summonersGG/tier/Tier";
 import Matches from "components/summonersGG/matches/Matches";
+import MostChamp from "components/summonersGG/mostChamp/MostChamp";
 
 const SummonerGG = () => {
   const { summonerData, loading, error } = useAppSelector(
@@ -47,7 +52,10 @@ const SummonerGG = () => {
         <SummonerGGLayout>
           <Profile />
           <SummonerGGData>
-            <Tier />
+            <SummonerGGStatistics>
+              <Tier />
+              <MostChamp />
+            </SummonerGGStatistics>
             <Matches />
           </SummonerGGData>
         </SummonerGGLayout>

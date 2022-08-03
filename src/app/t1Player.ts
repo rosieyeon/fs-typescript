@@ -6,9 +6,24 @@ export const t1Player = [
   { player: "keria", name: "역천괴" },
 ];
 
-export const t1PlayerChamp = [
+export interface t1PlayChampProps {
+  name: string;
+  champs: mostChampData[];
+}
+
+export interface mostChampData {
+  name: string;
+  cs: number;
+  csPerMin: number;
+  kdaRatio: number;
+  kda: string;
+  winRate: number;
+  game: number;
+}
+
+export const t1PlayerChamp: t1PlayChampProps[] = [
   {
-    name: "hide on bush",
+    name: "Hide on bush",
     champs: [
       {
         name: "Ahri",
@@ -88,7 +103,7 @@ export const t1PlayerChamp = [
         game: 75,
       },
       {
-        name: "GangPlank",
+        name: "Gangplank",
         cs: 189.2,
         csPerMin: 8,
         kdaRatio: 1.84,
@@ -212,7 +227,7 @@ export const t1PlayerChamp = [
     ],
   },
   {
-    name: "아 니 맞나",
+    name: "아 니 맞나 ",
     champs: [
       {
         name: "Lee Sin",

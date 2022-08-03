@@ -25,7 +25,7 @@ const Summoners: React.FC = () => {
       <SummonersLogo src="images/logo/t1.jpeg" />
       <SummonersList>
         {t1PlayerList.map((t1Player, idx) => (
-          <SummonersBox key={idx}>
+          <SummonersBox key={idx} sec={idx}>
             <SummonersImg
               src={`/images/players/${t1Player.player}.jpg`}
               onClick={() => onClickNav(`${t1Player.player}`)}

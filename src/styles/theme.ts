@@ -1,14 +1,20 @@
-import { css, DefaultTheme } from "styled-components";
+import { css, DefaultTheme, keyframes } from "styled-components";
 
-const flexCenter = css`
-  display: flex;
-  align-items: center;
-  justify-content: center;
+const animation = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-12px);
+  }
 `;
 
-export const theme: DefaultTheme = {
-  color: {
-    red: "#D12D35",
-  },
-  flexCenter,
-};
+const defaultAnimation = css`
+  animation-duration: 0.7s;
+  animation-name: ${animation};
+  animation-fill-mode: forwards;
+`;
+
+export const theme: DefaultTheme = { defaultAnimation };

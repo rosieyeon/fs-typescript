@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
-export const SummonersLayout = styled.div``;
+export const SummonersLayout = styled.div`
+  padding-bottom: 40px;
+`;
 export const SummonersLogo = styled.img`
   display: block;
   width: 500px;

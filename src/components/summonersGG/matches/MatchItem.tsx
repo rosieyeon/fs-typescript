@@ -30,6 +30,8 @@ interface matchIDProps {
 const MatchItem = (data: matchIDProps) => {
   const match = data.match;
   const [isOpen, setIsOpen] = useState(false);
+  const [myTeam, setMyTeam] = useState("red");
+  const [notMyTeam, setNotMyTeam] = useState("blue");
   const [myData, setMyData] = useState<matchParticipants>();
   const [objectives, setObjectives] = useState<TeamObjectives>();
   const [itemsList, setItemsList] = useState<string[]>([]);
@@ -40,6 +42,10 @@ const MatchItem = (data: matchIDProps) => {
     for (let i = 0; i < 10; i++) {
       if (match.participants[i].summonerName == summonerData.name) {
         setMyData(match.participants[i]);
+        if (i < 5) {
+          setMyTeam("blue");
+          setNotMyTeam("red");
+        }
       }
     }
   }, []);
@@ -75,7 +81,6 @@ const MatchItem = (data: matchIDProps) => {
   }, [objectives]);
 
   const onClickMore = () => {
-    // data.open(!data.isOpen);
     setIsOpen(!isOpen);
   };
 
@@ -115,7 +120,20 @@ const MatchItem = (data: matchIDProps) => {
       </MatchItemLayout>
       {isOpen && (
         <MatchDetailLayout>
-          <MatchDetails myData={myData} gameData={match} pkill={pkill} />
+          <MatchDetails
+            myData={myData}
+            gameData={match}
+            pkill={pkill}
+            myTeam={myTeam}
+            win={myData.win}
+          />
+          <MatchDetails
+            myData={myData}
+            gameData={match}
+            pkill={pkill}
+            myTeam={notMyTeam}
+            win={!myData.win}
+          />
         </MatchDetailLayout>
       )}
     </MatchItemDiv>

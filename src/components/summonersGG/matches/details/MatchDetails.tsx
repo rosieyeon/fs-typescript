@@ -1,11 +1,10 @@
-import { useAppSelector } from "app/store";
-import { LargeNumberLike } from "crypto";
 import {
   matchData,
   matchParticipants,
 } from "features/matchList/matchDetailSlice";
 import React, { useEffect, useState } from "react";
 import findRedBlue from "util/findRedBlue";
+import toCapitalize from "util/toCapitalize";
 import {
   DetailsLayout,
   DetailsTable,
@@ -15,13 +14,14 @@ import {
   DetailsTr,
   DetailWinLose,
 } from "./MatchDetails.styled";
-import DetailChamp from "./tableData/champ/DetailChamp";
 import TableRow from "./tableData/TableRow";
 
 interface matchProps {
   myData: matchParticipants;
   gameData: matchData;
   pkill: number;
+  myTeam: string;
+  win: boolean;
 }
 
 interface redBlueProps {
@@ -31,10 +31,10 @@ interface redBlueProps {
 const tableHead = ["KDA", "Damage", "Wards", "CS", "Item"];
 
 const MatchDetails = (data: matchProps) => {
-  // console.log(data.match);
   const match = data.gameData;
   const myData = data.myData;
   const [redBlue, setRedBlue] = useState<redBlueProps>();
+  const [teamData, setTeamData] = useState<matchParticipants[]>();
   const [maxDamage, setMaxDamage] = useState(0);
   const [maxDamageTaken, setMaxDagameTaken] = useState(0);
   console.log(match, myData);
@@ -61,21 +61,32 @@ const MatchDetails = (data: matchProps) => {
 
     setRedBlue(findRedBlue(match.participants));
   }, []);
-  console.log(redBlue?.blue);
+
+  useEffect(() => {
+    if (redBlue) {
+      if (data.myTeam == "blue") {
+        setTeamData(redBlue.blue);
+      } else {
+        setTeamData(redBlue.red);
+      }
+    }
+  }, [redBlue]);
 
   return (
     <DetailsLayout>
       <DetailsTable>
         <DetailsThead>
-          <DetailsTr win={myData.win}>
-            <DetailWinLose>{findWinLose(myData.win)}</DetailWinLose>
+          <DetailsTr win={data.win}>
+            <DetailWinLose>
+              {findWinLose(data.win)} ({toCapitalize(data.myTeam)} Team)
+            </DetailWinLose>
             {tableHead.map((th, idx) => (
               <DetailsTh key={idx}>{th}</DetailsTh>
             ))}
           </DetailsTr>
         </DetailsThead>
-        <DetailsTBody>
-          {redBlue?.blue.map((player, idx) => (
+        <DetailsTBody win={data.win}>
+          {teamData?.map((player, idx) => (
             <TableRow
               key={idx}
               matchData={player}

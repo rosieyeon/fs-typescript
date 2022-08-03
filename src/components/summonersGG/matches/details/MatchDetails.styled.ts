@@ -5,10 +5,12 @@ export const DetailsLayout = styled.div`
 `;
 export const DetailsTable = styled.table`
   width: 740px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  background-color: #31313c;
 `;
 export const DetailsThead = styled.thead``;
 export const DetailsTr = styled.tr<{ win: boolean }>`
-  /* background-color: #2f436e; */
   height: 32px;
   font-size: 12px;
   font-weight: normal;
@@ -21,7 +23,9 @@ export const DetailsTr = styled.tr<{ win: boolean }>`
 export const DetailsTh = styled.th`
   vertical-align: middle;
 `;
-export const DetailsTBody = styled.tbody``;
+export const DetailsTBody = styled.tbody<{ win: boolean }>`
+  background-color: ${(props) => (props.win ? "#28344e" : "#593438")};
+`;
 export const DetailWinLose = styled.td`
   font-weight: bold;
   text-align: left;

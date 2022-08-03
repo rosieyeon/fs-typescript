@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 export const DetailTR = styled.tr<{ win: boolean }>`
   font-family: "Roboto", sans-serif;

@@ -95,6 +95,7 @@ const MatchDetails = (data: matchProps) => {
               maxDmgTkn={maxDamageTaken}
               duration={match.gameDuration / 60}
               win={myData.win}
+              summoner={myData.summonerName}
             />
           ))}
         </DetailsTBody>

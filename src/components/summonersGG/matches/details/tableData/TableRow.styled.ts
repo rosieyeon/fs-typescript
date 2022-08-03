@@ -1,9 +1,15 @@
 import styled from "styled-components";
 
-export const DetailTR = styled.tr<{ win: boolean }>`
+interface isMeProps {
+  me: boolean;
+  win: boolean;
+}
+export const DetailTR = styled.tr<isMeProps>`
   font-family: "Roboto", sans-serif;
   vertical-align: middle;
   height: 41.5px;
+  background-color: ${(props) =>
+    !props.me ? "" : props.win ? "#2f436e" : "#703c47"};
   /* background-color: ; */
 `;
 export const DetailTD = styled.td`

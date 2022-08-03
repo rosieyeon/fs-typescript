@@ -34,10 +34,12 @@ interface rowDataProps {
   duration: number;
   win: boolean;
   key: number;
+  summoner: string;
 }
 
 const TableRow = (data: rowDataProps) => {
   const matchData = data.matchData;
+  const [me, setMe] = useState(false);
   const [itemsList, setItemsList] = useState<string[]>([]);
   const [tier, setTier] = useState("");
   const [spellsList, setSpellsList] = useState<number[]>([]);
@@ -61,6 +63,10 @@ const TableRow = (data: rowDataProps) => {
         String(matchData.item6)
       );
       setItemsList(items);
+    }
+
+    if (data.summoner === matchData.summonerName) {
+      setMe(true);
     }
   }, []);
   // console.log(itemsList);
@@ -97,7 +103,7 @@ const TableRow = (data: rowDataProps) => {
   };
 
   return (
-    <DetailTR win={data.win}>
+    <DetailTR me={me} win={data.win}>
       <DetailTD>
         <DetailContents>
           <DetailChamp

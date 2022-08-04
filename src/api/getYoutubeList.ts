@@ -66,7 +66,7 @@ const getYoutubeList = createAsyncThunk(
           channelId: "UCJprx3bX49vNl6Bcw01Cwfg",
         },
       });
-      console.log(response);
+      // console.log(response);
       return response.data.items.map((item: YoutubeDto) => {
         return {
           id: item.id.videoId,

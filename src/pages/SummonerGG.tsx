@@ -28,7 +28,7 @@ const SummonerGG = () => {
   useEffect(() => {
     t1Player.map(
       (lolplayer) =>
-        pathname.substr(1) === lolplayer.player &&
+        pathname.substr(11) === lolplayer.player &&
         dispatch(getSummonerInfo(lolplayer.name))
     );
   }, []);
@@ -36,7 +36,7 @@ const SummonerGG = () => {
   useEffect(() => {
     dispatch(
       getSummonerName({
-        player: `${pathname.substr(1)}`,
+        player: `${pathname.substr(11)}`,
         name: `${summonerData.name}`,
       })
     );

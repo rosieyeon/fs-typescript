@@ -20,6 +20,7 @@ export const HomeSearchBar = styled.input`
   height: 35px;
   border-radius: 6px;
   padding: 10px;
+  border: none;
 `;
 export const HomeSearchButton = styled.button`
   height: 35px;

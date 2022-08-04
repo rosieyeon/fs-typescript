@@ -17,7 +17,7 @@ const Summoners: React.FC = () => {
   const t1PlayerList = t1Player;
 
   const onClickNav = (player: string) => {
-    navigate(`/${player}`);
+    navigate(`/summoners/${player}`);
   };
 
   return (

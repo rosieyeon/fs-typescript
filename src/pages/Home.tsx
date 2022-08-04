@@ -43,11 +43,21 @@ const Home: React.FC = () => {
     setQuery(keyword);
   };
 
+  const onKeyPress = (event: { key: string }) => {
+    if (event.key == "Enter") {
+      onClickApply();
+    }
+  };
+
   return (
     <HomeLayout>
       <HomeLogo src="images/logo/t1.jpeg" />
       <HomeSearch>
-        <HomeSearchBar placeholder="검색" onChange={onChangeSearch} />
+        <HomeSearchBar
+          placeholder="검색"
+          onChange={onChangeSearch}
+          onKeyPress={onKeyPress}
+        />
         <HomeSearchButton onClick={onClickApply}>SEARCH</HomeSearchButton>
       </HomeSearch>
       {loading === "pending" ? (

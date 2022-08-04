@@ -26,18 +26,15 @@ const Tier = () => {
   }, []);
 
   useEffect(() => {
-    // TODO tierData.filter
     if (tierData) {
-      for (let i = 0; i < tierData.length; i++) {
-        if (tierData[i].queueType === "RANKED_SOLO_5x5") {
-          setSoloRank(tierData[i]);
-        }
-        if (tierData[i].queueType === "RANKED_FLEX_5x5") {
-          setFlexRank(tierData[i]);
-        }
-      }
+      setSoloRank(
+        tierData.filter((data) => data.queueType === "RANKED_SOLO_5x5")[0]
+      );
+      setFlexRank(
+        tierData.filter((data) => data.queueType === "RANKED_FLEX_5x5")[0]
+      );
     }
-  }, []);
+  }, [tierData]);
 
   return (
     <TierLayout>

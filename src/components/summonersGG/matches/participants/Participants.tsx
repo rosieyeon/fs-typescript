@@ -8,7 +8,7 @@ import {
   ParticipantsLayout,
   ParticipantTeam,
 } from "./Participants.styled";
-import findRedBlue from "util/findRedBlue";
+import findRedBlue from "utils/findRedBlue";
 
 interface partiProps {
   participants: matchParticipants[];

@@ -12,7 +12,7 @@ import {
   ProfilePlayer,
   ProfileText,
 } from "./Profile.styled";
-import toCapitalize from "util/toCapitalize";
+import toCapitalize from "utils/toCapitalize";
 
 const Profile = () => {
   const { summonerData } = useAppSelector((state) => state.summonerInfo);

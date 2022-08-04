@@ -131,6 +131,8 @@ interface PerksSelectionsDto {
   perk: number;
 }
 
+// thunk 안에 있는 async 함수를 따로 만들고 createThunk를 slice에
+// 20개 넘었을때 확인 직접 만들어서 해봐
 const getMatchData = createAsyncThunk(
   "matchData/getMatchData",
   async (puuId: string, { rejectWithValue }) => {
@@ -143,11 +145,12 @@ const getMatchData = createAsyncThunk(
           },
         }
       );
-      // console.log(matchIdsResult);
+      console.log(matchIdsResult);
 
       const PromiseArrayResult = matchIdsResult.data.map(
         async (matchId: string) => {
           const participants: matchParticipants[] = [];
+          //TODO 여기서 이상항 url 이용 아니며녀 throw error
           const response = await riotMatch.get(`match/v5/matches/${matchId}`);
           const res = response.data;
           // console.log(res);
@@ -202,6 +205,7 @@ const getMatchData = createAsyncThunk(
         }
       );
       // return matchIdsResult.data;
+      //all.catch all에 await
       return Promise.all(PromiseArrayResult);
     } catch (error) {
       return rejectWithValue("error!");

@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import getMatchData from "api/getMatchData";
 
+// TODO 대문자로 eslint?
 export interface matchData {
   gameDuration: number;
   gameEndTimestamp: number;

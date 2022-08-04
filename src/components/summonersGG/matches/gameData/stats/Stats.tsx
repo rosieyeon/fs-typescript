@@ -1,6 +1,6 @@
 import React from "react";
 import { matchParticipants } from "features/riot/matchDetailSlice";
-import toCapitalize from "util/toCapitalize";
+import toCapitalize from "utils/toCapitalize";
 import { StatsLane, StatsLayout, StatsPKill, StatsStats } from "./Stats.styled";
 
 interface statsProps {

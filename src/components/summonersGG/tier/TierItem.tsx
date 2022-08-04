@@ -11,7 +11,7 @@ import {
   TierWinLose,
   TierWinRates,
 } from "./TierItem.styled";
-import toCapitalize from "util/toCapitalize";
+import toCapitalize from "utils/toCapitalize";
 import { RIOT_RANK_EMBLEM } from "services/cdnValue";
 
 interface TierProps {

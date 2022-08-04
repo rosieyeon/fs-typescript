@@ -20,8 +20,6 @@ const SummonerGG = () => {
     (state) => state.summonerInfo
   );
 
-  // console.log(summonerData, loading, error);
-
   const dispatch = useAppDispatch();
   const { pathname } = useLocation();
 

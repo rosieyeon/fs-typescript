@@ -10,7 +10,7 @@ import {
   SummonersLogo,
   SummonersName,
 } from "./Summoners.styled";
-import toCapitalize from "util/toCapitalize";
+import toCapitalize from "utils/toCapitalize";
 
 const Summoners: React.FC = () => {
   const navigate = useNavigate();

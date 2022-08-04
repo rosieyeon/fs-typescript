@@ -29,9 +29,11 @@ const Home: React.FC = () => {
 
   // 여기에 then으로 에러 분기 처리
   useEffect(() => {
-    dispatch(getYoutubeList(keyword));
+    dispatch(getYoutubeList(query));
   }, [query]);
 
+  //TODO useCallback 이용이유 확실하게 써야하는 이유, 쓸 때에는 dependency 걸어야하는지 기준점
+  //TODO onchange after 1 secs
   const onChangeSearch = useCallback(
     (event: { target: { value: React.SetStateAction<string> } }) => {
       setKeyword(event.target.value);
@@ -42,8 +44,10 @@ const Home: React.FC = () => {
   const onClickApply = () => {
     setQuery(keyword);
   };
-
+  `
+`;
   const onKeyPress = (event: { key: string }) => {
+    // TODO prettier '' eslilnt 적용 확인
     if (event.key == "Enter") {
       onClickApply();
     }

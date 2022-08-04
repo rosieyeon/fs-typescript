@@ -14,7 +14,7 @@ const Matches = () => {
   const { matchDetail, loading, error } = useAppSelector(
     (state) => state.matchDetails
   );
-
+  //TODO dispatch .catch로 핸드링
   const dispatch = useAppDispatch();
   useEffect(() => {
     if (summonerData.puuid) {

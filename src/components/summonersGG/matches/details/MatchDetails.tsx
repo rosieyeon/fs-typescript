@@ -1,7 +1,7 @@
 import { matchData, matchParticipants } from "features/riot/matchDetailSlice";
 import React, { useEffect, useState } from "react";
-import findRedBlue from "util/findRedBlue";
-import toCapitalize from "util/toCapitalize";
+import findRedBlue from "utils/findRedBlue";
+import toCapitalize from "utils/toCapitalize";
 import {
   DetailsTable,
   DetailsTBody,

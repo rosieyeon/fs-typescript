@@ -32,4 +32,8 @@ const defaultAnimation = css`
   animation-fill-mode: forwards;
 `;
 
-export const theme: DefaultTheme = { defaultAnimation };
+const skeletonGradation = css`
+  animation: ${skeleton} 1.8s infinite ease-in-out;
+`;
+
+export const theme: DefaultTheme = { defaultAnimation, skeletonGradation };

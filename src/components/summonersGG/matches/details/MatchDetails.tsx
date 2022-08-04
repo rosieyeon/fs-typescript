@@ -15,7 +15,7 @@ import TableRow from "./tableData/TableRow";
 interface matchProps {
   myData: matchParticipants;
   gameData: matchData;
-  pkill: number;
+  // pkill: number;
   myTeam: string;
   win: boolean;
 }
@@ -68,6 +68,14 @@ const MatchDetails = (data: matchProps) => {
     }
   }, [redBlue]);
 
+  const getTotalKills = () => {
+    if (data.win === match.teams[0].win) {
+      return match.teams[0].objectives.champion.kills;
+    } else {
+      return match.teams[1].objectives.champion.kills;
+    }
+  };
+
   return (
     <DetailsTable isMine={data.win === myData.win}>
       <DetailsThead>
@@ -85,7 +93,7 @@ const MatchDetails = (data: matchProps) => {
           <TableRow
             key={idx}
             matchData={player}
-            pkill={match.teams[0].objectives.champion.kills}
+            pkill={getTotalKills()}
             maxDmg={maxDamage}
             maxDmgTkn={maxDamageTaken}
             duration={match.gameDuration / 60}

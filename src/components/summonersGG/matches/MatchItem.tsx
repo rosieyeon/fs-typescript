@@ -152,7 +152,6 @@ const MatchItem = (data: matchIDProps) => {
           <MatchDetails
             myData={myData}
             gameData={match}
-            pkill={pkill}
             myTeam={myTeam}
             win={myData.win}
           />
@@ -160,7 +159,6 @@ const MatchItem = (data: matchIDProps) => {
           <MatchDetails
             myData={myData}
             gameData={match}
-            pkill={pkill}
             myTeam={notMyTeam}
             win={!myData.win}
           />

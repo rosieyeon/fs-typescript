@@ -139,10 +139,11 @@ const getMatchData = createAsyncThunk(
         `/match/v5/matches/by-puuid/${puuId}/ids`,
         {
           params: {
-            count: 15,
+            count: 19,
           },
         }
       );
+      // console.log(matchIdsResult);
 
       const PromiseArrayResult = matchIdsResult.data.map(
         async (matchId: string) => {

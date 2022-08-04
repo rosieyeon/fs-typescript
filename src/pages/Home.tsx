@@ -5,7 +5,12 @@ import YoutubeItem from "components/Youtube/YoutubeItem";
 import getYoutubeList from "api/getYoutubeList";
 import { useAppDispatch, useAppSelector } from "app/store";
 import {
+  HomeError,
   HomeLayout,
+  HomeLoading,
+  HomeLoadingImg,
+  HomeLoadingSkeleton,
+  HomeLoadingTxt,
   HomeLogo,
   HomeSearch,
   HomeSearchBar,
@@ -46,9 +51,16 @@ const Home: React.FC = () => {
         <HomeSearchButton onClick={onClickApply}>SEARCH</HomeSearchButton>
       </HomeSearch>
       {loading === "pending" ? (
-        "LOADING"
+        <HomeLoading>
+          {youtubeList.map((youtube, index) => (
+            <HomeLoadingSkeleton key={index}>
+              <HomeLoadingImg />
+              <HomeLoadingTxt />
+            </HomeLoadingSkeleton>
+          ))}
+        </HomeLoading>
       ) : error ? (
-        "ERROR"
+        <HomeError>데이터를 불러올 수 없습니다</HomeError>
       ) : (
         <HomeYoutubeItem>
           {youtubeList.map((youtube, index) => (

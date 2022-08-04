@@ -9,7 +9,7 @@ export const MatchesContent = styled.div`
 `;
 
 export const LoadingSkeleton = styled.div`
-  ${({ theme }) => theme.defaultAnimation}
+  ${({ theme }) => theme.skeletonGradation}
   width: 740px;
   height: 96px;
   border-radius: 4px;

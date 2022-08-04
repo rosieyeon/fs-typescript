@@ -11,7 +11,7 @@ const animation = keyframes`
   }
 `;
 
-export const skeleton = keyframes`
+const skeleton = keyframes`
   0% {
         background-color: rgba(165, 165, 165, 0.1);
     }

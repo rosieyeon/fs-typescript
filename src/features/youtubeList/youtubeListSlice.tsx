@@ -15,7 +15,20 @@ interface youtubeListState {
 }
 
 const initialState: youtubeListState = {
-  youtubeList: [],
+  youtubeList: [
+    { id: "", thumbnail: "", title: "", channelTitle: "" },
+    { id: "", thumbnail: "", title: "", channelTitle: "" },
+    { id: "", thumbnail: "", title: "", channelTitle: "" },
+    { id: "", thumbnail: "", title: "", channelTitle: "" },
+    { id: "", thumbnail: "", title: "", channelTitle: "" },
+    { id: "", thumbnail: "", title: "", channelTitle: "" },
+    { id: "", thumbnail: "", title: "", channelTitle: "" },
+    { id: "", thumbnail: "", title: "", channelTitle: "" },
+    { id: "", thumbnail: "", title: "", channelTitle: "" },
+    { id: "", thumbnail: "", title: "", channelTitle: "" },
+    { id: "", thumbnail: "", title: "", channelTitle: "" },
+    { id: "", thumbnail: "", title: "", channelTitle: "" },
+  ],
   loading: "idle",
 };
 
@@ -32,7 +45,6 @@ export const youtubeListSlice = createSlice({
         getYoutubeList.fulfilled,
         (state, { payload }: PayloadAction<YoutubeData[]>) => {
           state.loading = "idle";
-          console.log(payload);
           state.youtubeList = payload;
         }
       )

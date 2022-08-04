@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from "app/store";
 
 import getSummonerInfo from "api/getSummonerInfo";
 import { t1Player } from "app/t1Player";
-import { getSummonerName } from "features/summonerNameSlice";
+import { getSummonerName } from "features/riot/summonerNameSlice";
 import {
   SummonerGGData,
   SummonerGGLayout,

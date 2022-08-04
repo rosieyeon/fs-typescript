@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { matchParticipants } from "features/matchList/matchDetailSlice";
+import { matchParticipants } from "features/riot/matchDetailSlice";
 import riotMatch from "services/riotMatch";
 
 interface ParticipantsDto {

@@ -5,7 +5,7 @@ import {
   matchData,
   matchParticipants,
   TeamObjectives,
-} from "features/matchList/matchDetailSlice";
+} from "features/riot/matchDetailSlice";
 import {
   MatchDetailLayout,
   MatchItemDiv,

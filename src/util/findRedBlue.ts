@@ -1,4 +1,4 @@
-import { matchParticipants } from "features/matchList/matchDetailSlice";
+import { matchParticipants } from "features/riot/matchDetailSlice";
 
 const findRedBlue = (participants: matchParticipants[]) => {
   const blue: matchParticipants[] = [];

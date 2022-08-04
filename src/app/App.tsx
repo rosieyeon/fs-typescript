@@ -1,10 +1,10 @@
-import { AppLayout, NavBar, NavBarItem } from "App.styled";
-import SummonerGG from "pages/SummonerGG";
 import React from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import Home from "./pages/Home";
-import Search from "./pages/Search";
-import Summoners from "./pages/Summoners";
+
+import Home from "../pages/Home";
+import Summoners from "../pages/Summoners";
+import SummonerGG from "pages/SummonerGG";
+import { AppLayout, NavBar, NavBarItem } from "./App.styled";
 
 function App() {
   return (
@@ -18,7 +18,6 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="summoners" element={<Summoners />} />
           <Route path=":summonerName" element={<SummonerGG />} />
-          <Route path="search" element={<Search />} />
         </Routes>
       </Router>
     </AppLayout>

@@ -1,8 +1,6 @@
 import React from "react";
-import { YoutubeData } from "features/youtubeList/youtubeListSlice";
+import { YoutubeData } from "features/youtube/youtubeListSlice";
 import {
-  // YoutubeItemChannel,
-  // YoutubeItemContent,
   YoutubeItemLayout,
   YoutubeItemThumbnail,
   YoutubeItemTitle,

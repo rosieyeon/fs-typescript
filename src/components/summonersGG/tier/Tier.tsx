@@ -6,7 +6,7 @@ import getSummonerTier from "api/getSummonerTier";
 import TierItem from "./TierItem";
 import { TierBox, TierLayout, TierQueueType } from "./Tier.styled";
 import { useState } from "react";
-import { SummonerTier } from "features/summonersList/summonerTierSlice";
+import { SummonerTier } from "features/riot/summonerTierSlice";
 
 const Tier = () => {
   const { tierData, loading, error } = useAppSelector(

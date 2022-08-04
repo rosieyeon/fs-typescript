@@ -1,6 +1,6 @@
 // import getPlayerTier from "api/getPlayerTier";
 import { SummonerTierDto } from "api/getSummonerTier";
-import { matchParticipants } from "features/matchList/matchDetailSlice";
+import { matchParticipants } from "features/riot/matchDetailSlice";
 import React, { useEffect, useState } from "react";
 import riot from "services/riot";
 import toCapitalize from "util/toCapitalize";

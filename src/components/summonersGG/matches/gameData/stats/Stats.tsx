@@ -1,5 +1,5 @@
 import React from "react";
-import { matchParticipants } from "features/matchList/matchDetailSlice";
+import { matchParticipants } from "features/riot/matchDetailSlice";
 import toCapitalize from "util/toCapitalize";
 import { StatsLane, StatsLayout, StatsPKill, StatsStats } from "./Stats.styled";
 

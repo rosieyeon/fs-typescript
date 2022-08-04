@@ -51,7 +51,6 @@ export const HomeLoading = styled.div`
   padding: 60px 0;
 `;
 export const HomeLoadingSkeleton = styled.div`
-  /* ${({ theme }) => theme.skeletonGradation} */
   width: 100%;
 `;
 export const HomeLoadingImg = styled.div`

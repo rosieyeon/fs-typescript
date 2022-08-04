@@ -1,5 +1,5 @@
 import React from "react";
-import { matchParticipants } from "features/matchList/matchDetailSlice";
+import { matchParticipants } from "features/riot/matchDetailSlice";
 import { RIOT_CHAMP_IMG } from "services/cdnValue";
 import {
   Participant,

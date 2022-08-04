@@ -1,5 +1,5 @@
 import React from "react";
-import { SummonerTier } from "features/summonersList/summonerTierSlice";
+import { SummonerTier } from "features/riot/summonerTierSlice";
 import {
   TierImg,
   TierImgBox,

@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useCallback, useState } from "react";
 
-import YoutubeItem from "components/Youtube/YoutubeItem";
+import YoutubeItem from "components/youtube/YoutubeItem";
 import getYoutubeList from "api/getYoutubeList";
 import { useAppDispatch, useAppSelector } from "app/store";
 import {

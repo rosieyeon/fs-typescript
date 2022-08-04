@@ -5,7 +5,7 @@ import Perks from "./perks/Perks";
 import KDA from "./kda/KDA";
 import Stats from "./stats/Stats";
 
-import { matchParticipants } from "features/matchList/matchDetailSlice";
+import { matchParticipants } from "features/riot/matchDetailSlice";
 import { GameDataLayout } from "./GameData.styled";
 
 interface dataProps {

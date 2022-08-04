@@ -11,22 +11,15 @@ import {
 
 const Matches = () => {
   const { summonerData } = useAppSelector((state) => state.summonerInfo);
-  // console.log(summonerData.puuid);
   const { matchDetail, loading, error } = useAppSelector(
     (state) => state.matchDetails
   );
-  console.log("?????");
+
   const dispatch = useAppDispatch();
   useEffect(() => {
     if (summonerData.puuid) {
       dispatch(getMatchData(summonerData.puuid));
     }
-    console.log("RENDER");
-    // dispatch(
-    //   getMatchData(
-    //     "T64V8V1oB4M9AeTyQ3BPqxMlOpxo3jV8_8YKtVIyDEZ3T5Bmt-clibT4IyNr_D9XakNeY9i8Fcr5Rw"
-    //   )
-    // );
   }, []);
 
   return (

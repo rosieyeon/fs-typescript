@@ -7,14 +7,13 @@ import MostChampItem from "./MostChampItem";
 const MostChamp = () => {
   const { summonerData } = useAppSelector((state) => state.summonerInfo);
   const [mostChampList, setMostChampList] = useState<t1PlayChampProps>();
-  console.log(summonerData.name, mostChampList);
+  // console.log(summonerData.name, mostChampList);
 
   useEffect(() => {
     for (let i = 0; i < 5; i++) {
-      console.log(summonerData.name, t1PlayerChamp[i].name);
+      // console.log(summonerData.name, t1PlayerChamp[i].name);
       if (summonerData.name === t1PlayerChamp[i].name) {
         setMostChampList(t1PlayerChamp[i]);
-        console.log("??");
       }
     }
   }, []);

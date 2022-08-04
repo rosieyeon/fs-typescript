@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { matchParticipants } from "features/riot/matchDetailSlice";
-import riotMatch from "services/riotMatch";
+import riotMatch from "services/riotMatchAPI";
 
 interface ParticipantsDto {
   assists: number;
@@ -132,14 +132,14 @@ interface PerksSelectionsDto {
 }
 
 const getMatchData = createAsyncThunk(
-  "matchId/getMatchId",
+  "matchData/getMatchData",
   async (puuId: string, { rejectWithValue }) => {
     try {
       const matchIdsResult = await riotMatch.get(
         `/match/v5/matches/by-puuid/${puuId}/ids`,
         {
           params: {
-            count: 9,
+            count: 15,
           },
         }
       );

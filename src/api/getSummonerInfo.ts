@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import riot from "services/riot";
+import riot from "services/riotAPI";
 
 const getSummonerInfo = createAsyncThunk(
   "sumonnerInfo/getSummonerInfo",
@@ -8,7 +8,6 @@ const getSummonerInfo = createAsyncThunk(
       const response = await riot.get(
         `/summoner/v4/summoners/by-name/${summonerName}?api_key=${process.env.REACT_APP_RIOT_API_KEY}`
       );
-      // console.log(response);
       return {
         id: response.data.id,
         accountId: response.data.accountId,

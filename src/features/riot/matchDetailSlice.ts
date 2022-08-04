@@ -10,7 +10,7 @@ export interface matchData {
 }
 
 export interface Teams {
-  bans: [];
+  bans: string[];
   objectives: TeamObjectives;
   teamId: number;
   win: boolean;

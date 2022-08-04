@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import youtube from "services/youtube";
+import youtube from "services/youtubeAPI";
 
 export interface YoutubeDto {
   kind: string;

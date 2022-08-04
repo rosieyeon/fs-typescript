@@ -23,9 +23,10 @@ const Tier = () => {
     if (summonerData.id) {
       dispatch(getSummonerTier(summonerData.id));
     }
-  }, [summonerData.id]);
+  }, []);
 
   useEffect(() => {
+    // TODO tierData.filter
     if (tierData) {
       for (let i = 0; i < tierData.length; i++) {
         if (tierData[i].queueType === "RANKED_SOLO_5x5") {
@@ -36,7 +37,7 @@ const Tier = () => {
         }
       }
     }
-  }, [tierData]);
+  }, []);
 
   return (
     <TierLayout>

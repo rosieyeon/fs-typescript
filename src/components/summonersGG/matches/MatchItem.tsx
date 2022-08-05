@@ -51,7 +51,7 @@ const MatchItem = (data: matchIDProps) => {
     let goldEarnedB = 0;
     let goldEarnedR = 0;
     for (let i = 0; i < 10; i++) {
-      if (match.participants[i].summonerName == summonerData.name) {
+      if (match.participants[i].summonerName === summonerData.name) {
         setMyData(match.participants[i]);
         if (i < 5) {
           setMyTeam('blue');
@@ -77,7 +77,7 @@ const MatchItem = (data: matchIDProps) => {
       win: match.teams[1].win,
     };
     setTeamData([blueside, redside]);
-  }, []);
+  }, [match.participants, match.teams, summonerData.name]);
 
   useEffect(() => {
     if (myData) {
@@ -99,7 +99,7 @@ const MatchItem = (data: matchIDProps) => {
         }
       }
     }
-  }, [myData]);
+  }, [match.teams, myData]);
 
   useEffect(() => {
     if (myData && objectives) {
@@ -107,7 +107,7 @@ const MatchItem = (data: matchIDProps) => {
         ((myData.kills + myData.assists) / objectives.champion.kills) * 100
       );
     }
-  }, [objectives]);
+  }, [myData, objectives]);
 
   const onClickMore = () => {
     setIsOpen(!isOpen);

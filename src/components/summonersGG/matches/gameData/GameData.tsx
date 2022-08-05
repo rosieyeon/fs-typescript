@@ -22,7 +22,7 @@ const GameData = (data: dataProps) => {
     const spells = [];
     spells.push(gameData.spell1, gameData.spell2);
     setSpellsList(spells);
-  }, []);
+  }, [gameData.spell1, gameData.spell2]);
 
   return (
     <GameDataLayout>

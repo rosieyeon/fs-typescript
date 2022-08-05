@@ -56,7 +56,7 @@ const MatchDetails = (data: matchProps) => {
     setMaxDagameTaken(maxDmgTknVal);
 
     setRedBlue(findRedBlue(match.participants));
-  }, []);
+  }, [match.participants]);
 
   useEffect(() => {
     if (redBlue) {
@@ -66,7 +66,7 @@ const MatchDetails = (data: matchProps) => {
         setTeamData(redBlue.red);
       }
     }
-  }, [redBlue]);
+  }, [data.myTeam, redBlue]);
 
   const getTotalKills = () => {
     if (data.win === match.teams[0].win) {

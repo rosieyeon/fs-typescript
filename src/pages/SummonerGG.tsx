@@ -29,7 +29,7 @@ const SummonerGG = () => {
         pathname.substr(11) === lolplayer.player &&
         dispatch(getSummonerInfo(lolplayer.name))
     );
-  }, []);
+  }, [dispatch, pathname]);
 
   useEffect(() => {
     dispatch(
@@ -38,7 +38,7 @@ const SummonerGG = () => {
         name: `${summonerData.name}`,
       })
     );
-  }, [summonerData.name]);
+  }, [dispatch, pathname, summonerData.name]);
 
   return (
     <>

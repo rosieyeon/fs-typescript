@@ -68,7 +68,7 @@ const TableRow = (data: rowDataProps) => {
     if (data.summoner === matchData.summonerName) {
       setMe(true);
     }
-  }, []);
+  }, [data.summoner, matchData]);
   // console.log(itemsList);
 
   const getPlayerTier = async (summonerId: string) => {

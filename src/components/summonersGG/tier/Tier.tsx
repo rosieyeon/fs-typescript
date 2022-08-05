@@ -23,7 +23,7 @@ const Tier = () => {
     if (summonerData.id) {
       dispatch(getSummonerTier(summonerData.id));
     }
-  }, []);
+  }, [dispatch, summonerData.id]);
 
   useEffect(() => {
     if (tierData) {

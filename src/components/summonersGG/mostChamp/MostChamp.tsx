@@ -16,7 +16,7 @@ const MostChamp = () => {
         setMostChampList(t1PlayerChamp[i]);
       }
     }
-  }, []);
+  }, [summonerData.name]);
 
   return (
     <MostChampLayout>

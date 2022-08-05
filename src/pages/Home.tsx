@@ -47,7 +47,7 @@ const Home: React.FC = () => {
 
   const onKeyPress = (event: { key: string }) => {
     // TODO prettier '' eslilnt 적용 확인
-    if (event.key == 'Enter') {
+    if (event.key === 'Enter') {
       onClickApply();
     }
   };

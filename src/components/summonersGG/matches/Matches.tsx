@@ -20,7 +20,7 @@ const Matches = () => {
     if (summonerData.puuid) {
       dispatch(getMatchData(summonerData.puuid));
     }
-  }, []);
+  }, [dispatch, summonerData.puuid]);
 
   return (
     <MatchesLayout>

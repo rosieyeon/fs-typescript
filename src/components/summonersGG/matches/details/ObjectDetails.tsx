@@ -76,7 +76,7 @@ const ObjectDetails = (data: objProps) => {
       { name: 'Total Kill', mine: myTotalKills, yours: yourTotalKills },
       { name: 'Total Gold', mine: myTotalGold, yours: yourTotalGold },
     ]);
-  }, []);
+  }, [data.win, teams]);
 
   return (
     <ObjectDetailsLayout>

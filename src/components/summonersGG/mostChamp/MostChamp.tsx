@@ -1,8 +1,8 @@
-import { useAppSelector } from "app/store";
-import { t1PlayChampProps, t1PlayerChamp } from "app/t1Player";
-import React, { useEffect, useState } from "react";
-import { MostChampHeader, MostChampLayout } from "./MostChamp.styled";
-import MostChampItem from "./MostChampItem";
+import { useAppSelector } from 'app/store';
+import { t1PlayChampProps, t1PlayerChamp } from 'app/t1Player';
+import React, { useEffect, useState } from 'react';
+import { MostChampHeader, MostChampLayout } from './MostChamp.styled';
+import MostChampItem from './MostChampItem';
 
 const MostChamp = () => {
   const { summonerData } = useAppSelector((state) => state.summonerInfo);

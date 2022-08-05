@@ -1,7 +1,7 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-import { t1Player } from "app/t1Player";
+import { t1Player } from 'app/t1Player';
 import {
   SummonersBox,
   SummonersImg,
@@ -9,8 +9,8 @@ import {
   SummonersList,
   SummonersLogo,
   SummonersName,
-} from "./Summoners.styled";
-import toCapitalize from "utils/toCapitalize";
+} from './Summoners.styled';
+import toCapitalize from 'utils/toCapitalize';
 
 const Summoners: React.FC = () => {
   const navigate = useNavigate();

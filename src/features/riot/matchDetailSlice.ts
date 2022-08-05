@@ -1,5 +1,5 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import getMatchData from "api/getMatchData";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import getMatchData from 'api/getMatchData';
 
 // TODO 대문자로 eslint?
 export interface matchData {
@@ -74,7 +74,7 @@ export interface matchParticipants {
 
 interface matchDetailState {
   matchDetail: matchData[];
-  loading: "idle" | "pending";
+  loading: 'idle' | 'pending';
   error?: string;
 }
 
@@ -87,29 +87,29 @@ const initialState: matchDetailState = {
   //   teams: [],
   //   // participantsId: [],
   // },
-  loading: "idle",
+  loading: 'idle',
 };
 
 export const matchDetailSlice = createSlice({
-  name: "matchDetail",
+  name: 'matchDetail',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(getMatchData.pending, (state) => {
-        state.loading = "pending";
+        state.loading = 'pending';
         // console.log("pending");
       })
       .addCase(
         getMatchData.fulfilled,
         (state, { payload }: PayloadAction<matchData[]>) => {
-          state.loading = "idle";
+          state.loading = 'idle';
           // console.log(payload);
           state.matchDetail = payload;
         }
       )
       .addCase(getMatchData.rejected, (state, { error }) => {
-        state.loading = "idle";
+        state.loading = 'idle';
         state.error = error.message;
         // console.log("error");
       });

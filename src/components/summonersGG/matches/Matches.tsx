@@ -1,13 +1,13 @@
-import React, { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "app/store";
+import React, { useEffect } from 'react';
+import { useAppDispatch, useAppSelector } from 'app/store';
 
-import MatchItem from "./MatchItem";
-import getMatchData from "api/getMatchData";
+import MatchItem from './MatchItem';
+import getMatchData from 'api/getMatchData';
 import {
   LoadingSkeleton,
   MatchesContent,
   MatchesLayout,
-} from "./Matches.styled";
+} from './Matches.styled';
 
 const Matches = () => {
   const { summonerData } = useAppSelector((state) => state.summonerInfo);
@@ -24,7 +24,7 @@ const Matches = () => {
 
   return (
     <MatchesLayout>
-      {loading === "pending" ? (
+      {loading === 'pending' ? (
         <LoadingSkeleton>LOADING</LoadingSkeleton>
       ) : error ? (
         <LoadingSkeleton>ERROR</LoadingSkeleton>

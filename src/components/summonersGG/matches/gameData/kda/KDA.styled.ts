@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const KDALayout = styled.div<{ winlose: boolean }>`
   display: flex;
@@ -12,7 +12,7 @@ export const KDALayout = styled.div<{ winlose: boolean }>`
 
   border-right-width: 1px;
   border-right-style: solid;
-  border-right-color: ${(props) => (props.winlose ? "#2f436e" : "#703C47")};
+  border-right-color: ${(props) => (props.winlose ? '#2f436e' : '#703C47')};
 `;
 export const KDACount = styled.div`
   color: #7b7a8e;

@@ -1,12 +1,12 @@
-import React from "react";
-import { RIOT_OBJ } from "services/cdnValue";
-import { sortObjProps } from "../ObjectDetails";
+import React from 'react';
+import { RIOT_OBJ } from 'services/cdnValue';
+import { sortObjProps } from '../ObjectDetails';
 import {
   ObjectDataContent,
   ObjectDataImg,
   ObjectDataLayout,
   ObjectDataTxt,
-} from "./ObjectData.styled";
+} from './ObjectData.styled';
 
 interface objProps {
   data: sortObjProps[];
@@ -16,9 +16,9 @@ const ObjectData = (data: objProps) => {
   const objectives = data.data;
   const setColor = (win: boolean) => {
     if (win) {
-      return "";
+      return '';
     } else {
-      return "-r";
+      return '-r';
     }
   };
   return (

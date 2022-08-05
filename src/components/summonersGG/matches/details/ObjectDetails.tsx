@@ -1,10 +1,10 @@
-import React from "react";
-import { useState } from "react";
-import { useEffect } from "react";
-import { teamProps } from "../MatchItem";
-import ObjBar from "./objectData/ObjBar";
-import ObjectData from "./objectData/ObjectData";
-import { ObjectDetailsLayout } from "./ObjectDetails.styled";
+import React from 'react';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import { teamProps } from '../MatchItem';
+import ObjBar from './objectData/ObjBar';
+import ObjectData from './objectData/ObjectData';
+import { ObjectDetailsLayout } from './ObjectDetails.styled';
 
 interface objProps {
   data: teamProps[];
@@ -38,13 +38,13 @@ const ObjectDetails = (data: objProps) => {
 
     for (let i = 0; i < 2; i++) {
       if (teams[i].win === data.win) {
-        const baron = { name: "baron", kills: teams[i].objectives.baron.kills };
+        const baron = { name: 'baron', kills: teams[i].objectives.baron.kills };
         const dragon = {
-          name: "dragon",
+          name: 'dragon',
           kills: teams[i].objectives.dragon.kills,
         };
         const tower = {
-          name: "tower",
+          name: 'tower',
           kills: teams[i].objectives.tower.kills,
         };
         mine.push(baron, dragon, tower);
@@ -54,15 +54,15 @@ const ObjectDetails = (data: objProps) => {
         myTotalGold = teams[i].goldEarned;
       } else {
         const baron = {
-          name: "baron",
+          name: 'baron',
           kills: teams[i].objectives.baron.kills,
         };
         const dragon = {
-          name: "dragon",
+          name: 'dragon',
           kills: teams[i].objectives.dragon.kills,
         };
         const tower = {
-          name: "tower",
+          name: 'tower',
           kills: teams[i].objectives.tower.kills,
         };
         notMine.push(baron, dragon, tower);
@@ -73,8 +73,8 @@ const ObjectDetails = (data: objProps) => {
       }
     }
     setGraphData([
-      { name: "Total Kill", mine: myTotalKills, yours: yourTotalKills },
-      { name: "Total Gold", mine: myTotalGold, yours: yourTotalGold },
+      { name: 'Total Kill', mine: myTotalKills, yours: yourTotalKills },
+      { name: 'Total Gold', mine: myTotalGold, yours: yourTotalGold },
     ]);
   }, []);
 

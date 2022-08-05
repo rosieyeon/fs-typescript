@@ -1,6 +1,6 @@
-import React from "react";
-import { RIOT_CDN } from "services/cdnValue";
-import { ItemsImg, ItemsLayout, ItemsSlot } from "./Items.styled";
+import React from 'react';
+import { RIOT_CDN } from 'services/cdnValue';
+import { ItemsImg, ItemsLayout, ItemsSlot } from './Items.styled';
 
 interface itemProps {
   items: string[];
@@ -12,7 +12,7 @@ const Items = (data: itemProps) => {
   return (
     <ItemsLayout>
       {itemsList.map((item, idx) =>
-        item !== "0" ? (
+        item !== '0' ? (
           <ItemsSlot key={idx} winlose={data.win}>
             <ItemsImg src={`${RIOT_CDN}/item/${item}.png`} />
           </ItemsSlot>

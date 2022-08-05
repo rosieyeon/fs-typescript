@@ -1,5 +1,5 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import getSummonerTier from "api/getSummonerTier";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import getSummonerTier from 'api/getSummonerTier';
 
 export interface SummonerTier {
   queueType: string;
@@ -13,33 +13,33 @@ export interface SummonerTier {
 
 interface SummonerTierState {
   tierData: SummonerTier[];
-  loading: "idle" | "pending";
+  loading: 'idle' | 'pending';
   error?: string;
 }
 
 const initialState: SummonerTierState = {
   tierData: [],
-  loading: "idle",
+  loading: 'idle',
 };
 
 export const summonerTierSlice = createSlice({
-  name: "summonerTier",
+  name: 'summonerTier',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(getSummonerTier.pending, (state) => {
-        state.loading = "pending";
+        state.loading = 'pending';
       })
       .addCase(
         getSummonerTier.fulfilled,
         (state, { payload }: PayloadAction<SummonerTier[]>) => {
-          state.loading = "idle";
+          state.loading = 'idle';
           state.tierData = payload;
         }
       )
       .addCase(getSummonerTier.rejected, (state, { error }) => {
-        state.loading = "idle";
+        state.loading = 'idle';
         state.error = error.message;
       });
   },

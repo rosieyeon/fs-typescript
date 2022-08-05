@@ -1,15 +1,15 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const ObjBarLayout = styled.div`
   /* position: relative; */
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
 `;
 
 export const ObjBarBackground = styled.div<{ win: boolean }>`
   width: 405px;
   height: 16px;
   background-color: brown;
-  background-color: ${(props) => (props.win ? "#e84057" : "#5383E8")};
+  background-color: ${(props) => (props.win ? '#e84057' : '#5383E8')};
   margin: 8px 0px;
 `;
 
@@ -19,7 +19,7 @@ interface progressProps {
 }
 export const ObjBarProgress = styled.div<progressProps>`
   width: ${(props) => props.per * 100}%;
-  background-color: ${(props) => (props.win ? "#5383E8" : "#e84057")};
+  background-color: ${(props) => (props.win ? '#5383E8' : '#e84057')};
   margin-right: 50%;
 `;
 export const ObjBarTextBox = styled.div`

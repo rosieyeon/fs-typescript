@@ -1,6 +1,6 @@
-import React from "react";
-import { RIOT_CDN } from "services/cdnValue";
-import { Perk, PerksBox, PerksLayout, Spell, SpellBox } from "./Perks.styled";
+import React from 'react';
+import { RIOT_CDN } from 'services/cdnValue';
+import { Perk, PerksBox, PerksLayout, Spell, SpellBox } from './Perks.styled';
 
 interface perksProps {
   spells: number[];

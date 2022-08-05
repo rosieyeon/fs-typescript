@@ -1,5 +1,5 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import getSummonerInfo from "api/getSummonerInfo";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import getSummonerInfo from 'api/getSummonerInfo';
 
 export interface Summoner {
   accountId: string;
@@ -13,41 +13,41 @@ export interface Summoner {
 
 interface summonerState {
   summonerData: Summoner;
-  loading: "idle" | "pending";
+  loading: 'idle' | 'pending';
   error?: string;
 }
 
 const initialState: summonerState = {
   summonerData: {
-    accountId: "",
-    id: "",
-    name: "",
+    accountId: '',
+    id: '',
+    name: '',
     profileIconId: 0,
-    puuid: "",
+    puuid: '',
     revisionDate: 0,
     summonerLevel: 0,
   },
-  loading: "idle",
+  loading: 'idle',
 };
 
 export const summonerInfoSlice = createSlice({
-  name: "sumonnerInfo",
+  name: 'sumonnerInfo',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(getSummonerInfo.pending, (state) => {
-        state.loading = "pending";
+        state.loading = 'pending';
       })
       .addCase(
         getSummonerInfo.fulfilled,
         (state, { payload }: PayloadAction<Summoner>) => {
-          state.loading = "idle";
+          state.loading = 'idle';
           state.summonerData = payload;
         }
       )
       .addCase(getSummonerInfo.rejected, (state, { error }) => {
-        state.loading = "idle";
+        state.loading = 'idle';
         state.error = error.message;
       });
   },

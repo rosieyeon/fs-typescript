@@ -1,5 +1,5 @@
-import React from "react";
-import { SummonerTier } from "features/riot/summonerTierSlice";
+import React from 'react';
+import { SummonerTier } from 'features/riot/summonerTierSlice';
 import {
   TierImg,
   TierImgBox,
@@ -10,9 +10,9 @@ import {
   TierWinBox,
   TierWinLose,
   TierWinRates,
-} from "./TierItem.styled";
-import toCapitalize from "utils/toCapitalize";
-import { RIOT_RANK_EMBLEM } from "services/cdnValue";
+} from './TierItem.styled';
+import toCapitalize from 'utils/toCapitalize';
+import { RIOT_RANK_EMBLEM } from 'services/cdnValue';
 
 interface TierProps {
   tierInfo: SummonerTier;
@@ -31,11 +31,11 @@ const TierItem = ({ tierInfo }: TierProps) => {
       <TierRankBox>
         <TierTier>{toCapitalize(tierInfo.tier)}</TierTier>
         {tierInfo.rank ===
-          ("IRON" || "SILVER" || "GOLD" || "PLATINUM" || "DIAMOND") && (
+          ('IRON' || 'SILVER' || 'GOLD' || 'PLATINUM' || 'DIAMOND') && (
           <TierTier> {tierInfo.rank}</TierTier>
         )}
         <TierPoint>
-          {tierInfo.leaguePoints.toLocaleString("ko-KR")} LP
+          {tierInfo.leaguePoints.toLocaleString('ko-KR')} LP
         </TierPoint>
       </TierRankBox>
       <TierWinBox>

@@ -1,10 +1,10 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const ObjectDataLayout = styled.div`
   align-items: center;
   display: flex;
   gap: 16px;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
 `;
 export const ObjectDataContent = styled.div``;
 export const ObjectDataImg = styled.img`

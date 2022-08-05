@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface User {
   player: string;
@@ -11,13 +11,13 @@ interface PlayerState {
 
 const initialState: PlayerState = {
   user: {
-    player: "",
-    name: "",
+    player: '',
+    name: '',
   },
 };
 
 export const summonerNameSlice = createSlice({
-  name: "summonerName",
+  name: 'summonerName',
   initialState,
   reducers: {
     getSummonerName: (state, { payload }: PayloadAction<User>) => {

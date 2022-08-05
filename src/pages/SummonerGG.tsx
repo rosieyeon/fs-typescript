@@ -1,19 +1,19 @@
-import React, { useEffect } from "react";
-import { useLocation } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "app/store";
+import React, { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from 'app/store';
 
-import getSummonerInfo from "api/getSummonerInfo";
-import { t1Player } from "app/t1Player";
-import { getSummonerName } from "features/riot/summonerNameSlice";
+import getSummonerInfo from 'api/getSummonerInfo';
+import { t1Player } from 'app/t1Player';
+import { getSummonerName } from 'features/riot/summonerNameSlice';
 import {
   SummonerGGData,
   SummonerGGLayout,
   SummonerGGStatistics,
-} from "./SummonerGG.styled";
-import Profile from "components/summonersGG/profile/Profile";
-import Tier from "components/summonersGG/tier/Tier";
-import Matches from "components/summonersGG/matches/Matches";
-import MostChamp from "components/summonersGG/mostChamp/MostChamp";
+} from './SummonerGG.styled';
+import Profile from 'components/summonersGG/profile/Profile';
+import Tier from 'components/summonersGG/tier/Tier';
+import Matches from 'components/summonersGG/matches/Matches';
+import MostChamp from 'components/summonersGG/mostChamp/MostChamp';
 
 const SummonerGG = () => {
   const { summonerData, loading, error } = useAppSelector(
@@ -42,10 +42,10 @@ const SummonerGG = () => {
 
   return (
     <>
-      {loading === "pending" ? (
-        "LOADING"
+      {loading === 'pending' ? (
+        'LOADING'
       ) : error ? (
-        "ERROR"
+        'ERROR'
       ) : (
         <SummonerGGLayout>
           <Profile />

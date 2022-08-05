@@ -1,9 +1,9 @@
-import React from "react";
-import { useEffect, useCallback, useState } from "react";
+import React from 'react';
+import { useEffect, useCallback, useState } from 'react';
 
-import YoutubeItem from "components/youtube/YoutubeItem";
-import getYoutubeList from "api/getYoutubeList";
-import { useAppDispatch, useAppSelector } from "app/store";
+import YoutubeItem from 'components/youtube/YoutubeItem';
+import getYoutubeList from 'api/getYoutubeList';
+import { useAppDispatch, useAppSelector } from 'app/store';
 import {
   HomeError,
   HomeLayout,
@@ -16,11 +16,11 @@ import {
   HomeSearchBar,
   HomeSearchButton,
   HomeYoutubeItem,
-} from "./Home.styled";
+} from './Home.styled';
 
 const Home: React.FC = () => {
-  const [keyword, setKeyword] = useState("");
-  const [query, setQuery] = useState("");
+  const [keyword, setKeyword] = useState('');
+  const [query, setQuery] = useState('');
   const { youtubeList, loading, error } = useAppSelector(
     (state) => state.youtubeList
   );
@@ -40,6 +40,7 @@ const Home: React.FC = () => {
     },
     []
   );
+  const hihello = 0;
 
   const onClickApply = () => {
     setQuery(keyword);
@@ -48,7 +49,7 @@ const Home: React.FC = () => {
 `;
   const onKeyPress = (event: { key: string }) => {
     // TODO prettier '' eslilnt 적용 확인
-    if (event.key == "Enter") {
+    if (event.key == 'Enter') {
       onClickApply();
     }
   };
@@ -64,7 +65,7 @@ const Home: React.FC = () => {
         />
         <HomeSearchButton onClick={onClickApply}>SEARCH</HomeSearchButton>
       </HomeSearch>
-      {loading === "pending" ? (
+      {loading === 'pending' ? (
         <HomeLoading>
           {youtubeList.map((youtube, index) => (
             <HomeLoadingSkeleton key={index}>

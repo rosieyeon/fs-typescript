@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 
-import { useAppSelector } from "app/store";
+import { useAppSelector } from 'app/store';
 import {
   matchData,
   matchParticipants,
   TeamObjectives,
-} from "features/riot/matchDetailSlice";
+} from 'features/riot/matchDetailSlice';
 import {
   MatchDetailLayout,
   MatchItemDiv,
@@ -13,14 +13,14 @@ import {
   MatchItemLayout,
   MatchItemMore,
   MatchItemMoreBtn,
-} from "./MatchItem.styled";
-import MatchInfo from "./matchInfo/MatchInfo";
-import GameData from "./gameData/GameData";
-import Items from "./items/Items";
-import Participants from "./participants/Participants";
-import { ARROW_DOWN } from "services/cdnValue";
-import MatchDetails from "./details/MatchDetails";
-import ObjectDetails from "./details/ObjectDetails";
+} from './MatchItem.styled';
+import MatchInfo from './matchInfo/MatchInfo';
+import GameData from './gameData/GameData';
+import Items from './items/Items';
+import Participants from './participants/Participants';
+import { ARROW_DOWN } from 'services/cdnValue';
+import MatchDetails from './details/MatchDetails';
+import ObjectDetails from './details/ObjectDetails';
 
 interface matchIDProps {
   match: matchData;
@@ -39,8 +39,8 @@ const MatchItem = (data: matchIDProps) => {
   const match = data.match;
   const [isOpen, setIsOpen] = useState(false);
   const [teamData, setTeamData] = useState<teamProps[]>();
-  const [myTeam, setMyTeam] = useState("red");
-  const [notMyTeam, setNotMyTeam] = useState("blue");
+  const [myTeam, setMyTeam] = useState('red');
+  const [notMyTeam, setNotMyTeam] = useState('blue');
   const [myData, setMyData] = useState<matchParticipants>();
   const [objectives, setObjectives] = useState<TeamObjectives>();
   const [itemsList, setItemsList] = useState<string[]>([]);
@@ -54,8 +54,8 @@ const MatchItem = (data: matchIDProps) => {
       if (match.participants[i].summonerName == summonerData.name) {
         setMyData(match.participants[i]);
         if (i < 5) {
-          setMyTeam("blue");
-          setNotMyTeam("red");
+          setMyTeam('blue');
+          setNotMyTeam('red');
         }
       }
       if (i < 5) {
@@ -65,13 +65,13 @@ const MatchItem = (data: matchIDProps) => {
       }
     }
     const blueside = {
-      side: "blue",
+      side: 'blue',
       objectives: match.teams[0].objectives,
       goldEarned: goldEarnedB,
       win: match.teams[0].win,
     };
     const redside = {
-      side: "red",
+      side: 'red',
       objectives: match.teams[1].objectives,
       goldEarned: goldEarnedR,
       win: match.teams[1].win,

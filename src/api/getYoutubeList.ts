@@ -1,5 +1,5 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import youtube from "services/youtubeAPI";
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import youtube from 'services/youtubeAPI';
 
 export interface YoutubeDto {
   kind: string;
@@ -52,18 +52,18 @@ interface YoutubeContentDetails {
 }
 
 const getYoutubeList = createAsyncThunk(
-  "youtube/getYoutubeList",
+  'youtube/getYoutubeList',
   async (query: string, { rejectWithValue }) => {
     try {
-      const response = await youtube.get("/search", {
+      const response = await youtube.get('/search', {
         params: {
-          part: "snippet",
-          type: "video",
+          part: 'snippet',
+          type: 'video',
           q: query,
           maxResults: 20,
-          regionCode: "KR",
-          order: "date",
-          channelId: "UCJprx3bX49vNl6Bcw01Cwfg",
+          regionCode: 'KR',
+          order: 'date',
+          channelId: 'UCJprx3bX49vNl6Bcw01Cwfg',
         },
       });
       // console.log(response);
@@ -76,7 +76,7 @@ const getYoutubeList = createAsyncThunk(
         };
       });
     } catch (error) {
-      return rejectWithValue("error!");
+      return rejectWithValue('error!');
     }
   }
 );

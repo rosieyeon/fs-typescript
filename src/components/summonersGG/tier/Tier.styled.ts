@@ -1,11 +1,11 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const TierLayout = styled.div`
   width: 332px;
 `;
 
 export const TierBox = styled.div`
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   border-radius: 4px;
   background-color: #31313c;
   width: 332px;

@@ -1,5 +1,5 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import getYoutubeList from "api/getYoutubeList";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import getYoutubeList from 'api/getYoutubeList';
 
 export interface YoutubeData {
   id: string;
@@ -10,46 +10,46 @@ export interface YoutubeData {
 
 interface youtubeListState {
   youtubeList: YoutubeData[];
-  loading: "idle" | "pending";
+  loading: 'idle' | 'pending';
   error?: string;
 }
 
 const initialState: youtubeListState = {
   youtubeList: [
-    { id: "", thumbnail: "", title: "", channelTitle: "" },
-    { id: "", thumbnail: "", title: "", channelTitle: "" },
-    { id: "", thumbnail: "", title: "", channelTitle: "" },
-    { id: "", thumbnail: "", title: "", channelTitle: "" },
-    { id: "", thumbnail: "", title: "", channelTitle: "" },
-    { id: "", thumbnail: "", title: "", channelTitle: "" },
-    { id: "", thumbnail: "", title: "", channelTitle: "" },
-    { id: "", thumbnail: "", title: "", channelTitle: "" },
-    { id: "", thumbnail: "", title: "", channelTitle: "" },
-    { id: "", thumbnail: "", title: "", channelTitle: "" },
-    { id: "", thumbnail: "", title: "", channelTitle: "" },
-    { id: "", thumbnail: "", title: "", channelTitle: "" },
+    { id: '', thumbnail: '', title: '', channelTitle: '' },
+    { id: '', thumbnail: '', title: '', channelTitle: '' },
+    { id: '', thumbnail: '', title: '', channelTitle: '' },
+    { id: '', thumbnail: '', title: '', channelTitle: '' },
+    { id: '', thumbnail: '', title: '', channelTitle: '' },
+    { id: '', thumbnail: '', title: '', channelTitle: '' },
+    { id: '', thumbnail: '', title: '', channelTitle: '' },
+    { id: '', thumbnail: '', title: '', channelTitle: '' },
+    { id: '', thumbnail: '', title: '', channelTitle: '' },
+    { id: '', thumbnail: '', title: '', channelTitle: '' },
+    { id: '', thumbnail: '', title: '', channelTitle: '' },
+    { id: '', thumbnail: '', title: '', channelTitle: '' },
   ],
-  loading: "idle",
+  loading: 'idle',
 };
 
 export const youtubeListSlice = createSlice({
-  name: "youtubeList",
+  name: 'youtubeList',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(getYoutubeList.pending, (state) => {
-        state.loading = "pending";
+        state.loading = 'pending';
       })
       .addCase(
         getYoutubeList.fulfilled,
         (state, { payload }: PayloadAction<YoutubeData[]>) => {
-          state.loading = "idle";
+          state.loading = 'idle';
           state.youtubeList = payload;
         }
       )
       .addCase(getYoutubeList.rejected, (state, { error }) => {
-        state.loading = "idle";
+        state.loading = 'idle';
         state.error = error.message;
       });
   },

@@ -1,8 +1,8 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import riot from "services/riotAPI";
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import riot from 'services/riotAPI';
 
 const getSummonerInfo = createAsyncThunk(
-  "sumonnerInfo/getSummonerInfo",
+  'sumonnerInfo/getSummonerInfo',
   async (summonerName: string, { rejectWithValue }) => {
     try {
       const response = await riot.get(
@@ -18,7 +18,7 @@ const getSummonerInfo = createAsyncThunk(
         summonerLevel: response.data.summonerLevel,
       };
     } catch (error) {
-      return rejectWithValue("Fail to load response.");
+      return rejectWithValue('Fail to load response.');
     }
   }
 );

@@ -1,10 +1,10 @@
-import React from "react";
-import { RIOT_CHAMP_IMG } from "services/cdnValue";
+import React from 'react';
+import { RIOT_CHAMP_IMG } from 'services/cdnValue';
 import {
   DetailChampImg,
   DetailChampLayout,
   DetailChampLV,
-} from "./DetailChamp.styled";
+} from './DetailChamp.styled';
 
 interface champProps {
   name: string;

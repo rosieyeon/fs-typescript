@@ -1,13 +1,13 @@
-import React from "react";
-import { matchParticipants } from "features/riot/matchDetailSlice";
-import timeForToday from "utils/timeForToday";
+import React from 'react';
+import { matchParticipants } from 'features/riot/matchDetailSlice';
+import timeForToday from 'utils/timeForToday';
 import {
   MatchInfoBar,
   MatchInfoLayout,
   MatchInfoQueueType,
   MatchInfoTime,
   MatchInfoWinLose,
-} from "./MatchInfo.styled";
+} from './MatchInfo.styled';
 
 interface myDataProps {
   myData: matchParticipants;

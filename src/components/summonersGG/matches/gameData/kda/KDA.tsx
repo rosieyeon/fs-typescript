@@ -1,12 +1,12 @@
-import React from "react";
-import { matchParticipants } from "features/riot/matchDetailSlice";
+import React from 'react';
+import { matchParticipants } from 'features/riot/matchDetailSlice';
 import {
   KDACount,
   KDADeaths,
   KDAKillAssist,
   KDALayout,
   KDARatio,
-} from "./KDA.styled";
+} from './KDA.styled';
 
 interface kdaProps {
   data: matchParticipants;

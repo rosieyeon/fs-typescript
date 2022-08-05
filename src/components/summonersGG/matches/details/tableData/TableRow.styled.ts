@@ -1,15 +1,15 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 interface isMeProps {
   me: boolean;
   win: boolean;
 }
 export const DetailTR = styled.tr<isMeProps>`
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   vertical-align: middle;
   height: 41.5px;
   background-color: ${(props) =>
-    !props.me ? "" : props.win ? "#2f436e" : "#703c47"};
+    !props.me ? '' : props.win ? '#2f436e' : '#703c47'};
 `;
 export const DetailTD = styled.td`
   text-align: center;
@@ -74,7 +74,7 @@ interface graphProps {
   taken: boolean;
 }
 export const DetailDamageFill = styled.div<graphProps>`
-  background-color: ${(props) => (props.taken ? "#e84057" : "#7b7a8e")};
+  background-color: ${(props) => (props.taken ? '#e84057' : '#7b7a8e')};
   height: 6px;
   width: ${(props) => props.per}%;
 `;

@@ -1,11 +1,11 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const MostChampItemLayout = styled.div`
   display: flex;
   width: 332px;
   height: 48px;
   align-items: center;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   padding: 0 8px;
 
   background-color: #31313c;

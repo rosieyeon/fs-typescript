@@ -1,5 +1,5 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import riot from "services/riotAPI";
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import riot from 'services/riotAPI';
 
 export interface SummonerTierDto {
   freshBlood: boolean;
@@ -18,7 +18,7 @@ export interface SummonerTierDto {
 }
 
 const getSummonerTier = createAsyncThunk(
-  "summonerInfo/getSummonerTier",
+  'summonerInfo/getSummonerTier',
   async (summonerId: string, { rejectWithValue }) => {
     try {
       const response = await riot.get(
@@ -36,7 +36,7 @@ const getSummonerTier = createAsyncThunk(
         };
       });
     } catch (error) {
-      return rejectWithValue("error!");
+      return rejectWithValue('error!');
     }
   }
 );

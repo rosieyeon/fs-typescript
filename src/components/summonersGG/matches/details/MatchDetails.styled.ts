@@ -1,7 +1,7 @@
-import styled, { css } from "styled-components";
+import styled, { css } from 'styled-components';
 
 export const DetailsTable = styled.table<{ isMine: boolean }>`
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   width: 740px;
 
   ${(props) =>
@@ -28,14 +28,14 @@ export const DetailsTr = styled.tr<{ win: boolean }>`
   text-align: center;
   border-bottom-width: 1px;
   border-bottom-style: solid;
-  border-bottom-color: ${(props) => (props.win ? "#2f436e" : "#703c47")};
+  border-bottom-color: ${(props) => (props.win ? '#2f436e' : '#703c47')};
   color: #7b7a8e;
 `;
 export const DetailsTh = styled.th`
   vertical-align: middle;
 `;
 export const DetailsTBody = styled.tbody<{ win: boolean }>`
-  background-color: ${(props) => (props.win ? "#28344e" : "#593438")};
+  background-color: ${(props) => (props.win ? '#28344e' : '#593438')};
 `;
 export const DetailWinLose = styled.td`
   font-weight: bold;

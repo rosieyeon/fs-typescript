@@ -1,12 +1,12 @@
-import React from "react";
-import { useEffect } from "react";
+import React from 'react';
+import { useEffect } from 'react';
 
-import { useAppDispatch, useAppSelector } from "app/store";
-import getSummonerTier from "api/getSummonerTier";
-import TierItem from "./TierItem";
-import { TierBox, TierLayout, TierQueueType } from "./Tier.styled";
-import { useState } from "react";
-import { SummonerTier } from "features/riot/summonerTierSlice";
+import { useAppDispatch, useAppSelector } from 'app/store';
+import getSummonerTier from 'api/getSummonerTier';
+import TierItem from './TierItem';
+import { TierBox, TierLayout, TierQueueType } from './Tier.styled';
+import { useState } from 'react';
+import { SummonerTier } from 'features/riot/summonerTierSlice';
 
 const Tier = () => {
   const { tierData, loading, error } = useAppSelector(
@@ -28,20 +28,20 @@ const Tier = () => {
   useEffect(() => {
     if (tierData) {
       setSoloRank(
-        tierData.filter((data) => data.queueType === "RANKED_SOLO_5x5")[0]
+        tierData.filter((data) => data.queueType === 'RANKED_SOLO_5x5')[0]
       );
       setFlexRank(
-        tierData.filter((data) => data.queueType === "RANKED_FLEX_5x5")[0]
+        tierData.filter((data) => data.queueType === 'RANKED_FLEX_5x5')[0]
       );
     }
   }, [tierData]);
 
   return (
     <TierLayout>
-      {loading === "pending" ? (
-        "Loading"
+      {loading === 'pending' ? (
+        'Loading'
       ) : error ? (
-        "error"
+        'error'
       ) : (
         <TierLayout>
           <TierBox>

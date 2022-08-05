@@ -1,6 +1,6 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import { matchParticipants } from "features/riot/matchDetailSlice";
-import riotMatch from "services/riotMatchAPI";
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { matchParticipants } from 'features/riot/matchDetailSlice';
+import riotMatch from 'services/riotMatchAPI';
 
 interface ParticipantsDto {
   assists: number;
@@ -68,8 +68,8 @@ interface ParticipantsDto {
   profileIcon: number;
   puuid: string;
   quadraKills: number;
-  riotIdName: "";
-  riotIdTagline: "";
+  riotIdName: '';
+  riotIdTagline: '';
   role: string;
   sightWardsBoughtInGame: number;
   spell1Casts: number;
@@ -134,7 +134,7 @@ interface PerksSelectionsDto {
 // thunk 안에 있는 async 함수를 따로 만들고 createThunk를 slice에
 // 20개 넘었을때 확인 직접 만들어서 해봐
 const getMatchData = createAsyncThunk(
-  "matchData/getMatchData",
+  'matchData/getMatchData',
   async (puuId: string, { rejectWithValue }) => {
     try {
       const matchIdsResult = await riotMatch.get(
@@ -208,7 +208,7 @@ const getMatchData = createAsyncThunk(
       //all.catch all에 await
       return Promise.all(PromiseArrayResult);
     } catch (error) {
-      return rejectWithValue("error!");
+      return rejectWithValue('error!');
     }
   }
 );

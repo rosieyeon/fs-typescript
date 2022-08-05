@@ -1,12 +1,12 @@
-import React from "react";
-import { barGraphProps } from "../ObjectDetails";
+import React from 'react';
+import { barGraphProps } from '../ObjectDetails';
 import {
   ObjBarBackground,
   ObjBarLayout,
   ObjBarProgress,
   ObjBarText,
   ObjBarTextBox,
-} from "./ObjBar.styled";
+} from './ObjBar.styled';
 
 interface graphProps {
   graphData: barGraphProps[];
@@ -25,9 +25,9 @@ const ObjBar = (dataProps: graphProps) => {
             win={dataProps.win}
           >
             <ObjBarTextBox>
-              <ObjBarText>{data.mine.toLocaleString("ko-KR")}</ObjBarText>
+              <ObjBarText>{data.mine.toLocaleString('ko-KR')}</ObjBarText>
               <ObjBarText>{data.name}</ObjBarText>
-              <ObjBarText>{data.yours.toLocaleString("ko-KR")}</ObjBarText>
+              <ObjBarText>{data.yours.toLocaleString('ko-KR')}</ObjBarText>
             </ObjBarTextBox>
           </ObjBarProgress>
         </ObjBarBackground>

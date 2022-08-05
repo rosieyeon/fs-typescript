@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
-import { useAppSelector } from "app/store";
-import { RIOT_ICON } from "services/cdnValue";
+import { useAppSelector } from 'app/store';
+import { RIOT_ICON } from 'services/cdnValue';
 import {
   ProfileIcon,
   ProfileImg,
@@ -11,8 +11,8 @@ import {
   ProfileName,
   ProfilePlayer,
   ProfileText,
-} from "./Profile.styled";
-import toCapitalize from "utils/toCapitalize";
+} from './Profile.styled';
+import toCapitalize from 'utils/toCapitalize';
 
 const Profile = () => {
   const { summonerData } = useAppSelector((state) => state.summonerInfo);

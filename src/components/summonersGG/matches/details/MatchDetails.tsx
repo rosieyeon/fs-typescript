@@ -1,7 +1,7 @@
-import { matchData, matchParticipants } from "features/riot/matchDetailSlice";
-import React, { useEffect, useState } from "react";
-import findRedBlue from "utils/findRedBlue";
-import toCapitalize from "utils/toCapitalize";
+import { matchData, matchParticipants } from 'features/riot/matchDetailSlice';
+import React, { useEffect, useState } from 'react';
+import findRedBlue from 'utils/findRedBlue';
+import toCapitalize from 'utils/toCapitalize';
 import {
   DetailsTable,
   DetailsTBody,
@@ -9,8 +9,8 @@ import {
   DetailsThead,
   DetailsTr,
   DetailWinLose,
-} from "./MatchDetails.styled";
-import TableRow from "./tableData/TableRow";
+} from './MatchDetails.styled';
+import TableRow from './tableData/TableRow';
 
 interface matchProps {
   myData: matchParticipants;
@@ -24,7 +24,7 @@ interface redBlueProps {
   blue: matchParticipants[];
   red: matchParticipants[];
 }
-const tableHead = ["KDA", "Damage", "Wards", "CS", "Item"];
+const tableHead = ['KDA', 'Damage', 'Wards', 'CS', 'Item'];
 
 const MatchDetails = (data: matchProps) => {
   const match = data.gameData;
@@ -37,9 +37,9 @@ const MatchDetails = (data: matchProps) => {
 
   const findWinLose = (win: boolean) => {
     if (win) {
-      return "Victory";
+      return 'Victory';
     } else {
-      return "Defeat";
+      return 'Defeat';
     }
   };
 
@@ -60,7 +60,7 @@ const MatchDetails = (data: matchProps) => {
 
   useEffect(() => {
     if (redBlue) {
-      if (data.myTeam == "blue") {
+      if (data.myTeam == 'blue') {
         setTeamData(redBlue.blue);
       } else {
         setTeamData(redBlue.red);

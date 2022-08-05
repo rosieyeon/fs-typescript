@@ -1,14 +1,14 @@
-import React from "react";
-import { matchParticipants } from "features/riot/matchDetailSlice";
-import { RIOT_CHAMP_IMG } from "services/cdnValue";
+import React from 'react';
+import { matchParticipants } from 'features/riot/matchDetailSlice';
+import { RIOT_CHAMP_IMG } from 'services/cdnValue';
 import {
   Participant,
   ParticipantImg,
   ParticipantName,
   ParticipantsLayout,
   ParticipantTeam,
-} from "./Participants.styled";
-import findRedBlue from "utils/findRedBlue";
+} from './Participants.styled';
+import findRedBlue from 'utils/findRedBlue';
 
 interface partiProps {
   participants: matchParticipants[];

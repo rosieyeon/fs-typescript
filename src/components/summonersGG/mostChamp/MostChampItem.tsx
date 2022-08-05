@@ -1,7 +1,7 @@
-import { mostChampData } from "app/t1Player";
-import React from "react";
+import { mostChampData } from 'app/t1Player';
+import React from 'react';
 
-import { RIOT_CHAMP_IMG } from "services/cdnValue";
+import { RIOT_CHAMP_IMG } from 'services/cdnValue';
 import {
   MostChampBottom,
   MostChampBox,
@@ -13,7 +13,7 @@ import {
   MostChampName,
   MostChampPlayed,
   MostChampWinRate,
-} from "./MostChampItem.styled";
+} from './MostChampItem.styled';
 
 interface champsProps {
   champs: mostChampData;
@@ -23,7 +23,7 @@ const MostChampItem = ({ champs }: champsProps) => {
   return (
     <MostChampItemLayout>
       <MostChampFace
-        src={`${RIOT_CHAMP_IMG}/${champs.name.replace(/(\s*)/g, "")}.png`}
+        src={`${RIOT_CHAMP_IMG}/${champs.name.replace(/(\s*)/g, '')}.png`}
       />
       <MostChampBox>
         <MostChampName>{champs.name}</MostChampName>

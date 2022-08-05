@@ -1,10 +1,10 @@
-import React from "react";
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import React from 'react';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 
-import Home from "../pages/Home";
-import Summoners from "../pages/Summoners";
-import SummonerGG from "pages/SummonerGG";
-import { AppLayout, NavBar, NavBarItem } from "./App.styled";
+import Home from '../pages/Home';
+import Summoners from '../pages/Summoners';
+import SummonerGG from 'pages/SummonerGG';
+import { AppLayout, NavBar, NavBarItem } from './App.styled';
 
 function App() {
   return (

@@ -1,12 +1,12 @@
 // import getPlayerTier from "api/getPlayerTier";
-import { SummonerTierDto } from "api/getSummonerTier";
-import { matchParticipants } from "features/riot/matchDetailSlice";
-import React, { useEffect, useState } from "react";
-import riot from "services/riotAPI";
-import toCapitalize from "utils/toCapitalize";
-import Items from "../../items/Items";
-import DetailChamp from "./champ/DetailChamp";
-import DetailPerks from "./perks/DetailPerks";
+import { SummonerTierDto } from 'api/getSummonerTier';
+import { matchParticipants } from 'features/riot/matchDetailSlice';
+import React, { useEffect, useState } from 'react';
+import riot from 'services/riotAPI';
+import toCapitalize from 'utils/toCapitalize';
+import Items from '../../items/Items';
+import DetailChamp from './champ/DetailChamp';
+import DetailPerks from './perks/DetailPerks';
 import {
   DetailContents,
   DetailCS,
@@ -24,7 +24,7 @@ import {
   DetailTier,
   DetailTR,
   DetailWard,
-} from "./TableRow.styled";
+} from './TableRow.styled';
 
 interface rowDataProps {
   matchData: matchParticipants;
@@ -41,7 +41,7 @@ const TableRow = (data: rowDataProps) => {
   const matchData = data.matchData;
   const [me, setMe] = useState(false);
   const [itemsList, setItemsList] = useState<string[]>([]);
-  const [tier, setTier] = useState("");
+  const [tier, setTier] = useState('');
   const [spellsList, setSpellsList] = useState<number[]>([]);
 
   useEffect(() => {
@@ -76,7 +76,7 @@ const TableRow = (data: rowDataProps) => {
       `/league/v4/entries/by-summoner/${summonerId}`
     );
     response.data.map((item: SummonerTierDto) => {
-      if (item.queueType === "RANKED_SOLO_5x5") {
+      if (item.queueType === 'RANKED_SOLO_5x5') {
         setTier(item.tier);
       }
     });
@@ -84,15 +84,15 @@ const TableRow = (data: rowDataProps) => {
 
   const getColors = (num: number) => {
     if (num < 3) {
-      return "#9e9eb1";
+      return '#9e9eb1';
     } else {
       if (num < 4) {
-        return "#00bba3";
+        return '#00bba3';
       } else {
         if (num < 5) {
-          return "#0093ff";
+          return '#0093ff';
         } else {
-          return "#ff8200";
+          return '#ff8200';
         }
       }
     }

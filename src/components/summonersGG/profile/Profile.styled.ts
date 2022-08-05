@@ -1,10 +1,10 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const ProfileLayout = styled.div`
   display: flex;
   align-items: flex-end;
   width: 1096px;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   padding: 40px 0;
 `;
 
@@ -32,7 +32,7 @@ export const ProfileLevel = styled.span`
   background-color: #202d37;
   line-height: 20px;
   font-size: 12px;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
 `;
 
 export const ProfileText = styled.div`

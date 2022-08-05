@@ -1,4 +1,4 @@
-import { css, DefaultTheme, keyframes } from "styled-components";
+import { css, DefaultTheme, keyframes } from 'styled-components';
 
 const animation = keyframes`
   from {

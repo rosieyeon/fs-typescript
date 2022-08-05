@@ -1,12 +1,12 @@
-import React from "react";
-import { RIOT_CDN } from "services/cdnValue";
+import React from 'react';
+import { RIOT_CDN } from 'services/cdnValue';
 import {
   DetailPerk,
   DetailPerksBox,
   DetailPerksLayout,
   DetailSpell,
   DetailSpellBox,
-} from "./DetailPerks.styled";
+} from './DetailPerks.styled';
 
 interface perksProps {
   spells: number[];

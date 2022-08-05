@@ -1,6 +1,6 @@
-import React from "react";
-import { RIOT_CHAMP_IMG } from "services/cdnValue";
-import { ChampInfoImg, ChampInfoLayout, ChampInfoLV } from "./ChampInfo.styled";
+import React from 'react';
+import { RIOT_CHAMP_IMG } from 'services/cdnValue';
+import { ChampInfoImg, ChampInfoLayout, ChampInfoLV } from './ChampInfo.styled';
 
 interface champProps {
   name: string;

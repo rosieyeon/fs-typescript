@@ -1,10 +1,10 @@
-import React from "react";
-import { YoutubeData } from "features/youtube/youtubeListSlice";
+import React from 'react';
+import { YoutubeData } from 'features/youtube/youtubeListSlice';
 import {
   YoutubeItemLayout,
   YoutubeItemThumbnail,
   YoutubeItemTitle,
-} from "./YoutubeItem.styled";
+} from './YoutubeItem.styled';
 
 interface YoutubeProps {
   youtube: YoutubeData;

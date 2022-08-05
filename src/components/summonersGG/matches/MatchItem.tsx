@@ -94,7 +94,7 @@ const MatchItem = (data: matchIDProps) => {
       setItemsList(items);
 
       for (let i = 0; i < 2; i++) {
-        if (myData.win == match.teams[i].win) {
+        if (myData.win === match.teams[i].win) {
           setObjectives(match.teams[i].objectives);
         }
       }

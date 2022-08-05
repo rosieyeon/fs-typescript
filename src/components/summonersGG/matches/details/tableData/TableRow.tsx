@@ -79,6 +79,7 @@ const TableRow = (data: rowDataProps) => {
       if (item.queueType === 'RANKED_SOLO_5x5') {
         setTier(item.tier);
       }
+      return '';
     });
   };
 

@@ -60,7 +60,7 @@ const MatchDetails = (data: matchProps) => {
 
   useEffect(() => {
     if (redBlue) {
-      if (data.myTeam == 'blue') {
+      if (data.myTeam === 'blue') {
         setTeamData(redBlue.blue);
       } else {
         setTeamData(redBlue.red);

@@ -154,6 +154,7 @@ const getMatchData = createAsyncThunk(
           const response = await riotMatch.get(`match/v5/matches/${matchId}`);
           const res = response.data;
           console.log(res);
+          // eslint-disable-next-line array-callback-return
           res.info.participants.map((player: ParticipantsDto) => {
             participants.push({
               assists: player.assists,

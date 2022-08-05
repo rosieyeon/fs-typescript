@@ -141,11 +141,11 @@ const getMatchData = createAsyncThunk(
         `/match/v5/matches/by-puuid/${puuId}/ids`,
         {
           params: {
-            count: 19,
+            count: 2,
           },
         }
       );
-      console.log(matchIdsResult);
+      // console.log(matchIdsResult);
 
       const PromiseArrayResult = matchIdsResult.data.map(
         async (matchId: string) => {
@@ -153,7 +153,7 @@ const getMatchData = createAsyncThunk(
           //TODO 여기서 이상항 url 이용 아니며녀 throw error
           const response = await riotMatch.get(`match/v5/matches/${matchId}`);
           const res = response.data;
-          // console.log(res);
+          console.log(res);
           res.info.participants.map((player: ParticipantsDto) => {
             participants.push({
               assists: player.assists,

@@ -1,9 +1,29 @@
 export const t1Player = [
-  { player: "zeus", name: "Never Daps" },
-  { player: "oner", name: "아 니 맞나" },
-  { player: "faker", name: "hide on bush" },
-  { player: "gumayusi", name: "T1 Gumayusi" },
-  { player: "keria", name: "역천괴" },
+  {
+    player: "zeus",
+    name: "Never Daps",
+    id: "E3QjBJvlxSsVaCCm_SibdBIn1jtFKed7ZuPfqOeBWlGS4GI",
+  },
+  {
+    player: "oner",
+    name: "아 니 맞나",
+    id: "aWHq1ADUoCcBOOuWThMLyYNXMv8tTlVghpKQ5XHFUT0q0OE",
+  },
+  {
+    player: "faker",
+    name: "hide on bush",
+    id: "3QqOtmyIh_H4nRILE2dBET7Q7NI3CmXCQunZKdhwXZylbQ",
+  },
+  {
+    player: "gumayusi",
+    name: "T1 Gumayusi",
+    id: "RpD7QDbxyMdatUhzEAH5eptf-9sc8Rbo_p9rQSRGuj-0kbA",
+  },
+  {
+    player: "keria",
+    name: "역천괴",
+    id: "VMxfZfTz3Ac4CmEQ80dWHbEoXu-vDrnrYmEmRFk6jf8drQM",
+  },
 ];
 
 export interface t1PlayChampProps {

@@ -18,6 +18,10 @@ import {
   HomeYoutubeItem,
 } from './Home.styled';
 
+interface matchidid {
+  idid: string;
+}
+
 const Home: React.FC = () => {
   const [keyword, setKeyword] = useState('');
   const [query, setQuery] = useState('');
@@ -46,7 +50,6 @@ const Home: React.FC = () => {
   };
 
   const onKeyPress = (event: { key: string }) => {
-    // TODO prettier '' eslilnt 적용 확인
     if (event.key === 'Enter') {
       onClickApply();
     }

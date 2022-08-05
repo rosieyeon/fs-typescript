@@ -137,7 +137,7 @@ const TableRow = (data: rowDataProps) => {
         <DetailDamage>
           <DetailDamageBox>
             <DetailDamageTxt>
-              {matchData.totalDamageDealtToChampions}
+              {matchData.totalDamageDealtToChampions.toLocaleString('ko-KR')}
             </DetailDamageTxt>
             <DetailDamageBar>
               <DetailDamageFill
@@ -149,7 +149,9 @@ const TableRow = (data: rowDataProps) => {
             </DetailDamageBar>
           </DetailDamageBox>
           <DetailDamageBox>
-            <DetailDamageTxt>{matchData.totalDamageTaken}</DetailDamageTxt>
+            <DetailDamageTxt>
+              {matchData.totalDamageTaken.toLocaleString('ko-KR')}
+            </DetailDamageTxt>
             <DetailDamageBar>
               <DetailDamageFill
                 taken={false}

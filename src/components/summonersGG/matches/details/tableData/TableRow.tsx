@@ -2,7 +2,7 @@
 import { SummonerTierDto } from 'api/getSummonerTier';
 import { matchParticipants } from 'features/riot/matchDetailSlice';
 import React, { useEffect, useState } from 'react';
-import riot from 'services/riotAPI';
+import riot from 'api/riotAPI';
 import toCapitalize from 'utils/toCapitalize';
 import Items from '../../items/Items';
 import DetailChamp from './champ/DetailChamp';

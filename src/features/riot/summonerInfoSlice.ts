@@ -1,5 +1,5 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import getSummonerInfo from 'api/getSummonerInfo';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { getSummonerByName } from 'services/summonerInfoData';
 
 export interface Summoner {
   accountId: string;
@@ -11,13 +11,13 @@ export interface Summoner {
   summonerLevel: number;
 }
 
-interface summonerState {
+interface SummonerState {
   summonerData: Summoner;
   loading: 'idle' | 'pending';
   error?: string;
 }
 
-const initialState: summonerState = {
+const initialState: SummonerState = {
   summonerData: {
     accountId: '',
     id: '',
@@ -29,6 +29,17 @@ const initialState: summonerState = {
   },
   loading: 'idle',
 };
+
+export const getSummonerInfo = createAsyncThunk(
+  'sumonnerInfo/getSummonerInfo',
+  async (summonerName: string, { rejectWithValue }) => {
+    try {
+      return getSummonerByName(summonerName);
+    } catch (error) {
+      return rejectWithValue('Fail to load response.');
+    }
+  }
+);
 
 export const summonerInfoSlice = createSlice({
   name: 'sumonnerInfo',

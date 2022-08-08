@@ -18,10 +18,6 @@ import {
   HomeYoutubeItem,
 } from './Home.styled';
 
-interface matchidid {
-  idid: string;
-}
-
 const Home: React.FC = () => {
   const [keyword, setKeyword] = useState('');
   const [query, setQuery] = useState('');
@@ -45,9 +41,9 @@ const Home: React.FC = () => {
     []
   );
 
-  const onClickApply = () => {
+  const onClickApply = useCallback(() => {
     setQuery(keyword);
-  };
+  }, [keyword]);
 
   const onKeyPress = (event: { key: string }) => {
     if (event.key === 'Enter') {

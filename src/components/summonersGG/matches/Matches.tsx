@@ -27,7 +27,7 @@ const Matches = () => {
       {loading === 'pending' ? (
         <LoadingSkeleton>LOADING</LoadingSkeleton>
       ) : error ? (
-        <LoadingSkeleton>ERROR</LoadingSkeleton>
+        <LoadingSkeleton>데이터를 불러올 수 없습니다</LoadingSkeleton>
       ) : (
         <>
           {matchDetail.map((match, index) => (

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { riotAPI } from 'api/riotAPI';
 import { matchParticipants } from 'features/riot/matchDetailSlice';
-import { SummonerTierDto } from 'services/riotData';
 import toCapitalize from 'utils/toCapitalize';
 import Items from '../../items/Items';
 import DetailChamp from './champ/DetailChamp';
@@ -24,6 +23,7 @@ import {
   DetailTR,
   DetailWard,
 } from './TableRow.styled';
+import { SummonerTierDto } from 'services/riot/summonerData';
 
 interface rowDataProps {
   matchData: matchParticipants;

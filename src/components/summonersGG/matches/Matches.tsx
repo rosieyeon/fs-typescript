@@ -2,12 +2,13 @@ import React, { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from 'app/store';
 
 import MatchItem from './MatchItem';
-import getMatchData from 'api/getMatchData';
+// import getMatchData from 'api/getMatchData';
 import {
   LoadingSkeleton,
   MatchesContent,
   MatchesLayout,
 } from './Matches.styled';
+import { getMatchData } from 'features/riot/matchDetailSlice';
 
 const Matches = () => {
   const { summonerData } = useAppSelector((state) => state.summonerInfo);

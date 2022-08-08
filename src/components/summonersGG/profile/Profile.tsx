@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { useAppSelector } from 'app/store';
-import { RIOT_ICON } from 'services/cdnValue';
+import { RIOT_ICON } from 'services/riot/cdnValue';
 import {
   ProfileIcon,
   ProfileImg,

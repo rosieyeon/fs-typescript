@@ -1,5 +1,5 @@
 import React from 'react';
-import { RIOT_CDN } from 'services/cdnValue';
+import { RIOT_CDN } from 'services/riot/cdnValue';
 import {
   DetailPerk,
   DetailPerksBox,

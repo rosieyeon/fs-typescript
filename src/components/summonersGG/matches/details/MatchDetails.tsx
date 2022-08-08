@@ -32,7 +32,7 @@ const MatchDetails = (data: matchProps) => {
   const [teamData, setTeamData] = useState<matchParticipants[]>();
   const [maxDamage, setMaxDamage] = useState(0);
   const [maxDamageTaken, setMaxDagameTaken] = useState(0);
-  console.log(match, myData);
+  // console.log(match, myData);
 
   const findWinLose = (win: boolean) => {
     if (win) {

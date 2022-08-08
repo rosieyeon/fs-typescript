@@ -18,7 +18,7 @@ import MatchInfo from './matchInfo/MatchInfo';
 import GameData from './gameData/GameData';
 import Items from './items/Items';
 import Participants from './participants/Participants';
-import { ARROW_DOWN } from 'services/cdnValue';
+import { ARROW_DOWN } from 'services/riot/cdnValue';
 import MatchDetails from './details/MatchDetails';
 import ObjectDetails from './details/ObjectDetails';
 

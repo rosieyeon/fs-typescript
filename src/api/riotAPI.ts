@@ -1,6 +1,8 @@
 import axios from 'axios';
-import matchData from 'services/matchData';
-import { summonerInfoData, summonerTierData } from 'services/riotData';
+import matchData from 'services/riot/matchData';
+import { summonerInfoData, summonerTierData } from 'services/riot/summonerData';
+// import matchData from 'services/matchData';
+// import { summonerInfoData, summonerTierData } from 'services/summonerData';
 
 export const riotAPI = axios.create({
   baseURL: 'https://kr.api.riotgames.com/lol',
@@ -33,14 +35,14 @@ export const getMatchId = async (puuId: string) => {
     `/match/v5/matches/by-puuid/${puuId}/ids`,
     {
       params: {
-        count: 2,
+        count: 19,
       },
     }
   );
   return matchIdsResult;
 };
 
-export const getMatchData = async (matchId: string) => {
+export const getMatchDetail = async (matchId: string) => {
   const response = await riotMatchAPI.get(`match/v5/matches/${matchId}`);
   return matchData(response.data.info);
 };

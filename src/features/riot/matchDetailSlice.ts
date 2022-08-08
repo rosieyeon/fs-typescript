@@ -1,8 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-// import getMatchData from 'api/getMatchData';
-import { getMatchId } from 'api/riotAPI';
+import { getMatchDetail, getMatchId } from 'api/riotAPI';
 
-// TODO 대문자로 eslint?
 export interface MatchData {
   gameDuration: number;
   gameEndTimestamp: number;
@@ -91,14 +89,14 @@ const initialState: matchDetailState = {
   loading: 'idle',
 };
 
-const getMatchData = createAsyncThunk(
+export const getMatchData = createAsyncThunk(
   'matchData/getMatchData',
   async (puuId: string, { rejectWithValue }) => {
     try {
       const PromiseArrayResult = (await getMatchId(puuId)).data.map(
         // eslint-disable-next-line array-callback-return
         (matchId: string) => {
-          return getMatchData(matchId);
+          return getMatchDetail(matchId);
         }
       );
       return Promise.all(PromiseArrayResult);

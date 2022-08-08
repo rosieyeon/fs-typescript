@@ -12,7 +12,7 @@ import {
   TierWinRates,
 } from './TierItem.styled';
 import toCapitalize from 'utils/toCapitalize';
-import { RIOT_RANK_EMBLEM } from 'services/cdnValue';
+import { RIOT_RANK_EMBLEM } from 'services/riot/cdnValue';
 
 interface TierProps {
   tierInfo: SummonerTier;

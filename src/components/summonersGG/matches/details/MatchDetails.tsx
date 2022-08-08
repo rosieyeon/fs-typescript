@@ -1,4 +1,4 @@
-import { matchData, matchParticipants } from 'features/riot/matchDetailSlice';
+import { MatchData, matchParticipants } from 'features/riot/matchDetailSlice';
 import React, { useEffect, useState } from 'react';
 import findRedBlue from 'utils/findRedBlue';
 import toCapitalize from 'utils/toCapitalize';
@@ -14,8 +14,7 @@ import TableRow from './tableData/TableRow';
 
 interface matchProps {
   myData: matchParticipants;
-  gameData: matchData;
-  // pkill: number;
+  gameData: MatchData;
   myTeam: string;
   win: boolean;
 }

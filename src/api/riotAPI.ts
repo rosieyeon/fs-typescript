@@ -1,4 +1,5 @@
 import axios from 'axios';
+import matchData from 'services/matchData';
 import { summonerInfoData, summonerTierData } from 'services/riotData';
 
 export const riotAPI = axios.create({
@@ -27,13 +28,19 @@ export const getTierById = async (summonerId: string) => {
   return summonerTierData(response.data);
 };
 
-// export const getMatchId = async (puuId: string) => {
-//   const matchIdsResult = await riotMatch.get(
-//     `/match/v5/matches/by-puuid/${puuId}/ids`,
-//     {
-//       params: {
-//         count: 2,
-//       },
-//     }
-//   );
-// }
+export const getMatchId = async (puuId: string) => {
+  const matchIdsResult = await riotMatchAPI.get(
+    `/match/v5/matches/by-puuid/${puuId}/ids`,
+    {
+      params: {
+        count: 2,
+      },
+    }
+  );
+  return matchIdsResult;
+};
+
+export const getMatchData = async (matchId: string) => {
+  const response = await riotMatchAPI.get(`match/v5/matches/${matchId}`);
+  return matchData(response.data.info);
+};

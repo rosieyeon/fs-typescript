@@ -146,7 +146,7 @@ const getMatchData = createAsyncThunk(
           },
         }
       );
-      // console.log(matchIdsResult);
+      console.log(matchIdsResult);
 
       const PromiseArrayResult = matchIdsResult.data.map(
         async (matchId: string) => {

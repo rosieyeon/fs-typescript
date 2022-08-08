@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import { useAppSelector } from 'app/store';
 import {
-  matchData,
+  MatchData,
   matchParticipants,
   TeamObjectives,
 } from 'features/riot/matchDetailSlice';
@@ -23,7 +23,7 @@ import MatchDetails from './details/MatchDetails';
 import ObjectDetails from './details/ObjectDetails';
 
 interface matchIDProps {
-  match: matchData;
+  match: MatchData;
   // open: React.Dispatch<React.SetStateAction<boolean>>;
   // isOpen: boolean;
 }

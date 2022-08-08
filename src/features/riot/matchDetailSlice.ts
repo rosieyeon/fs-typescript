@@ -1,8 +1,9 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import getMatchData from 'api/getMatchData';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+// import getMatchData from 'api/getMatchData';
+import { getMatchId } from 'api/riotAPI';
 
 // TODO 대문자로 eslint?
-export interface matchData {
+export interface MatchData {
   gameDuration: number;
   gameEndTimestamp: number;
   participants: matchParticipants[];
@@ -73,7 +74,7 @@ export interface matchParticipants {
 }
 
 interface matchDetailState {
-  matchDetail: matchData[];
+  matchDetail: MatchData[];
   loading: 'idle' | 'pending';
   error?: string;
 }
@@ -90,6 +91,23 @@ const initialState: matchDetailState = {
   loading: 'idle',
 };
 
+const getMatchData = createAsyncThunk(
+  'matchData/getMatchData',
+  async (puuId: string, { rejectWithValue }) => {
+    try {
+      const PromiseArrayResult = (await getMatchId(puuId)).data.map(
+        // eslint-disable-next-line array-callback-return
+        (matchId: string) => {
+          return getMatchData(matchId);
+        }
+      );
+      return Promise.all(PromiseArrayResult);
+    } catch (error) {
+      return rejectWithValue('error!');
+    }
+  }
+);
+
 export const matchDetailSlice = createSlice({
   name: 'matchDetail',
   initialState,
@@ -102,7 +120,7 @@ export const matchDetailSlice = createSlice({
       })
       .addCase(
         getMatchData.fulfilled,
-        (state, { payload }: PayloadAction<matchData[]>) => {
+        (state, { payload }: PayloadAction<MatchData[]>) => {
           state.loading = 'idle';
           // console.log(payload);
           state.matchDetail = payload;

@@ -41,3 +41,9 @@ export const summonerTierData = (data: SummonerTierDto[]) => {
     };
   });
 };
+
+export const matchIdData = (data: string[]) => {
+  return data.map((item: string) => {
+    return { item };
+  });
+};

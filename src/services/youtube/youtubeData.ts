@@ -1,7 +1,3 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
-import youtubeAPI from './youtubeAPI';
-// import youtube from 'services/youtubeAPI';
-
 export interface YoutubeDto {
   kind: string;
   etag: string;
@@ -52,34 +48,13 @@ interface YoutubeContentDetails {
   duration: string;
 }
 
-const getYoutubeList = createAsyncThunk(
-  'youtube/getYoutubeList',
-  async (query: string, { rejectWithValue }) => {
-    try {
-      const response = await youtubeAPI.get('/search', {
-        params: {
-          part: 'snippet',
-          type: 'video',
-          q: query,
-          maxResults: 20,
-          regionCode: 'KR',
-          order: 'date',
-          channelId: 'UCJprx3bX49vNl6Bcw01Cwfg',
-        },
-      });
-      // console.log(response);
-      return response.data.items.map((item: YoutubeDto) => {
-        return {
-          id: item.id.videoId,
-          title: item.snippet.title,
-          channelTitle: item.snippet.channelTitle,
-          thumbnail: item.snippet.thumbnails.medium.url,
-        };
-      });
-    } catch (error) {
-      return rejectWithValue('error!');
-    }
-  }
-);
-
-export default getYoutubeList;
+export const youtubeData = (data: YoutubeDto[]) => {
+  return data.map((item: YoutubeDto) => {
+    return {
+      id: item.id.videoId,
+      title: item.snippet.title,
+      channelTitle: item.snippet.channelTitle,
+      thumbnail: item.snippet.thumbnails.medium.url,
+    };
+  });
+};

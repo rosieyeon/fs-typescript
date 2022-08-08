@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect, useCallback, useState } from 'react';
 
 import YoutubeItem from 'components/youtube/YoutubeItem';
-import getYoutubeList from 'api/getYoutubeList';
+// import getYoutubeList from 'api/getYoutubeList';
 import { useAppDispatch, useAppSelector } from 'app/store';
 import {
   HomeError,
@@ -17,6 +17,7 @@ import {
   HomeSearchButton,
   HomeYoutubeItem,
 } from './Home.styled';
+import { getYoutubeList } from 'features/youtube/youtubeListSlice';
 
 const Home: React.FC = () => {
   const [keyword, setKeyword] = useState('');
@@ -33,7 +34,6 @@ const Home: React.FC = () => {
   }, [dispatch, query]);
 
   //TODO useCallback 이용이유 확실하게 써야하는 이유, 쓸 때에는 dependency 걸어야하는지 기준점
-  //TODO onchange after 1 secs
   const onChangeSearch = useCallback(
     (event: { target: { value: React.SetStateAction<string> } }) => {
       setKeyword(event.target.value);

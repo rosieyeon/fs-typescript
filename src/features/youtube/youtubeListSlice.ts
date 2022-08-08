@@ -1,5 +1,6 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import getYoutubeList from 'api/getYoutubeList';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { getYoutubeData } from 'api/youtubeAPI';
+// import getYoutubeList from 'api/getYoutubeList';
 
 export interface YoutubeData {
   id: string;
@@ -31,6 +32,17 @@ const initialState: youtubeListState = {
   ],
   loading: 'idle',
 };
+
+export const getYoutubeList = createAsyncThunk(
+  'youtube/getYoutubeList',
+  async (query: string, { rejectWithValue }) => {
+    try {
+      return getYoutubeData(query);
+    } catch (error) {
+      return rejectWithValue('error!');
+    }
+  }
+);
 
 export const youtubeListSlice = createSlice({
   name: 'youtubeList',

@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { getSummonerByName } from 'services/summonerInfoData';
+import { getSummonerByName } from 'api/riotAPI';
 
 export interface Summoner {
   accountId: string;

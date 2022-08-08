@@ -1,5 +1,5 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import getSummonerTier from 'api/getSummonerTier';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { getTierById } from 'api/riotAPI';
 
 export interface SummonerTier {
   queueType: string;
@@ -21,6 +21,17 @@ const initialState: SummonerTierState = {
   tierData: [],
   loading: 'idle',
 };
+
+export const getSummonerTier = createAsyncThunk(
+  'summonerInfo/getSummonerTier',
+  async (summonerId: string, { rejectWithValue }) => {
+    try {
+      return getTierById(summonerId);
+    } catch (error) {
+      return rejectWithValue('error!');
+    }
+  }
+);
 
 export const summonerTierSlice = createSlice({
   name: 'summonerTier',

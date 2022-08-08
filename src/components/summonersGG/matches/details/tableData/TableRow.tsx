@@ -1,8 +1,7 @@
-// import getPlayerTier from "api/getPlayerTier";
-import { SummonerTierDto } from 'api/getSummonerTier';
-import { matchParticipants } from 'features/riot/matchDetailSlice';
 import React, { useEffect, useState } from 'react';
-import riot from 'api/riotAPI';
+import { riotAPI } from 'api/riotAPI';
+import { matchParticipants } from 'features/riot/matchDetailSlice';
+import { SummonerTierDto } from 'services/riotData';
 import toCapitalize from 'utils/toCapitalize';
 import Items from '../../items/Items';
 import DetailChamp from './champ/DetailChamp';
@@ -72,7 +71,7 @@ const TableRow = (data: rowDataProps) => {
   // console.log(itemsList);
 
   const getPlayerTier = async (summonerId: string) => {
-    const response = await riot.get(
+    const response = await riotAPI.get(
       `/league/v4/entries/by-summoner/${summonerId}`
     );
     response.data.map((item: SummonerTierDto) => {

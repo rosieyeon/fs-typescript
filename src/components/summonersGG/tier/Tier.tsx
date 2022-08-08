@@ -1,12 +1,8 @@
-import React from 'react';
-import { useEffect } from 'react';
-
+import React, { useState, useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from 'app/store';
-import getSummonerTier from 'api/getSummonerTier';
 import TierItem from './TierItem';
+import { getSummonerTier, SummonerTier } from 'features/riot/summonerTierSlice';
 import { TierBox, TierLayout, TierQueueType } from './Tier.styled';
-import { useState } from 'react';
-import { SummonerTier } from 'features/riot/summonerTierSlice';
 
 const Tier = () => {
   const { tierData, loading, error } = useAppSelector(

@@ -36,7 +36,7 @@ export const getSummonerInfo = createAsyncThunk(
     try {
       return getSummonerById(summonerName);
     } catch (error) {
-      return rejectWithValue('Fail to load response.');
+      return rejectWithValue(error);
     }
   }
 );

@@ -35,7 +35,7 @@ export const getMatchId = async (puuId: string) => {
     `/match/v5/matches/by-puuid/${puuId}/ids`,
     {
       params: {
-        count: 19,
+        count: 15,
       },
     }
   );

@@ -79,15 +79,26 @@ interface matchDetailState {
 
 const initialState: matchDetailState = {
   matchDetail: [],
-  // matchDetail: {
-  //   gameDuration: 0,
-  //   gameEndTimestamp: 0,
-  //   participants: [],
-  //   teams: [],
-  //   // participantsId: [],
-  // },
   loading: 'idle',
 };
+
+// interface Error {
+//   code: string;
+//   config: any;
+//   message: string;
+//   name: string;
+//   request: any;
+//   response: ErrorResponse;
+// }
+
+// interface ErrorResponse {
+//   config: any;
+//   data: any;
+//   headers: any;
+//   requeswt: any;
+//   status: number;
+//   statusText: string;
+// }
 
 export const getMatchData = createAsyncThunk(
   'matchData/getMatchData',
@@ -101,7 +112,8 @@ export const getMatchData = createAsyncThunk(
       );
       return Promise.all(PromiseArrayResult);
     } catch (error) {
-      return rejectWithValue('error!');
+      console.log(error);
+      return rejectWithValue(error);
     }
   }
 );
@@ -114,28 +126,20 @@ export const matchDetailSlice = createSlice({
     builder
       .addCase(getMatchData.pending, (state) => {
         state.loading = 'pending';
-        // console.log("pending");
       })
       .addCase(
         getMatchData.fulfilled,
         (state, { payload }: PayloadAction<MatchData[]>) => {
           state.loading = 'idle';
-          // console.log(payload);
           state.matchDetail = payload;
         }
       )
       .addCase(getMatchData.rejected, (state, { error }) => {
         state.loading = 'idle';
         state.error = error.message;
-        // console.log("error");
+        console.log(error);
       });
   },
-  // extraReducers: (builder) => {
-  //   builder.addCase(getMatchDetails.fulfilled, (state, { payload }: PayloadAction<matchData>) => {
-  //     state.loading = "idle"
-  //     console.log(payload)
-  //   })
-  // }
 });
 
 export default matchDetailSlice.reducer;

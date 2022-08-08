@@ -1,9 +1,8 @@
-import React from 'react';
-import { useEffect, useCallback, useState } from 'react';
+import React, { useEffect, useCallback, useState } from 'react';
 
-import YoutubeItem from 'components/youtube/YoutubeItem';
-// import getYoutubeList from 'api/getYoutubeList';
 import { useAppDispatch, useAppSelector } from 'app/store';
+import YoutubeItem from 'components/youtube/YoutubeItem';
+import { getYoutubeList } from 'features/youtube/youtubeListSlice';
 import {
   HomeError,
   HomeLayout,
@@ -17,7 +16,6 @@ import {
   HomeSearchButton,
   HomeYoutubeItem,
 } from './Home.styled';
-import { getYoutubeList } from 'features/youtube/youtubeListSlice';
 
 const Home: React.FC = () => {
   const [keyword, setKeyword] = useState('');

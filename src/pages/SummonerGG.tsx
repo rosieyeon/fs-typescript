@@ -2,9 +2,7 @@ import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from 'app/store';
 
-// import getSummonerInfo from 'api/getSummonerInfo';
 import { t1Player } from 'app/t1Player';
-import { getSummonerName } from 'features/riot/summonerNameSlice';
 import {
   SummonerGGData,
   SummonerGGLayout,
@@ -15,12 +13,9 @@ import Tier from 'components/summonersGG/tier/Tier';
 import Matches from 'components/summonersGG/matches/Matches';
 import MostChamp from 'components/summonersGG/mostChamp/MostChamp';
 import { getSummonerInfo } from 'features/riot/summonerInfoSlice';
-// import getSummonerInfo from 'api/getSummonerInfo';
 
 const SummonerGG = () => {
-  const { summonerData, loading, error } = useAppSelector(
-    (state) => state.summonerInfo
-  );
+  const { loading, error } = useAppSelector((state) => state.summonerInfo);
 
   const dispatch = useAppDispatch();
   const { pathname } = useLocation();
@@ -29,18 +24,9 @@ const SummonerGG = () => {
     t1Player.map(
       (lolplayer) =>
         pathname.substr(11) === lolplayer.player &&
-        dispatch(getSummonerInfo(lolplayer.name))
+        dispatch(getSummonerInfo(lolplayer.id))
     );
   }, [dispatch, pathname]);
-
-  useEffect(() => {
-    dispatch(
-      getSummonerName({
-        player: `${pathname.substr(11)}`,
-        name: `${summonerData.name}`,
-      })
-    );
-  }, [dispatch, pathname, summonerData.name]);
 
   return (
     <>

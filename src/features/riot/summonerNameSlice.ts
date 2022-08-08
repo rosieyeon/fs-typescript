@@ -3,6 +3,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 interface User {
   player: string;
   name: string;
+  id: string;
 }
 
 interface PlayerState {
@@ -13,6 +14,7 @@ const initialState: PlayerState = {
   user: {
     player: '',
     name: '',
+    id: '',
   },
 };
 

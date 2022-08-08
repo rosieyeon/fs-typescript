@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import youtube from 'services/youtubeAPI';
+import youtubeAPI from './youtubeAPI';
+// import youtube from 'services/youtubeAPI';
 
 export interface YoutubeDto {
   kind: string;
@@ -55,7 +56,7 @@ const getYoutubeList = createAsyncThunk(
   'youtube/getYoutubeList',
   async (query: string, { rejectWithValue }) => {
     try {
-      const response = await youtube.get('/search', {
+      const response = await youtubeAPI.get('/search', {
         params: {
           part: 'snippet',
           type: 'video',

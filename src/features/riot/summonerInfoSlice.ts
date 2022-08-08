@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { getSummonerByName } from 'api/riotAPI';
+import { getSummonerById } from 'api/riotAPI';
 
 export interface Summoner {
   accountId: string;
@@ -34,7 +34,7 @@ export const getSummonerInfo = createAsyncThunk(
   'sumonnerInfo/getSummonerInfo',
   async (summonerName: string, { rejectWithValue }) => {
     try {
-      return getSummonerByName(summonerName);
+      return getSummonerById(summonerName);
     } catch (error) {
       return rejectWithValue('Fail to load response.');
     }

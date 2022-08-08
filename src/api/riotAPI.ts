@@ -8,17 +8,15 @@ export const riotAPI = axios.create({
   },
 });
 
-const riotMatchAPI = axios.create({
+export const riotMatchAPI = axios.create({
   baseURL: 'https://asia.api.riotgames.com/lol',
   params: {
     api_key: process.env.REACT_APP_RIOT_API_KEY,
   },
 });
 
-export const getSummonerByName = async (summonerName: string) => {
-  const response = await riotAPI.get(
-    `/summoner/v4/summoners/by-name/${summonerName}?api_key=${process.env.REACT_APP_RIOT_API_KEY}`
-  );
+export const getSummonerById = async (summonerId: string) => {
+  const response = await riotAPI.get(`/summoner/v4/summoners/${summonerId}`);
   return summonerInfoData(response.data);
 };
 
@@ -28,3 +26,14 @@ export const getTierById = async (summonerId: string) => {
   );
   return summonerTierData(response.data);
 };
+
+// export const getMatchId = async (puuId: string) => {
+//   const matchIdsResult = await riotMatch.get(
+//     `/match/v5/matches/by-puuid/${puuId}/ids`,
+//     {
+//       params: {
+//         count: 2,
+//       },
+//     }
+//   );
+// }

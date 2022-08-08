@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { matchParticipants } from 'features/riot/matchDetailSlice';
-import riotMatch from 'services/riotMatchAPI';
+import { riotMatchAPI } from './riotAPI';
+// import riotMatch from 'services/riotMatchAPI';
 
 interface ParticipantsDto {
   assists: number;
@@ -137,7 +138,7 @@ const getMatchData = createAsyncThunk(
   'matchData/getMatchData',
   async (puuId: string, { rejectWithValue }) => {
     try {
-      const matchIdsResult = await riotMatch.get(
+      const matchIdsResult = await riotMatchAPI.get(
         `/match/v5/matches/by-puuid/${puuId}/ids`,
         {
           params: {
@@ -151,7 +152,9 @@ const getMatchData = createAsyncThunk(
         async (matchId: string) => {
           const participants: matchParticipants[] = [];
           //TODO 여기서 이상항 url 이용 아니며녀 throw error
-          const response = await riotMatch.get(`match/v5/matches/${matchId}`);
+          const response = await riotMatchAPI.get(
+            `match/v5/matches/${matchId}`
+          );
           const res = response.data;
           console.log(res);
           // eslint-disable-next-line array-callback-return

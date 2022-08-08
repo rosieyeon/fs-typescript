@@ -1,7 +1,7 @@
 export const t1Player = [
   {
     player: 'zeus',
-    name: 'Never Daps',
+    name: 'T1 Zeus',
     id: 'E3QjBJvlxSsVaCCm_SibdBIn1jtFKed7ZuPfqOeBWlGS4GI',
   },
   {

@@ -95,6 +95,7 @@ export const getMatchData = createAsyncThunk(
       return Promise.all(PromiseArrayResult);
     } catch (error) {
       console.log(error);
+      //{name: 'AxiosError', message: 'Request failed with status code 429', code: 'ERR_BAD_REQUEST'}
       return rejectWithValue(error);
     }
   }

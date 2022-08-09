@@ -1,5 +1,5 @@
 import { useAppSelector } from 'app/store';
-import { t1PlayChampProps, t1PlayerChamp } from 'app/t1Player';
+import { t1PlayChampProps, t1PlayerChamp } from 'app/t1Players';
 import React, { useEffect, useState } from 'react';
 import { MostChampHeader, MostChampLayout } from './MostChamp.styled';
 import MostChampItem from './MostChampItem';

@@ -1,4 +1,4 @@
-export const t1Player = [
+export const t1Players = [
   {
     player: 'zeus',
     name: 'T1 Zeus',

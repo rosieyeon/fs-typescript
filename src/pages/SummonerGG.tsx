@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from 'app/store';
 
-import { t1Player } from 'app/t1Player';
+import { t1Players } from 'app/t1Players';
 import {
   SummonerGGData,
   SummonerGGLayout,
@@ -21,7 +21,7 @@ const SummonerGG = () => {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    t1Player.map(
+    t1Players.map(
       (lolplayer) =>
         pathname.substr(11) === lolplayer.player &&
         dispatch(getSummonerInfo(lolplayer.id))

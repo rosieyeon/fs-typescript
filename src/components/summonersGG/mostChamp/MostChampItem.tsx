@@ -1,4 +1,4 @@
-import { mostChampData } from 'app/t1Player';
+import { mostChampData } from 'app/t1Players';
 import React from 'react';
 
 import { RIOT_CHAMP_IMG } from 'services/riot/cdnValue';

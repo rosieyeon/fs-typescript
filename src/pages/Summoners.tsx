@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { t1Player } from 'app/t1Player';
+import { t1Players } from 'app/t1Players';
 import {
   SummonersBox,
   SummonersImg,
@@ -14,7 +14,7 @@ import toCapitalize from 'utils/toCapitalize';
 
 const Summoners: React.FC = () => {
   const navigate = useNavigate();
-  const t1PlayerList = t1Player;
+  const t1PlayerList = t1Players;
 
   const onClickNav = (player: string) => {
     navigate(`/summoners/${player}`);

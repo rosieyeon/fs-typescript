@@ -82,24 +82,6 @@ const initialState: matchDetailState = {
   loading: 'idle',
 };
 
-// interface Error {
-//   code: string;
-//   config: any;
-//   message: string;
-//   name: string;
-//   request: any;
-//   response: ErrorResponse;
-// }
-
-// interface ErrorResponse {
-//   config: any;
-//   data: any;
-//   headers: any;
-//   requeswt: any;
-//   status: number;
-//   statusText: string;
-// }
-
 export const getMatchData = createAsyncThunk(
   'matchData/getMatchData',
   async (puuId: string, { rejectWithValue }) => {

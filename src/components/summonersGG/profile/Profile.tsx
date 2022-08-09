@@ -20,9 +20,13 @@ const Profile = () => {
   const { summonerData } = useAppSelector((state) => state.summonerInfo);
 
   useEffect(() => {
-    setPlayer(
-      t1Players.filter((player) => summonerData.id === player.id)[0].player
-    );
+    if (summonerData.id) {
+      const playerData = t1Players?.filter(
+        (player) => summonerData.id === player.id
+      );
+
+      setPlayer(playerData[0].player);
+    }
   }, [summonerData.id]);
 
   return (

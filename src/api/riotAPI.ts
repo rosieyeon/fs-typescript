@@ -1,8 +1,6 @@
 import axios from 'axios';
 import matchData from 'services/riot/matchData';
 import { summonerInfoData, summonerTierData } from 'services/riot/summonerData';
-// import matchData from 'services/matchData';
-// import { summonerInfoData, summonerTierData } from 'services/summonerData';
 
 export const riotAPI = axios.create({
   baseURL: 'https://kr.api.riotgames.com/lol',

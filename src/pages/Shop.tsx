@@ -1,8 +1,13 @@
 import React from 'react';
-import { ShopLayout } from './Shop.styled';
+import { ShopLayout, ShopLogo } from './Shop.styled';
 
 const Shop = () => {
-  return <ShopLayout>상품 준비중입니다</ShopLayout>;
+  return (
+    <ShopLayout>
+      <ShopLogo src="images/logo/t1.jpeg" />
+      상품 준비중입니다
+    </ShopLayout>
+  );
 };
 
 export default Shop;

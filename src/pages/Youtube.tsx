@@ -68,7 +68,7 @@ const Youtube: React.FC = () => {
         keyword: query,
         channelID: 'UCJprx3bX49vNl6Bcw01Cwfg',
         name: '',
-        order: 'relevance',
+        order: 'date',
       })
     );
   }, [dispatch, query]);

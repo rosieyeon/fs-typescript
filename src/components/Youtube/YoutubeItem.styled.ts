@@ -6,9 +6,20 @@ export const YoutubeItemLayout = styled.a`
 export const YoutubeItemThumbnail = styled.img`
   width: 100%;
 `;
-export const YoutubeItemTitle = styled.div`
+export const YoutubeItemTitle = styled.span`
   font-weight: 600;
   padding: 10px 0 20px 0;
   text-decoration: none;
   color: white;
+  line-height: 20px;
+`;
+export const YoutubeItemBookmark = styled.svg<{ width: number }>`
+  vertical-align: middle;
+  margin-right: 8px;
+  /* padding: 2px; */
+  /* width: ${(props) => props.width}px */
+  /* width: 100%; */
+  /* position: absolute; */
+  /* left: 10px; */
+  /* top: 10px; */
 `;

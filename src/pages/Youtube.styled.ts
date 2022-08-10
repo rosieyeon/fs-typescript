@@ -22,6 +22,8 @@ export const YoutubeSearchBar = styled.input`
   padding: 10px;
   border: none;
 `;
+export const YoutubeCategoryBox = styled.div``;
+export const YoutubeCategoryButton = styled.button``;
 export const YoutubeSearchButton = styled.button`
   height: 35px;
   border-radius: 6px;

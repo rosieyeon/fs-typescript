@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { getYoutubeData } from 'api/youtubeAPI';
+import { getYoutubeData, YoutubeQuery } from 'api/youtubeAPI';
 // import getYoutubeList from 'api/getYoutubeList';
 
 export interface YoutubeData {
@@ -35,7 +35,7 @@ const initialState: youtubeListState = {
 
 export const getYoutubeList = createAsyncThunk(
   'youtube/getYoutubeList',
-  async (query: string, { rejectWithValue }) => {
+  async (query: YoutubeQuery, { rejectWithValue }) => {
     try {
       return getYoutubeData(query);
     } catch (error) {

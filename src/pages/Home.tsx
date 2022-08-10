@@ -27,9 +27,9 @@ const Home: React.FC = () => {
   const dispatch = useAppDispatch();
 
   // 여기에 then으로 에러 분기 처리
-  useEffect(() => {
-    dispatch(getYoutubeList(query));
-  }, [dispatch, query]);
+  // useEffect(() => {
+  //   dispatch(getYoutubeList(query));
+  // }, [dispatch, query]);
 
   //TODO useCallback 이용이유 확실하게 써야하는 이유, 쓸 때에는 dependency 걸어야하는지 기준점
   const onChangeSearch = useCallback(

@@ -8,18 +8,25 @@ export const youtubeAPI = axios.create({
   },
 });
 
-export const getYoutubeData = async (query: string) => {
+export interface YoutubeQuery {
+  keyword: string;
+  channelID: string;
+  name: string;
+  order: string;
+}
+
+export const getYoutubeData = async (query: YoutubeQuery) => {
   const response = await youtubeAPI.get('/search', {
     params: {
       part: 'snippet',
       type: 'video',
-      q: query,
-      maxResults: 20,
+      q: query.keyword,
+      maxResults: 12,
       regionCode: 'KR',
-      order: 'date',
-      channelId: 'UCJprx3bX49vNl6Bcw01Cwfg',
+      order: query.order,
+      channelId: query.channelID,
     },
   });
-  // console.log(response);
+  console.log(response);
   return youtubeData(response.data.items);
 };

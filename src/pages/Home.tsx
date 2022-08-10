@@ -1,30 +1,30 @@
-import React, { useEffect, useCallback, useState } from 'react';
+import React from 'react';
 
-import { useAppDispatch, useAppSelector } from 'app/store';
-import YoutubeItem from 'components/youtube/YoutubeItem';
-import { getYoutubeList } from 'features/youtube/youtubeListSlice';
+// import { useAppDispatch, useAppSelector } from 'app/store';
+// import YoutubeItem from 'components/youtube/YoutubeItem';
+// import { getYoutubeList } from 'features/youtube/youtubeListSlice';
 import {
-  HomeError,
+  // HomeError,
   HomeLayout,
-  HomeLoading,
-  HomeLoadingImg,
-  HomeLoadingSkeleton,
-  HomeLoadingTxt,
+  // HomeLoading,
+  // HomeLoadingImg,
+  // HomeLoadingSkeleton,
+  // HomeLoadingTxt,
   HomeLogo,
-  HomeSearch,
-  HomeSearchBar,
-  HomeSearchButton,
-  HomeYoutubeItem,
+  // HomeSearch,
+  // HomeSearchBar,
+  // HomeSearchButton,
+  // HomeYoutubeItem,
 } from './Home.styled';
 
 const Home: React.FC = () => {
-  const [keyword, setKeyword] = useState('');
-  const [query, setQuery] = useState('');
-  const { youtubeList, loading, error } = useAppSelector(
-    (state) => state.youtubeList
-  );
+  // const [keyword, setKeyword] = useState('');
+  // const [query, setQuery] = useState('');
+  // const { youtubeList, loading, error } = useAppSelector(
+  //   (state) => state.youtubeList
+  // );
 
-  const dispatch = useAppDispatch();
+  // const dispatch = useAppDispatch();
 
   // 여기에 then으로 에러 분기 처리
   // useEffect(() => {
@@ -32,27 +32,27 @@ const Home: React.FC = () => {
   // }, [dispatch, query]);
 
   //TODO useCallback 이용이유 확실하게 써야하는 이유, 쓸 때에는 dependency 걸어야하는지 기준점
-  const onChangeSearch = useCallback(
-    (event: { target: { value: React.SetStateAction<string> } }) => {
-      setKeyword(event.target.value);
-    },
-    []
-  );
+  // const onChangeSearch = useCallback(
+  //   (event: { target: { value: React.SetStateAction<string> } }) => {
+  //     setKeyword(event.target.value);
+  //   },
+  //   []
+  // );
 
-  const onClickApply = useCallback(() => {
-    setQuery(keyword);
-  }, [keyword]);
+  // const onClickApply = useCallback(() => {
+  //   setQuery(keyword);
+  // }, [keyword]);
 
-  const onKeyPress = (event: { key: string }) => {
-    if (event.key === 'Enter') {
-      onClickApply();
-    }
-  };
+  // const onKeyPress = (event: { key: string }) => {
+  //   if (event.key === 'Enter') {
+  //     onClickApply();
+  //   }
+  // };
 
   return (
     <HomeLayout>
       <HomeLogo src="images/logo/t1.jpeg" />
-      <HomeSearch>
+      {/* <HomeSearch>
         <HomeSearchBar
           placeholder="검색"
           onChange={onChangeSearch}
@@ -77,7 +77,7 @@ const Home: React.FC = () => {
             <YoutubeItem youtube={youtube} key={index} />
           ))}
         </HomeYoutubeItem>
-      )}
+      )} */}
     </HomeLayout>
   );
 };

@@ -179,7 +179,7 @@ export const t1PlayerChamp: t1PlayChampProps[] = [
     ],
   },
   {
-    name: '역천괴',
+    name: 'LSRLVR',
     champs: [
       {
         name: 'Karma',

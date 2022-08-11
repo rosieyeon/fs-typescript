@@ -111,7 +111,7 @@ export const t1PlayerChamp: t1PlayChampProps[] = [
     ],
   },
   {
-    name: 'Never Daps',
+    name: 'T1 Zeus',
     champs: [
       {
         name: 'Jayce',

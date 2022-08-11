@@ -15,6 +15,7 @@ export const YoutubeLogo = styled.img`
 export const YoutubeSearch = styled.div`
   text-align: center;
 `;
+
 export const YoutubeSearchBar = styled.input`
   width: 40%;
   height: 35px;
@@ -22,8 +23,29 @@ export const YoutubeSearchBar = styled.input`
   padding: 10px;
   border: none;
 `;
-export const YoutubeCategoryBox = styled.div``;
-export const YoutubeCategoryButton = styled.button``;
+
+export const YoutubeCategoryBox = styled.div`
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  padding-top: 20px;
+`;
+
+export const YoutubeCategoryButton = styled.button`
+  padding: 2px 12px;
+  border-radius: 50px;
+  height: 30px;
+  background-color: black;
+  color: gray;
+  border: 1px solid gray;
+  cursor: pointer;
+
+  :focus {
+    background-color: gray;
+    color: white;
+  }
+`;
+
 export const YoutubeSearchButton = styled.button`
   height: 35px;
   border-radius: 6px;
@@ -34,6 +56,7 @@ export const YoutubeSearchButton = styled.button`
   cursor: pointer;
   border: none;
 `;
+
 export const YoutubeYoutubeItem = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -53,9 +76,11 @@ export const YoutubeLoading = styled.div`
   width: 90%;
   padding: 60px 0;
 `;
+
 export const YoutubeLoadingSkeleton = styled.div`
   width: 100%;
 `;
+
 export const YoutubeLoadingImg = styled.div`
   ${({ theme }) => theme.skeletonGradation}
 
@@ -63,6 +88,7 @@ export const YoutubeLoadingImg = styled.div`
   margin-bottom: 8px;
   aspect-ratio: 16/9;
 `;
+
 export const YoutubeLoadingTxt = styled.div`
   ${({ theme }) => theme.skeletonGradation}
   width: 100%;

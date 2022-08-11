@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
-export const YoutubeItemLayout = styled.a`
+export const YoutubeItemLayout = styled.div`
   text-decoration: none;
 `;
+export const YoutubeItemLink = styled.a``;
 export const YoutubeItemThumbnail = styled.img`
   width: 100%;
 `;

@@ -48,7 +48,7 @@ const t1tubeGroups = [
   {
     name: 'LCK Highlight',
     keyword: 'LCK T1',
-    channelID: '',
+    channelID: 'UCx2hbU7rRax_MjiFaseI4TQ',
     order: 'date',
   },
 ];

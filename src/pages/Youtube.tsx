@@ -110,6 +110,24 @@ const Youtube: React.FC = () => {
     [dispatch]
   );
 
+  const getActiveButton = (idx: number) => {
+    // eslint-disable-next-line array-callback-return
+    isSelect.map((button, id) => {
+      if (button) {
+        setIsSelect([
+          ...isSelect.slice(0, id),
+          (isSelect[id] = false),
+          ...isSelect.slice(id + 1),
+        ]);
+      }
+    });
+    setIsSelect([
+      ...isSelect.slice(0, idx),
+      !isSelect[idx],
+      ...isSelect.slice(idx + 1),
+    ]);
+  };
+
   return (
     <YoutubeLayout>
       <YoutubeLogo src="images/logo/t1.jpeg" />
@@ -133,21 +151,7 @@ const Youtube: React.FC = () => {
                 name: t1tube.name,
                 order: t1tube.order,
               });
-              // eslint-disable-next-line array-callback-return
-              isSelect.map((button, id) => {
-                if (button) {
-                  setIsSelect([
-                    ...isSelect.slice(0, id),
-                    (isSelect[id] = false),
-                    ...isSelect.slice(id + 1),
-                  ]);
-                }
-              });
-              setIsSelect([
-                ...isSelect.slice(0, idx),
-                !isSelect[idx],
-                ...isSelect.slice(idx + 1),
-              ]);
+              getActiveButton(idx);
             }}
           >
             {t1tube.name}
@@ -155,7 +159,10 @@ const Youtube: React.FC = () => {
         ))}
         <YoutubeCategoryButton
           selected={isSelect[5]}
-          onClick={() => setOpenPlayList(!openPlayList)}
+          onClick={() => {
+            setOpenPlayList(!openPlayList);
+            getActiveButton(5);
+          }}
         >
           My Playlist
         </YoutubeCategoryButton>

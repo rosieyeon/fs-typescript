@@ -31,19 +31,14 @@ export const YoutubeCategoryBox = styled.div`
   padding-top: 20px;
 `;
 
-export const YoutubeCategoryButton = styled.button`
+export const YoutubeCategoryButton = styled.button<{ selected: boolean }>`
   padding: 2px 12px;
-  border-radius: 50px;
   height: 30px;
-  background-color: black;
-  color: gray;
+  background-color: ${(props) => (props.selected ? 'gray' : 'black')};
+  color: ${(props) => (props.selected ? 'white' : 'gray')};
+  border-radius: 50px;
   border: 1px solid gray;
   cursor: pointer;
-
-  :focus {
-    background-color: gray;
-    color: white;
-  }
 `;
 
 export const YoutubeSearchButton = styled.button`

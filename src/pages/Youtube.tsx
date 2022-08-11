@@ -55,9 +55,20 @@ const t1tubeGroups = [
 const Youtube: React.FC = () => {
   const [keyword, setKeyword] = useState('');
   const [query, setQuery] = useState('');
+  const [openPlayList, setOpenPlayList] = useState(false);
+  const [isSelect, setIsSelect] = useState([
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+  ]);
+
   const { youtubeList, loading, error } = useAppSelector(
     (state) => state.youtubeList
   );
+  const { playList } = useAppSelector((state) => state.playList);
 
   const dispatch = useAppDispatch();
 
@@ -93,6 +104,7 @@ const Youtube: React.FC = () => {
 
   const onClickShow = useCallback(
     (t1tube: YoutubeQuery) => {
+      setOpenPlayList(false);
       dispatch(getYoutubeList(t1tube));
     },
     [dispatch]
@@ -113,18 +125,40 @@ const Youtube: React.FC = () => {
         {t1tubeGroups.map((t1tube, idx) => (
           <YoutubeCategoryButton
             key={idx}
-            onClick={() =>
+            selected={isSelect[idx]}
+            onClick={() => {
               onClickShow({
                 keyword: t1tube.keyword,
                 channelID: t1tube.channelID,
                 name: t1tube.name,
                 order: t1tube.order,
-              })
-            }
+              });
+              // eslint-disable-next-line array-callback-return
+              isSelect.map((button, id) => {
+                if (button) {
+                  setIsSelect([
+                    ...isSelect.slice(0, id),
+                    (isSelect[id] = false),
+                    ...isSelect.slice(id + 1),
+                  ]);
+                }
+              });
+              setIsSelect([
+                ...isSelect.slice(0, idx),
+                !isSelect[idx],
+                ...isSelect.slice(idx + 1),
+              ]);
+            }}
           >
             {t1tube.name}
           </YoutubeCategoryButton>
         ))}
+        <YoutubeCategoryButton
+          selected={isSelect[5]}
+          onClick={() => setOpenPlayList(!openPlayList)}
+        >
+          My Playlist
+        </YoutubeCategoryButton>
       </YoutubeCategoryBox>
       {loading === 'pending' ? (
         <YoutubeLoading>
@@ -137,9 +171,15 @@ const Youtube: React.FC = () => {
         </YoutubeLoading>
       ) : error ? (
         <YoutubeError>데이터를 불러올 수 없습니다</YoutubeError>
-      ) : (
+      ) : !openPlayList ? (
         <YoutubeYoutubeItem>
           {youtubeList.map((youtube, index) => (
+            <YoutubeItem youtube={youtube} key={index} />
+          ))}
+        </YoutubeYoutubeItem>
+      ) : (
+        <YoutubeYoutubeItem>
+          {playList.map((youtube, index) => (
             <YoutubeItem youtube={youtube} key={index} />
           ))}
         </YoutubeYoutubeItem>

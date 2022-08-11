@@ -8,7 +8,7 @@ import {
   YoutubeItemTitle,
 } from './YoutubeItem.styled';
 import { useAppDispatch, useAppSelector } from 'app/store';
-import { addVideo } from 'features/youtube/playListSlice';
+import { addVideo, removeVideo } from 'features/youtube/playListSlice';
 
 interface YoutubeProps {
   youtube: YoutubeData;
@@ -24,6 +24,10 @@ const YoutubeItem = ({ youtube }: YoutubeProps) => {
   const onClickLike = () => {
     if (!isLike) {
       dispatch(addVideo({ ...youtube, bookmark: true }));
+      setIsLike(!isLike);
+    }
+    if (isLike) {
+      dispatch(removeVideo({ ...youtube, bookmark: false }));
       setIsLike(!isLike);
     }
   };

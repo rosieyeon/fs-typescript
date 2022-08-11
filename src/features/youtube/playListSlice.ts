@@ -20,8 +20,13 @@ export const playListSlice = createSlice({
         state.playList.push(payload);
       }
     },
+    removeVideo: (state, { payload }: PayloadAction<YoutubeData>) => {
+      state.playList = state.playList.filter(
+        (video) => video.id !== payload.id
+      );
+    },
   },
 });
 
-export const { addVideo } = playListSlice.actions;
+export const { addVideo, removeVideo } = playListSlice.actions;
 export default playListSlice.reducer;

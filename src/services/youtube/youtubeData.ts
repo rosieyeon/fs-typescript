@@ -55,6 +55,7 @@ export const youtubeData = (data: YoutubeDto[]) => {
       title: item.snippet.title,
       channelTitle: item.snippet.channelTitle,
       thumbnail: item.snippet.thumbnails.medium.url,
+      bookmark: false,
     };
   });
 };

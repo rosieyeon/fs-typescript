@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useState } from 'react';
 import { YoutubeData } from 'features/youtube/youtubeListSlice';
 import {
   YoutubeItemBookmark,
@@ -7,6 +7,8 @@ import {
   YoutubeItemThumbnail,
   YoutubeItemTitle,
 } from './YoutubeItem.styled';
+import { useAppDispatch, useAppSelector } from 'app/store';
+import { addVideo } from 'features/youtube/playListSlice';
 
 interface YoutubeProps {
   youtube: YoutubeData;
@@ -14,9 +16,16 @@ interface YoutubeProps {
 
 const YoutubeItem = ({ youtube }: YoutubeProps) => {
   const [isLike, setIsLike] = useState(false);
+  const dispatch = useAppDispatch();
+
+  const { playList } = useAppSelector((state) => state.playList);
+  console.log(playList);
 
   const onClickLike = () => {
-    setIsLike(!isLike);
+    if (!isLike) {
+      dispatch(addVideo({ ...youtube, bookmark: true }));
+      setIsLike(!isLike);
+    }
   };
 
   console.log(isLike);

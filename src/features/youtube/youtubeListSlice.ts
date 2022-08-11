@@ -7,6 +7,7 @@ export interface YoutubeData {
   thumbnail: string;
   title: string;
   channelTitle: string;
+  bookmark: boolean;
 }
 
 interface youtubeListState {
@@ -17,18 +18,18 @@ interface youtubeListState {
 
 const initialState: youtubeListState = {
   youtubeList: [
-    { id: '', thumbnail: '', title: '', channelTitle: '' },
-    { id: '', thumbnail: '', title: '', channelTitle: '' },
-    { id: '', thumbnail: '', title: '', channelTitle: '' },
-    { id: '', thumbnail: '', title: '', channelTitle: '' },
-    { id: '', thumbnail: '', title: '', channelTitle: '' },
-    { id: '', thumbnail: '', title: '', channelTitle: '' },
-    { id: '', thumbnail: '', title: '', channelTitle: '' },
-    { id: '', thumbnail: '', title: '', channelTitle: '' },
-    { id: '', thumbnail: '', title: '', channelTitle: '' },
-    { id: '', thumbnail: '', title: '', channelTitle: '' },
-    { id: '', thumbnail: '', title: '', channelTitle: '' },
-    { id: '', thumbnail: '', title: '', channelTitle: '' },
+    { id: '', thumbnail: '', title: '', channelTitle: '', bookmark: false },
+    { id: '', thumbnail: '', title: '', channelTitle: '', bookmark: false },
+    { id: '', thumbnail: '', title: '', channelTitle: '', bookmark: false },
+    { id: '', thumbnail: '', title: '', channelTitle: '', bookmark: false },
+    { id: '', thumbnail: '', title: '', channelTitle: '', bookmark: false },
+    { id: '', thumbnail: '', title: '', channelTitle: '', bookmark: false },
+    { id: '', thumbnail: '', title: '', channelTitle: '', bookmark: false },
+    { id: '', thumbnail: '', title: '', channelTitle: '', bookmark: false },
+    { id: '', thumbnail: '', title: '', channelTitle: '', bookmark: false },
+    { id: '', thumbnail: '', title: '', channelTitle: '', bookmark: false },
+    { id: '', thumbnail: '', title: '', channelTitle: '', bookmark: false },
+    { id: '', thumbnail: '', title: '', channelTitle: '', bookmark: false },
   ],
   loading: 'idle',
 };

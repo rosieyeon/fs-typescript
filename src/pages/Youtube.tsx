@@ -57,7 +57,7 @@ const Youtube: React.FC = () => {
   const [query, setQuery] = useState('');
   const [openPlayList, setOpenPlayList] = useState(false);
   const [isSelect, setIsSelect] = useState([
-    false,
+    true,
     false,
     false,
     false,
@@ -94,6 +94,7 @@ const Youtube: React.FC = () => {
 
   const onClickApply = useCallback(() => {
     setQuery(keyword);
+    setIsSelect([false, false, false, false, false, false]);
   }, [keyword]);
 
   const onKeyPress = (event: { key: string }) => {

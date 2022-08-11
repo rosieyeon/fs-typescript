@@ -42,5 +42,6 @@ export const getMatchId = async (puuId: string) => {
 
 export const getMatchDetail = async (matchId: string) => {
   const response = await riotMatchAPI.get(`match/v5/matches/${matchId}`);
+  console.log(response);
   return matchData(response.data.info);
 };

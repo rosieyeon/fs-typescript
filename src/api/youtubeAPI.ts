@@ -27,6 +27,6 @@ export const getYoutubeData = async (query: YoutubeQuery) => {
       channelId: query.channelID,
     },
   });
-  console.log(response);
+  // console.log(response);
   return youtubeData(response.data.items);
 };

@@ -2,7 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from 'app/store';
 import TierItem from './TierItem';
 import { getSummonerTier, SummonerTier } from 'features/riot/summonerTierSlice';
-import { TierBox, TierLayout, TierQueueType } from './Tier.styled';
+import {
+  TierBox,
+  TierLayout,
+  TierQueueType,
+  TierQueueTypeTxt,
+} from './Tier.styled';
 
 const Tier = () => {
   const { tierData, loading, error } = useAppSelector(
@@ -45,7 +50,10 @@ const Tier = () => {
             {soloRank && <TierItem tierInfo={soloRank} />}
           </TierBox>
           <TierBox>
-            <TierQueueType>Ranked Flex</TierQueueType>
+            <TierQueueType>
+              Ranked Flex
+              {!flexRank && <TierQueueTypeTxt>Unranked</TierQueueTypeTxt>}
+            </TierQueueType>
             {flexRank && <TierItem tierInfo={flexRank} />}
           </TierBox>
         </TierLayout>

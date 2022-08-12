@@ -16,4 +16,11 @@ export const TierQueueType = styled.div`
   line-height: 35px;
   padding: 0 12px;
   font-size: 14px;
+
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const TierQueueTypeTxt = styled.div`
+  color: #9e9eb1;
 `;

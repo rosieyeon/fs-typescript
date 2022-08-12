@@ -7,6 +7,7 @@ export const TierItemLayout = styled.div`
   width: 332px;
 
   display: flex;
+  justify-content: space-between;
   align-items: center;
   padding: 12px;
   border-top-width: 1px;

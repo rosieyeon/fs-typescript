@@ -98,6 +98,7 @@ const Youtube: React.FC = () => {
   }, [keyword]);
 
   const onKeyPress = (event: { key: string }) => {
+    setIsSelect([false, false, false, false, false, false]);
     if (event.key === 'Enter') {
       onClickApply();
     }
@@ -128,6 +129,7 @@ const Youtube: React.FC = () => {
       ...isSelect.slice(idx + 1),
     ]);
   };
+  console.log(playList);
 
   return (
     <YoutubeLayout>
@@ -185,12 +187,14 @@ const Youtube: React.FC = () => {
             <YoutubeItem youtube={youtube} key={index} />
           ))}
         </YoutubeYoutubeItem>
-      ) : (
+      ) : playList.length !== 0 ? (
         <YoutubeYoutubeItem>
           {playList.map((youtube, index) => (
             <YoutubeItem youtube={youtube} key={index} />
           ))}
         </YoutubeYoutubeItem>
+      ) : (
+        <YoutubeError>재생목록이 존재하지 않습니다</YoutubeError>
       )}
     </YoutubeLayout>
   );

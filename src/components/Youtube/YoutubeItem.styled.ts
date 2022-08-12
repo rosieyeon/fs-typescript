@@ -17,4 +17,5 @@ export const YoutubeItemTitle = styled.span`
 export const YoutubeItemBookmark = styled.svg<{ width: number }>`
   vertical-align: middle;
   margin-right: 8px;
+  cursor: pointer;
 `;

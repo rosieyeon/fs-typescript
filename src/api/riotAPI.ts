@@ -18,6 +18,7 @@ export const riotMatchAPI = axios.create({
 
 export const getSummonerById = async (summonerId: string) => {
   const response = await riotAPI.get(`/summoner/v4/summoners/${summonerId}`);
+  console.log(response);
   return summonerInfoData(response.data);
 };
 
@@ -37,6 +38,7 @@ export const getMatchId = async (puuId: string) => {
       },
     }
   );
+  console.log(matchIdsResult);
   return matchIdsResult;
 };
 
@@ -45,3 +47,16 @@ export const getMatchDetail = async (matchId: string) => {
   console.log(response);
   return matchData(response.data.info);
 };
+
+// export const getOthersDat = async (puuid: string) => {
+//   const.respolne =
+// }
+
+export const getBuildDetail = async (matchId: string) => {
+  const response = await riotMatchAPI.get(
+    `match/v5/matches/${matchId}/timeline`
+  );
+  console.log(response);
+};
+
+getBuildDetail('KR_6070313744');

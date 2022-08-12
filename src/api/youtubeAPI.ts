@@ -21,7 +21,7 @@ export const getYoutubeData = async (query: YoutubeQuery) => {
       part: 'snippet',
       type: 'video',
       q: query.keyword,
-      maxResults: 2,
+      maxResults: 12,
       regionCode: 'KR',
       order: query.order,
       channelId: query.channelID,

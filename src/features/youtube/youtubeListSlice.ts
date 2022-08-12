@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { getYoutubeData, YoutubeQuery } from 'api/youtubeAPI';
-// import getYoutubeList from 'api/getYoutubeList';
 
 export interface YoutubeData {
   id: string;

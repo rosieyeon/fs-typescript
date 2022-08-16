@@ -82,7 +82,7 @@ interface ParticipantsFramesDto {
   xp: number;
 }
 
-interface GoldFrames {
+export interface GoldFrames {
   time: number;
   1: number;
   2: number;

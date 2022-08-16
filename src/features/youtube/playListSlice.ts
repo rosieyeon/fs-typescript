@@ -17,6 +17,10 @@ export const playListSlice = createSlice({
       if (
         !current(state.playList).some((youtube) => youtube.id === payload.id)
       ) {
+        console.log(
+          !current(state.playList).some((youtube) => youtube.id === payload.id)
+        );
+        console.log(current(state.playList));
         state.playList.push(payload);
       }
     },

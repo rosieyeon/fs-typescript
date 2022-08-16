@@ -14,7 +14,18 @@ interface ParticipantsDto {
 
 interface FramesDto {
   events: []; //TODO 여기에 뭐라고 써야하지? itemevent? levelevent?
-  participantFrames: ParticipantsFramesDto[];
+  participantFrames: {
+    1: ParticipantsFramesDto;
+    2: ParticipantsFramesDto;
+    3: ParticipantsFramesDto;
+    4: ParticipantsFramesDto;
+    5: ParticipantsFramesDto;
+    6: ParticipantsFramesDto;
+    7: ParticipantsFramesDto;
+    8: ParticipantsFramesDto;
+    9: ParticipantsFramesDto;
+    10: ParticipantsFramesDto;
+  };
   timestamp: number;
 }
 
@@ -70,3 +81,35 @@ interface ParticipantsFramesDto {
   totalGold: number;
   xp: number;
 }
+
+interface GoldFrames {
+  time: number;
+  1: number;
+  2: number;
+  3: number;
+  4: number;
+  5: number;
+  6: number;
+  7: number;
+  8: number;
+  9: number;
+  10: number;
+}
+
+export const goldFrameData = (data: FramesDto[]) => {
+  return data.map((item: FramesDto, index) => {
+    return {
+      time: index,
+      1: item.participantFrames[1].totalGold,
+      2: item.participantFrames[2].totalGold,
+      3: item.participantFrames[3].totalGold,
+      4: item.participantFrames[4].totalGold,
+      5: item.participantFrames[5].totalGold,
+      6: item.participantFrames[6].totalGold,
+      7: item.participantFrames[7].totalGold,
+      8: item.participantFrames[8].totalGold,
+      9: item.participantFrames[9].totalGold,
+      10: item.participantFrames[10].totalGold,
+    };
+  });
+};

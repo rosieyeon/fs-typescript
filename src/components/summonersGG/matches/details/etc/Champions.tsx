@@ -7,6 +7,7 @@ import {
   ChampionsImgBox,
   ChampionsImg,
   ChampionsLayout,
+  ChampionsSelected,
 } from './Champions.styled';
 import { lineColors } from './Etc';
 
@@ -41,7 +42,11 @@ const Champions = (data: ChampionsProps) => {
           >
             <ChampionsImg
               src={`${RIOT_CHAMP_IMG}/${player.championName}.png`}
+              selected={isSelect[idx]}
             />
+            {isSelect[idx] && (
+              <ChampionsSelected src="/images/icons/check.png" />
+            )}
           </ChampionsImgBox>
         ))}
       </ChampionsBox>
@@ -56,7 +61,11 @@ const Champions = (data: ChampionsProps) => {
           >
             <ChampionsImg
               src={`${RIOT_CHAMP_IMG}/${player.championName}.png`}
+              selected={isSelect[idx + 5]}
             />
+            {isSelect[idx + 5] && (
+              <ChampionsSelected src="/images/icons/check.png" />
+            )}
           </ChampionsImgBox>
         ))}
       </ChampionsBox>

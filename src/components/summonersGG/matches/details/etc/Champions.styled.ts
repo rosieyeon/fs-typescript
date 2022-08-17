@@ -19,13 +19,21 @@ export const ChampionsImgBox = styled.div<{ color: string }>`
   cursor: pointer;
   background-color: ${(props) => props.color};
 `;
-export const ChampionsImg = styled.img`
+export const ChampionsImg = styled.img<{ selected: boolean }>`
   width: 32px;
   height: 32px;
   border-radius: 4px;
-  opacity: 1;
+  opacity: ${(props) => (props.selected ? 0.5 : 1)};
 
   border: 0px;
   vertical-align: middle;
   max-width: 100%;
+`;
+export const ChampionsSelected = styled.img`
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  top: 8px;
+  left: 8px;
 `;

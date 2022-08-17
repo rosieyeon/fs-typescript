@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { riotAPI } from 'api/riotAPI';
 import { matchParticipants } from 'features/riot/matchDetailSlice';
 import toCapitalize from 'utils/toCapitalize';
-import Items from '../../items/Items';
-import DetailChamp from './champ/DetailChamp';
-import DetailPerks from './perks/DetailPerks';
+// import Items from '../../items/Items';
+// import DetailChamp from '../overview/tableData/champ/DetailChamp';
+// import DetailPerks from '../overview/tableData/perks/DetailPerks';
 import {
   DetailContents,
   DetailCS,
@@ -24,6 +24,9 @@ import {
   DetailWard,
 } from './TableRow.styled';
 import { SummonerTierDto } from 'services/riot/summonerData';
+import DetailChamp from './champ/DetailChamp';
+import DetailPerks from './perks/DetailPerks';
+import Items from 'components/summonersGG/matches/items/Items';
 
 interface rowDataProps {
   matchData: matchParticipants;

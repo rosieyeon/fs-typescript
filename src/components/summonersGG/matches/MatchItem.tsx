@@ -19,8 +19,9 @@ import GameData from './gameData/GameData';
 import Items from './items/Items';
 import Participants from './participants/Participants';
 import { ARROW_DOWN } from 'services/riot/cdnValue';
-import MatchDetails from './details/MatchDetails';
-import ObjectDetails from './details/ObjectDetails';
+import MatchDetails from './details/overview/MatchDetails';
+import ObjectDetails from './details/overview/ObjectDetails';
+// import ObjectDetails from './details/ObjectDetails';
 
 interface matchIDProps {
   match: MatchData;

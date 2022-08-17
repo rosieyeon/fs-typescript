@@ -1,6 +1,8 @@
 import React from 'react';
 import { RIOT_OBJ } from 'services/riot/cdnValue';
 import { sortObjProps } from '../ObjectDetails';
+// import { sortObjProps } from '../ObjectDetails';
+// import { sortObjProps } from '../../ObjectDetails';
 import {
   ObjectDataContent,
   ObjectDataImg,

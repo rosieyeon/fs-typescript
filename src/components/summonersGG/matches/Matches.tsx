@@ -62,7 +62,7 @@ const Matches = () => {
         >
           <CartesianGrid horizontal={true} vertical={false} />
           <XAxis dataKey="time" unit="min" />
-          <YAxis tickCount={5} unit="k" axisLine={false} />
+          <YAxis unit="k" axisLine={false} />
           <Tooltip />
           <Line
             type="monotone"

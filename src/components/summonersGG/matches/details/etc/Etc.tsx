@@ -10,11 +10,13 @@ import {
   XAxis,
   YAxis,
 } from 'recharts';
+import Champions from './Champions';
 import { EtcLayout } from './Etc.styled';
 
-interface EtcProps {
+export interface EtcProps {
   data: MatchData;
 }
+
 const Etc = (etcData: EtcProps) => {
   const matchId = etcData.data.matchId;
   const data = getBuildDetail(matchId);
@@ -30,6 +32,7 @@ const Etc = (etcData: EtcProps) => {
 
   return (
     <EtcLayout>
+      <Champions data={etcData.data} />
       <ResponsiveContainer width="100%" height={300}>
         <LineChart
           width={500}

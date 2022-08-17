@@ -55,6 +55,7 @@ export const getBuildDetail = async (matchId: string) => {
   );
   // console.log(response.data);
   // console.log(goldFrameData(response.data.info.frames));
+  console.log(goldFrameData(response.data.info.frames));
   return goldFrameData(response.data.info.frames);
 };
 

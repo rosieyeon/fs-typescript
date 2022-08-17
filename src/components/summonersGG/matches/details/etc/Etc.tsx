@@ -14,7 +14,7 @@ import {
 } from 'recharts';
 import Champions from './Champions';
 import CustomTooltip from './CustomTooltip';
-import { EtcLayout } from './Etc.styled';
+import { EtcCategory, EtcCategoryBox, EtcLayout } from './Etc.styled';
 
 interface EtcProps {
   data: MatchData;
@@ -30,8 +30,16 @@ const Etc = (etcData: EtcProps) => {
   const matchId = etcData.data.matchId;
   const myId = etcData.myData.participantId;
   const data = getBuildDetail(matchId);
+  console.log(data);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [goldData, setGoldData] = useState<any[]>();
+  const [isGoldData, setIsGoldData] = useState(true);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [xpData, setXpData] = useState<any[]>();
+  const [isXpData, setIsXpData] = useState(false);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [csData, setCsData] = useState<any[]>();
+  const [isCsData, setIsCsData] = useState(false);
   const [selected, setSelected] = useState([
     false,
     false,
@@ -47,7 +55,9 @@ const Etc = (etcData: EtcProps) => {
 
   useEffect(() => {
     data.then((item) => {
-      setGoldData(item);
+      setGoldData(item.gold);
+      setXpData(item.xp);
+      setCsData(item.cs);
     });
     // eslint-disable-next-line array-callback-return
     selected.map((button, id) => {
@@ -69,6 +79,11 @@ const Etc = (etcData: EtcProps) => {
 
   return (
     <EtcLayout>
+      <EtcCategoryBox>
+        {frameCategories.map((category, idx) => (
+          <EtcCategory>{category.name}</EtcCategory>
+        ))}
+      </EtcCategoryBox>
       <Champions
         data={etcData.data}
         setSelected={setSelected}
@@ -119,6 +134,12 @@ export const lineColors = [
   '#ff8200',
   '#ffd424',
   '#76480f',
+];
+
+const frameCategories = [
+  { name: 'Gold acquired by champion' },
+  { name: 'EXP Over Time' },
+  { name: 'CS per Champion' },
 ];
 
 export default Etc;

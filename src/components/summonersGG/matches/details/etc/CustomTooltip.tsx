@@ -25,9 +25,9 @@ const CustomTooltip = ({
   console.log(payload);
   const { match } = useAppSelector((state) => state.selectedMatch);
   console.log(match);
-  if (active) {
+  if (active && payload && payload[0].color) {
     return (
-      <CustomTooltipLayout>
+      <CustomTooltipLayout color={payload[0].color}>
         <CustomTooltipXAxis>{label} min</CustomTooltipXAxis>
         <CustomTooltipDataBox>
           {payload?.map(

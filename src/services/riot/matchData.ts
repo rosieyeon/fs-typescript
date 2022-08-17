@@ -1,5 +1,13 @@
 import { matchParticipants } from 'features/riot/matchDetailSlice';
 
+interface ResponseDto {
+  info: MatchDataDto;
+  metadata: {
+    dataVersion: number;
+    matchId: number;
+    participants: [];
+  };
+}
 interface MatchDataDto {
   gameCreation: number;
   gameDuration: number;
@@ -168,8 +176,9 @@ interface ObjDetailsDto {
   kills: number;
 }
 
-const matchData = (data: MatchDataDto) => {
+const matchData = (resData: ResponseDto) => {
   const participants: matchParticipants[] = [];
+  const data = resData.info;
   // eslint-disable-next-line array-callback-return
   data.participants.map((player: ParticipantsDto) => {
     participants.push({
@@ -217,6 +226,7 @@ const matchData = (data: MatchDataDto) => {
     gameEndTimestamp: data.gameEndTimestamp,
     participants: participants,
     teams: data.teams,
+    matchId: resData.metadata.matchId,
   };
 };
 export default matchData;

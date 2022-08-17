@@ -1,5 +1,6 @@
 import { MatchData, matchParticipants } from 'features/riot/matchDetailSlice';
 import React, { useState } from 'react';
+import GameData from '../gameData/GameData';
 import { teamProps } from '../MatchItem';
 import {
   DetailsCategoryButton,
@@ -7,6 +8,7 @@ import {
   DetailsLayout,
   DetailsOverView,
 } from './Details.styled';
+import Etc from './etc/Etc';
 import MatchDetails from './overview/MatchDetails';
 import ObjectDetails from './overview/ObjectDetails';
 
@@ -26,6 +28,7 @@ interface DetailProps {
   objectData: teamProps[];
 }
 const Details = (data: DetailProps) => {
+  console.log(data.gameData);
   const [isSelect, setIsSelect] = useState([true, false, false]);
 
   const getActiveButton = (idx: number) => {
@@ -78,6 +81,7 @@ const Details = (data: DetailProps) => {
           />
         </DetailsOverView>
       )}
+      {isSelect[2] && <Etc data={data.gameData} />}
     </DetailsLayout>
   );
 };

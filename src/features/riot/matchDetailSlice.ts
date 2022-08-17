@@ -6,6 +6,7 @@ export interface MatchData {
   gameEndTimestamp: number;
   participants: matchParticipants[];
   teams: Teams[];
+  matchId: string;
   // participantsId: [];
 }
 
@@ -114,13 +115,14 @@ export const matchDetailSlice = createSlice({
         getMatchData.fulfilled,
         (state, { payload }: PayloadAction<MatchData[]>) => {
           state.loading = 'idle';
+          // console.log(payload);
           state.matchDetail = payload;
         }
       )
       .addCase(getMatchData.rejected, (state, { error }) => {
         state.loading = 'idle';
         state.error = error.message;
-        console.log(error);
+        // console.log(error);
       });
   },
 });

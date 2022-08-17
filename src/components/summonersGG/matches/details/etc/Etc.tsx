@@ -22,8 +22,6 @@ interface EtcProps {
 }
 
 const Etc = (etcData: EtcProps) => {
-  console.log(etcData.data, etcData.myData);
-
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(setMatch(etcData.data.participants));

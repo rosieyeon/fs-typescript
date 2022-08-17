@@ -9,6 +9,8 @@ export const ChampionsLayout = styled.div`
 export const ChampionsBox = styled.div`
   display: flex;
   gap: 12px;
+
+  padding: 8px 30px 32px 30px;
 `;
 export const ChampionsImgBox = styled.div<{ color: string }>`
   width: 48px;

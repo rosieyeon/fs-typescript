@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const DetailsLayout = styled.div`
   font-family: 'Roboto', sans-serif;
+  margin-bottom: 16px;
 `;
 export const DetailsCategoryButtonBox = styled.div`
   display: flex;

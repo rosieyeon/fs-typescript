@@ -27,7 +27,6 @@ interface DetailProps {
   objectData: teamProps[];
 }
 const Details = (data: DetailProps) => {
-  console.log(data.myData);
   const [isSelect, setIsSelect] = useState([true, false, false]);
 
   const getActiveButton = (idx: number) => {

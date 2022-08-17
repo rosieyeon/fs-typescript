@@ -36,7 +36,7 @@ const Etc = (etcData: EtcProps) => {
     false,
     false,
   ]);
-  console.log(selected);
+
   useEffect(() => {
     data.then((item) => {
       setGoldData(item);
@@ -113,4 +113,5 @@ export const lineColors = [
   '#ffd424',
   '#76480f',
 ];
+
 export default Etc;

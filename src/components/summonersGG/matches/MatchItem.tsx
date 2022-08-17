@@ -7,7 +7,6 @@ import {
   TeamObjectives,
 } from 'features/riot/matchDetailSlice';
 import {
-  MatchDetailLayout,
   MatchItemDiv,
   MatchItemGameData,
   MatchItemLayout,
@@ -19,8 +18,7 @@ import GameData from './gameData/GameData';
 import Items from './items/Items';
 import Participants from './participants/Participants';
 import { ARROW_DOWN } from 'services/riot/cdnValue';
-import MatchDetails from './details/overview/MatchDetails';
-import ObjectDetails from './details/overview/ObjectDetails';
+import Details from './details/Details';
 // import ObjectDetails from './details/ObjectDetails';
 
 interface matchIDProps {
@@ -94,10 +92,15 @@ const MatchItem = (data: matchIDProps) => {
       );
       setItemsList(items);
 
-      for (let i = 0; i < 2; i++) {
-        if (myData.win === match.teams[i].win) {
-          setObjectives(match.teams[i].objectives);
-        }
+      // for (let i = 0; i < 2; i++) {
+      //   if (myData.win === match.teams[i].win) {
+      //     setObjectives(match.teams[i].objectives);
+      //   }
+      // }
+      if (myData.win === match.teams[0].win) {
+        setObjectives(match.teams[0].objectives);
+      } else {
+        setObjectives(match.teams[1].objectives);
       }
     }
   }, [match.teams, myData]);
@@ -148,22 +151,30 @@ const MatchItem = (data: matchIDProps) => {
           )}
         </MatchItemMore>
       </MatchItemLayout>
-      {isOpen && (
-        <MatchDetailLayout>
-          <MatchDetails
-            myData={myData}
-            gameData={match}
-            myTeam={myTeam}
-            win={myData.win}
-          />
-          {teamData && <ObjectDetails data={teamData} win={myData.win} />}
-          <MatchDetails
-            myData={myData}
-            gameData={match}
-            myTeam={notMyTeam}
-            win={!myData.win}
-          />
-        </MatchDetailLayout>
+      {isOpen && teamData && (
+        <Details
+          myData={myData}
+          gameData={match}
+          myTeam={myTeam}
+          notMyTeam={notMyTeam}
+          win={myData.win}
+          objectData={teamData}
+        />
+        // <MatchDetailLayout>
+        //   <MatchDetails
+        //     myData={myData}
+        //     gameData={match}
+        //     myTeam={myTeam}
+        //     win={myData.win}
+        //   />
+        //   {teamData && <ObjectDetails data={teamData} win={myData.win} />}
+        //   <MatchDetails
+        //     myData={myData}
+        //     gameData={match}
+        //     myTeam={notMyTeam}
+        //     win={!myData.win}
+        //   />
+        // </MatchDetailLayout>
       )}
     </MatchItemDiv>
   ) : (

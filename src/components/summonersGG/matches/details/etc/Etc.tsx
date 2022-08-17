@@ -13,7 +13,7 @@ import {
 import Champions from './Champions';
 import { EtcLayout } from './Etc.styled';
 
-export interface EtcProps {
+interface EtcProps {
   data: MatchData;
 }
 
@@ -22,7 +22,19 @@ const Etc = (etcData: EtcProps) => {
   const data = getBuildDetail(matchId);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [goldData, setGoldData] = useState<any[]>();
-
+  const [selected, setSelected] = useState([
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+  ]);
+  console.log(selected);
   useEffect(() => {
     data.then((item) => {
       setGoldData(item);
@@ -32,7 +44,11 @@ const Etc = (etcData: EtcProps) => {
 
   return (
     <EtcLayout>
-      <Champions data={etcData.data} />
+      <Champions
+        data={etcData.data}
+        setSelected={setSelected}
+        selected={selected}
+      />
       <ResponsiveContainer width="100%" height={300}>
         <LineChart
           width={500}
@@ -64,7 +80,7 @@ const Etc = (etcData: EtcProps) => {
   );
 };
 
-const lineColors = [
+export const lineColors = [
   '#00ae0a',
   '#00bba3',
   '#52d5f3',

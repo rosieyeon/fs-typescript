@@ -1,6 +1,5 @@
 import { MatchData, matchParticipants } from 'features/riot/matchDetailSlice';
 import React, { useState } from 'react';
-import GameData from '../gameData/GameData';
 import { teamProps } from '../MatchItem';
 import {
   DetailsCategoryButton,

@@ -1,5 +1,7 @@
 import { getBuildDetail } from 'api/riotAPI';
+import { useAppDispatch } from 'app/store';
 import { MatchData, matchParticipants } from 'features/riot/matchDetailSlice';
+import { setMatch } from 'features/riot/selectedMatchSlice';
 import React, { useEffect, useState } from 'react';
 import {
   CartesianGrid,
@@ -11,6 +13,7 @@ import {
   YAxis,
 } from 'recharts';
 import Champions from './Champions';
+import CustomTooltip from './CustomTooltip';
 import { EtcLayout } from './Etc.styled';
 
 interface EtcProps {
@@ -19,6 +22,13 @@ interface EtcProps {
 }
 
 const Etc = (etcData: EtcProps) => {
+  console.log(etcData.data, etcData.myData);
+
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(setMatch(etcData.data.participants));
+  }, [dispatch, etcData.data]);
+
   const matchId = etcData.data.matchId;
   const myId = etcData.myData.participantId;
   const data = getBuildDetail(matchId);
@@ -41,7 +51,6 @@ const Etc = (etcData: EtcProps) => {
     data.then((item) => {
       setGoldData(item);
     });
-
     // eslint-disable-next-line array-callback-return
     selected.map((button, id) => {
       if (button) {
@@ -82,7 +91,7 @@ const Etc = (etcData: EtcProps) => {
           <CartesianGrid horizontal={true} vertical={false} />
           <XAxis dataKey="time" unit="min" />
           <YAxis unit="k" axisLine={false} />
-          <Tooltip />
+          <Tooltip content={<CustomTooltip />} />
           {goldData?.map(
             (data, idx) =>
               selected[idx] && (

@@ -1,5 +1,5 @@
 import { getBuildDetail } from 'api/riotAPI';
-import { MatchData } from 'features/riot/matchDetailSlice';
+import { MatchData, matchParticipants } from 'features/riot/matchDetailSlice';
 import React, { useEffect, useState } from 'react';
 import {
   CartesianGrid,
@@ -15,10 +15,12 @@ import { EtcLayout } from './Etc.styled';
 
 interface EtcProps {
   data: MatchData;
+  myData: matchParticipants;
 }
 
 const Etc = (etcData: EtcProps) => {
   const matchId = etcData.data.matchId;
+  const myId = etcData.myData.participantId;
   const data = getBuildDetail(matchId);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [goldData, setGoldData] = useState<any[]>();
@@ -39,6 +41,22 @@ const Etc = (etcData: EtcProps) => {
     data.then((item) => {
       setGoldData(item);
     });
+
+    // eslint-disable-next-line array-callback-return
+    selected.map((button, id) => {
+      if (button) {
+        setSelected([
+          ...selected.slice(0, id),
+          (selected[id] = false),
+          ...selected.slice(id + 1),
+        ]);
+      }
+    });
+    setSelected([
+      ...selected.slice(0, myId - 1),
+      !selected[myId - 1],
+      ...selected.slice(myId),
+    ]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -65,15 +83,18 @@ const Etc = (etcData: EtcProps) => {
           <XAxis dataKey="time" unit="min" />
           <YAxis unit="k" axisLine={false} />
           <Tooltip />
-          {goldData?.map((data, idx) => (
-            <Line
-              key={idx}
-              type="monotone"
-              dataKey={idx + 1}
-              dot={false}
-              stroke={lineColors[idx]}
-            />
-          ))}
+          {goldData?.map(
+            (data, idx) =>
+              selected[idx] && (
+                <Line
+                  key={idx}
+                  type="monotone"
+                  dataKey={idx + 1}
+                  dot={false}
+                  stroke={lineColors[idx]}
+                />
+              )
+          )}
         </LineChart>
       </ResponsiveContainer>
     </EtcLayout>

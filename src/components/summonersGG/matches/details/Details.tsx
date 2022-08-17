@@ -27,7 +27,7 @@ interface DetailProps {
   objectData: teamProps[];
 }
 const Details = (data: DetailProps) => {
-  console.log(data.gameData);
+  console.log(data.myData);
   const [isSelect, setIsSelect] = useState([true, false, false]);
 
   const getActiveButton = (idx: number) => {
@@ -80,7 +80,7 @@ const Details = (data: DetailProps) => {
           />
         </DetailsOverView>
       )}
-      {isSelect[2] && <Etc data={data.gameData} />}
+      {isSelect[2] && <Etc data={data.gameData} myData={data.myData} />}
     </DetailsLayout>
   );
 };

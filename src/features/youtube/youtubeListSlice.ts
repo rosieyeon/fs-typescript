@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { getYoutubeData, YoutubeQuery } from 'api/youtubeAPI';
 
+// TODO Playlis data youtubeData 따로 만들ㄹ기
 export interface YoutubeData {
   id: string;
   thumbnail: string;

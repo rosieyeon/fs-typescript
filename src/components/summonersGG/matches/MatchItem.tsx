@@ -37,7 +37,8 @@ export interface teamProps {
 const MatchItem = (data: matchIDProps) => {
   const match = data.match;
   const [isOpen, setIsOpen] = useState(false);
-  const [teamData, setTeamData] = useState<teamProps[]>();
+  // TODO setTeamdata에서 항상 넣으니까 그냥 배열을 넣어주기 아예 파라미터 안주면 undefind
+  const [teamData, setTeamData] = useState<teamProps[]>([]);
   const [myTeam, setMyTeam] = useState('red');
   const [notMyTeam, setNotMyTeam] = useState('blue');
   const [myData, setMyData] = useState<matchParticipants>();

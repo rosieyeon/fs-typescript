@@ -23,6 +23,7 @@ interface EtcProps {
 const Etc = (etcData: EtcProps) => {
   const matchId = etcData.data.matchId;
   const myId = etcData.myData.participantId;
+  //TODO state를 쓰던 뭘 쓰던 해서 호출 횟수를 관리해주기 이 데이터를 쓰는 다른 코드가 있으면 ㅁ후ㅏㄴ에러임
   const data = getBuildDetail(matchId);
 
   const [graphDataSelected, setGraphDataSelected] = useState([

@@ -114,18 +114,20 @@ const Youtube: React.FC = () => {
 
   const getActiveButton = (idx: number) => {
     // eslint-disable-next-line array-callback-return
+    // TODO points 그냥 다 false로 넣어버리는 것도 좋을듯
     isSelect.map((button, id) => {
       if (button) {
         setIsSelect([
           ...isSelect.slice(0, id),
           (isSelect[id] = false),
+          // false, //TODO isSelect를 바로 바꾸지 말것
           ...isSelect.slice(id + 1),
         ]);
       }
     });
     setIsSelect([
       ...isSelect.slice(0, idx),
-      !isSelect[idx],
+      !isSelect[idx], //TODO true 어떤값이 들어갈지 명확하게 해주기
       ...isSelect.slice(idx + 1),
     ]);
   };

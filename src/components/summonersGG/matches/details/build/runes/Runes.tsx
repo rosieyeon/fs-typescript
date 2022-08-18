@@ -19,7 +19,6 @@ interface RunesDataProps {
 
 const Runes = (data: RunesDataProps) => {
   const myData = data.myData;
-  console.log(myData);
 
   const [primary, setPrimary] = useState('');
   const [sub, setSub] = useState('');

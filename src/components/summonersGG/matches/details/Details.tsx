@@ -1,5 +1,7 @@
+import { useAppDispatch } from 'app/store';
 import { MatchData, matchParticipants } from 'features/riot/matchDetailSlice';
-import React, { useState } from 'react';
+import { setMatch, setMyData } from 'features/riot/selectedMatchSlice';
+import React, { useEffect, useState } from 'react';
 import { teamProps } from '../MatchItem';
 import Build from './build/Build';
 import {
@@ -29,6 +31,12 @@ interface DetailProps {
 }
 const Details = (data: DetailProps) => {
   const [isSelect, setIsSelect] = useState([true, false, false]);
+
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(setMatch(data.gameData.participants));
+    dispatch(setMyData(data.myData));
+  }, [data.gameData.participants, data.myData, dispatch]);
 
   const getActiveButton = (idx: number) => {
     // eslint-disable-next-line array-callback-return

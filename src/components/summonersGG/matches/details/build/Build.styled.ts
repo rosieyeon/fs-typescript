@@ -1,3 +1,5 @@
 import styled from 'styled-components';
 
-export const BuildLayout = styled.div``;
+export const BuildLayout = styled.div`
+  display: flex;
+`;

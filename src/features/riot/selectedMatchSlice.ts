@@ -3,10 +3,54 @@ import { matchParticipants } from './matchDetailSlice';
 
 interface SelectedMatch {
   match: matchParticipants[];
+  myData: matchParticipants;
 }
 
 const initialState: SelectedMatch = {
   match: [],
+  myData: {
+    assists: 0,
+    kda: '',
+    champLevel: 0,
+    championId: 0,
+    championName: '',
+    deaths: 0,
+    visionWardsBoughtInGame: 0,
+    wardsKilled: 0,
+    wardsPlaced: 0,
+    visionScore: 0,
+    doubleKills: 0,
+    item0: 0,
+    item1: 0,
+    item2: 0,
+    item3: 0,
+    item4: 0,
+    item5: 0,
+    item6: 0,
+    kills: 0,
+    lane: '',
+    participantId: 0,
+    pentaKills: 0,
+    perks1: 0, // perks.styles[0].selections[0].perk
+    perks2: 0, // perks.styles[1].style
+    win: false,
+    puuid: '',
+    summonerId: '',
+    summonerName: '',
+    teamId: 0,
+    tripleKills: 0,
+    cs: 0, // totalMiniosKilled +neutralMiniosKilled
+    // csPerMin: number // cs / duration
+    spell1: 0, // summoner1Id
+    spell2: 0, // summoner2Id
+    totalDamageDealt: 0,
+    totalDamageDealtToChampions: 0,
+    totalDamageTaken: 0,
+    goldEarned: 0,
+    statPerks: { defense: 0, flex: 0, offense: 0 },
+    primaryPerks: { style: 0, 0: 0, 1: 0, 2: 0, 3: 0 },
+    subPerks: { style: 0, 0: 0, 1: 0 },
+  },
 };
 
 export const selectedMatchSlice = createSlice({
@@ -16,8 +60,11 @@ export const selectedMatchSlice = createSlice({
     setMatch: (state, { payload }: PayloadAction<matchParticipants[]>) => {
       state.match = payload;
     },
+    setMyData: (state, { payload }: PayloadAction<matchParticipants>) => {
+      state.myData = payload;
+    },
   },
 });
 
-export const { setMatch } = selectedMatchSlice.actions;
+export const { setMatch, setMyData } = selectedMatchSlice.actions;
 export default selectedMatchSlice.reducer;

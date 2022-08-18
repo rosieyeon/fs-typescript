@@ -23,10 +23,10 @@ interface EtcProps {
 }
 
 const Etc = (etcData: EtcProps) => {
-  const dispatch = useAppDispatch();
-  useEffect(() => {
-    dispatch(setMatch(etcData.data.participants));
-  }, [dispatch, etcData.data]);
+  // const dispatch = useAppDispatch();
+  // useEffect(() => {
+  //   dispatch(setMatch(etcData.data.participants));
+  // }, [dispatch, etcData.data]);
 
   const matchId = etcData.data.matchId;
   const myId = etcData.myData.participantId;

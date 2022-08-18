@@ -3,9 +3,7 @@ import { MatchData, matchParticipants } from 'features/riot/matchDetailSlice';
 import { setMatch, setMyData } from 'features/riot/selectedMatchSlice';
 import React, { useEffect, useState } from 'react';
 import { teamProps } from '../MatchItem';
-import Runes from './build/runes/Runes';
-// import Runes from './build/Runes';
-// import Build from './build/Runes';
+import Build from './build/Build';
 import {
   DetailsCategoryButton,
   DetailsCategoryButtonBox,
@@ -90,7 +88,7 @@ const Details = (data: DetailProps) => {
           />
         </DetailsOverView>
       )}
-      {isSelect[1] && <Runes myData={data.myData} />}
+      {isSelect[1] && <Build myData={data.myData} />}
       {isSelect[2] && <Etc data={data.gameData} myData={data.myData} />}
     </DetailsLayout>
   );

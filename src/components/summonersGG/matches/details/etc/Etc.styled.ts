@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const EtcLayout = styled.div`
   font-family: 'Roboto', sans-serif;
@@ -14,7 +14,7 @@ export const EtcCategoryBox = styled.div`
   box-sizing: border-box;
   background-color: #31313c;
 `;
-export const EtcCategory = styled.button`
+export const EtcCategory = styled.button<{ selected: boolean }>`
   display: block;
   width: 100%;
   height: 36px;
@@ -24,7 +24,20 @@ export const EtcCategory = styled.button`
   line-height: 16px;
   text-decoration: none;
   background: none;
+  border: none;
+  cursor: pointer;
 
-  color: #5383e8;
-  font-weight: bold;
+  ${(props) =>
+    props.selected
+      ? css`
+          color: #5383e8;
+          font-weight: bold;
+          border-bottom-width: 2px;
+          border-bottom-style: solid;
+          border-color: #5383e8;
+        `
+      : css`
+          border: none;
+          color: white;
+        `}
 `;

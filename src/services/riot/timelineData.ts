@@ -94,10 +94,8 @@ export interface GoldFrames {
   10: number;
 }
 
-interface EtcFrames {
-  gold: GoldFrames[];
-  xp: GoldFrames[];
-  cs: GoldFrames[];
+export interface GraphData {
+  data: GoldFrames[];
 }
 
 export const goldFrameData = (data: FramesDto[]) => {
@@ -150,11 +148,13 @@ export const goldFrameData = (data: FramesDto[]) => {
       10: item.participantFrames[10].minionsKilled,
     });
   });
-  const frameData = {
-    gold: goldData,
-    xp: xpData,
-    cs: csData,
-  };
+  // const frameData = {
+  //   gold: goldData,
+  //   xp: xpData,
+  //   cs: csData,
+  // };
+  const frameData = [];
+  frameData.push([goldData, xpData, csData]);
   return frameData;
   // return data.map((item: FramesDto, index) => {
   //   goldData.push({

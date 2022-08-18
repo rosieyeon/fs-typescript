@@ -12,6 +12,7 @@ import {
   XAxis,
   YAxis,
 } from 'recharts';
+import { GoldFrames } from 'services/riot/timelineData';
 import Champions from './Champions';
 import CustomTooltip from './CustomTooltip';
 import { EtcCategory, EtcCategoryBox, EtcLayout } from './Etc.styled';
@@ -30,17 +31,13 @@ const Etc = (etcData: EtcProps) => {
   const matchId = etcData.data.matchId;
   const myId = etcData.myData.participantId;
   const data = getBuildDetail(matchId);
-  console.log(data);
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const [goldData, setGoldData] = useState<any[]>();
-  const [isGoldData, setIsGoldData] = useState(true);
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const [xpData, setXpData] = useState<any[]>();
-  const [isXpData, setIsXpData] = useState(false);
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const [csData, setCsData] = useState<any[]>();
-  const [isCsData, setIsCsData] = useState(false);
-  const [selected, setSelected] = useState([
+
+  const [graphDataSelected, setGraphDataSelected] = useState([
+    true,
+    false,
+    false,
+  ]);
+  const [champSelected, setChampSelected] = useState([
     false,
     false,
     false,
@@ -52,48 +49,84 @@ const Etc = (etcData: EtcProps) => {
     false,
     false,
   ]);
+  const [allData, setAllData] = useState<GoldFrames[][][]>();
+  const [selectedData, setSelectedData] = useState<GoldFrames[]>();
 
   useEffect(() => {
     data.then((item) => {
-      setGoldData(item.gold);
-      setXpData(item.xp);
-      setCsData(item.cs);
+      setAllData(item);
     });
     // eslint-disable-next-line array-callback-return
-    selected.map((button, id) => {
+    champSelected.map((button, id) => {
       if (button) {
-        setSelected([
-          ...selected.slice(0, id),
-          (selected[id] = false),
-          ...selected.slice(id + 1),
+        setChampSelected([
+          ...champSelected.slice(0, id),
+          (champSelected[id] = false),
+          ...champSelected.slice(id + 1),
         ]);
       }
     });
-    setSelected([
-      ...selected.slice(0, myId - 1),
-      !selected[myId - 1],
-      ...selected.slice(myId),
+    setChampSelected([
+      ...champSelected.slice(0, myId - 1),
+      !champSelected[myId - 1],
+      ...champSelected.slice(myId),
     ]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    if (allData) {
+      setSelectedData(allData[0][0]);
+    }
+  }, [allData]);
+
+  const getActiveTab = (idx: number) => {
+    // eslint-disable-next-line array-callback-return
+    graphDataSelected.map((button, id) => {
+      if (button) {
+        setGraphDataSelected([
+          ...graphDataSelected.slice(0, id),
+          (graphDataSelected[id] = false),
+          ...graphDataSelected.slice(id + 1),
+        ]);
+      }
+    });
+    setGraphDataSelected([
+      ...graphDataSelected.slice(0, idx),
+      !graphDataSelected[myId - 1],
+      ...graphDataSelected.slice(idx + 1),
+    ]);
+  };
+
   return (
     <EtcLayout>
       <EtcCategoryBox>
-        {frameCategories.map((category, idx) => (
-          <EtcCategory>{category.name}</EtcCategory>
-        ))}
+        {frameCategories.map(
+          (category, idx) =>
+            allData && (
+              <EtcCategory
+                key={idx}
+                onClick={() => {
+                  getActiveTab(idx);
+                  setSelectedData(allData[0][idx]);
+                }}
+                selected={graphDataSelected[idx]}
+              >
+                {category.name}
+              </EtcCategory>
+            )
+        )}
       </EtcCategoryBox>
       <Champions
         data={etcData.data}
-        setSelected={setSelected}
-        selected={selected}
+        setSelected={setChampSelected}
+        selected={champSelected}
       />
       <ResponsiveContainer width="100%" height={300}>
         <LineChart
           width={500}
           height={300}
-          data={goldData}
+          data={selectedData}
           margin={{
             top: 5,
             right: 30,
@@ -103,11 +136,11 @@ const Etc = (etcData: EtcProps) => {
         >
           <CartesianGrid horizontal={true} vertical={false} />
           <XAxis dataKey="time" unit="min" />
-          <YAxis unit="k" axisLine={false} />
+          <YAxis unit={graphDataSelected[2] ? '' : 'k'} axisLine={false} />
           <Tooltip content={<CustomTooltip />} />
-          {goldData?.map(
+          {selectedData?.map(
             (data, idx) =>
-              selected[idx] && (
+              champSelected[idx] && (
                 <Line
                   key={idx}
                   type="monotone"

@@ -1,30 +1,28 @@
 import styled from 'styled-components';
 
-export const BuildLayout = styled.div`
+export const RunesLayout = styled.div`
   display: flex;
   align-items: flex-end;
   justify-content: center;
   padding: 20px;
 `;
 
-export const BuildDivider = styled.div`
+export const RunesDivider = styled.div`
   align-self: flex-start;
   width: 1px;
   height: 180px;
   background-color: #1c1c1f;
   margin: 30px 12px;
-  /* padding: 30px 0; */
 `;
 
-export const BuildPerksBox = styled.div`
+export const RunesPerksBox = styled.div`
   position: relative;
   padding: 30px 0;
 `;
 
-export const BuildText = styled.div`
+export const RunesText = styled.div`
   position: absolute;
   font-family: 'Roboto', sans-serif;
-  /* top: 16px; */
   bottom: 0px;
   left: 0px;
   width: 100%;

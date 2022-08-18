@@ -1,11 +1,11 @@
 import { matchParticipants } from 'features/riot/matchDetailSlice';
 import React, { useEffect, useState } from 'react';
 import {
-  BuildDivider,
-  BuildLayout,
-  BuildPerksBox,
-  BuildText,
-} from './Build.styled';
+  RunesDivider,
+  RunesLayout,
+  RunesPerksBox,
+  RunesText,
+} from './Runes.styled';
 import Domination from './perks/Domination';
 import Inspiration from './perks/Inspiration';
 import Percision from './perks/Percision';
@@ -13,11 +13,11 @@ import Resolve from './perks/Resolve';
 import Socery from './perks/Socery';
 import StatsPerks from './perks/StatsPerks';
 
-interface BuildDataProps {
+interface RunesDataProps {
   myData: matchParticipants;
 }
 
-const Build = (data: BuildDataProps) => {
+const Runes = (data: RunesDataProps) => {
   const myData = data.myData;
   console.log(myData);
 
@@ -61,8 +61,8 @@ const Build = (data: BuildDataProps) => {
   }, [primaryStyle, subStyle]);
 
   return (
-    <BuildLayout>
-      <BuildPerksBox>
+    <RunesLayout>
+      <RunesPerksBox>
         {primary === 'Percision' && (
           <Percision
             primaryPerks={myData.primaryPerks}
@@ -98,10 +98,10 @@ const Build = (data: BuildDataProps) => {
             isPrimary={true}
           />
         )}
-        <BuildText>{primary}</BuildText>
-      </BuildPerksBox>
-      <BuildDivider />
-      <BuildPerksBox>
+        <RunesText>{primary}</RunesText>
+      </RunesPerksBox>
+      <RunesDivider />
+      <RunesPerksBox>
         {sub === 'Percision' && (
           <Percision
             primaryPerks={myData.primaryPerks}
@@ -137,14 +137,14 @@ const Build = (data: BuildDataProps) => {
             isPrimary={false}
           />
         )}
-        <BuildText>{sub}</BuildText>
-      </BuildPerksBox>
-      <BuildDivider />
-      <BuildPerksBox>
+        <RunesText>{sub}</RunesText>
+      </RunesPerksBox>
+      <RunesDivider />
+      <RunesPerksBox>
         <StatsPerks statPerks={myData.statPerks} />
-        <BuildText>Rune Stats</BuildText>
-      </BuildPerksBox>
-    </BuildLayout>
+        <RunesText>Rune Stats</RunesText>
+      </RunesPerksBox>
+    </RunesLayout>
   );
 };
-export default Build;
+export default Runes;

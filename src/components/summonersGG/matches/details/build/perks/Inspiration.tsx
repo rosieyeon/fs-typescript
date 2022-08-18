@@ -15,7 +15,6 @@ interface PerksDataProps {
   isPrimary: boolean;
 }
 const Inspiration = (data: PerksDataProps) => {
-  console.log(data.isPrimary);
   return (
     <PerksLayout>
       {data.isPrimary ? (

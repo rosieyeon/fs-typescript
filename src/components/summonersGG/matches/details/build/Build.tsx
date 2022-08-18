@@ -1,4 +1,3 @@
-import { useAppSelector } from 'app/store';
 import { matchParticipants } from 'features/riot/matchDetailSlice';
 import React, { useEffect, useState } from 'react';
 import { BuildDivider, BuildLayout } from './Build.styled';
@@ -7,6 +6,7 @@ import Inspiration from './perks/Inspiration';
 import Percision from './perks/Percision';
 import Resolve from './perks/Resolve';
 import Socery from './perks/Socery';
+import StatsPerks from './perks/StatsPerks';
 
 interface BuildDataProps {
   myData: matchParticipants;
@@ -14,12 +14,12 @@ interface BuildDataProps {
 
 const Build = (data: BuildDataProps) => {
   const myData = data.myData;
+  console.log(myData);
 
   const [primary, setPrimary] = useState('');
   const [sub, setSub] = useState('');
   const primaryStyle = myData?.primaryPerks.style;
   const subStyle = myData?.subPerks.style;
-  console.log(sub, primary);
 
   useEffect(() => {
     if (primaryStyle === 8000) {
@@ -129,6 +129,7 @@ const Build = (data: BuildDataProps) => {
         />
       )}
       <BuildDivider />
+      <StatsPerks statPerks={myData.statPerks} />
     </BuildLayout>
   );
 };

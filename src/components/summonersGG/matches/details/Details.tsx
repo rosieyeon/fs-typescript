@@ -3,7 +3,8 @@ import { MatchData, matchParticipants } from 'features/riot/matchDetailSlice';
 import { setMatch, setMyData } from 'features/riot/selectedMatchSlice';
 import React, { useEffect, useState } from 'react';
 import { teamProps } from '../MatchItem';
-import Runes from './build/Runes';
+import Runes from './build/runes/Runes';
+// import Runes from './build/Runes';
 // import Build from './build/Runes';
 import {
   DetailsCategoryButton,

@@ -1,17 +1,17 @@
 import { matchParticipants } from 'features/riot/matchDetailSlice';
 import React, { useEffect, useState } from 'react';
-import {
-  RunesDivider,
-  RunesLayout,
-  RunesPerksBox,
-  RunesText,
-} from './Runes.styled';
 import Domination from './perks/Domination';
 import Inspiration from './perks/Inspiration';
 import Percision from './perks/Percision';
 import Resolve from './perks/Resolve';
 import Socery from './perks/Socery';
 import StatsPerks from './perks/StatsPerks';
+import {
+  RunesDivider,
+  RunesLayout,
+  RunesPerksBox,
+  RunesText,
+} from './Runes.styled';
 
 interface RunesDataProps {
   myData: matchParticipants;

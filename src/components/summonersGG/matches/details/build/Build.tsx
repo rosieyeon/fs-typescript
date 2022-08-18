@@ -1,6 +1,11 @@
 import { matchParticipants } from 'features/riot/matchDetailSlice';
 import React, { useEffect, useState } from 'react';
-import { BuildDivider, BuildLayout } from './Build.styled';
+import {
+  BuildDivider,
+  BuildLayout,
+  BuildPerksBox,
+  BuildText,
+} from './Build.styled';
 import Domination from './perks/Domination';
 import Inspiration from './perks/Inspiration';
 import Percision from './perks/Percision';
@@ -57,79 +62,88 @@ const Build = (data: BuildDataProps) => {
 
   return (
     <BuildLayout>
-      {primary === 'Percision' && (
-        <Percision
-          primaryPerks={myData.primaryPerks}
-          subPerks={myData.subPerks}
-          isPrimary={true}
-        />
-      )}
-      {primary === 'Domination' && (
-        <Domination
-          primaryPerks={myData.primaryPerks}
-          subPerks={myData.subPerks}
-          isPrimary={true}
-        />
-      )}
-      {primary === 'Socery' && (
-        <Socery
-          primaryPerks={myData.primaryPerks}
-          subPerks={myData.subPerks}
-          isPrimary={true}
-        />
-      )}
-      {primary === 'Inspiration' && (
-        <Inspiration
-          primaryPerks={myData.primaryPerks}
-          subPerks={myData.subPerks}
-          isPrimary={true}
-        />
-      )}
-      {primary === 'Resolve' && (
-        <Resolve
-          primaryPerks={myData.primaryPerks}
-          subPerks={myData.subPerks}
-          isPrimary={true}
-        />
-      )}
+      <BuildPerksBox>
+        {primary === 'Percision' && (
+          <Percision
+            primaryPerks={myData.primaryPerks}
+            subPerks={myData.subPerks}
+            isPrimary={true}
+          />
+        )}
+        {primary === 'Domination' && (
+          <Domination
+            primaryPerks={myData.primaryPerks}
+            subPerks={myData.subPerks}
+            isPrimary={true}
+          />
+        )}
+        {primary === 'Socery' && (
+          <Socery
+            primaryPerks={myData.primaryPerks}
+            subPerks={myData.subPerks}
+            isPrimary={true}
+          />
+        )}
+        {primary === 'Inspiration' && (
+          <Inspiration
+            primaryPerks={myData.primaryPerks}
+            subPerks={myData.subPerks}
+            isPrimary={true}
+          />
+        )}
+        {primary === 'Resolve' && (
+          <Resolve
+            primaryPerks={myData.primaryPerks}
+            subPerks={myData.subPerks}
+            isPrimary={true}
+          />
+        )}
+        <BuildText>{primary}</BuildText>
+      </BuildPerksBox>
       <BuildDivider />
-      {sub === 'Percision' && (
-        <Percision
-          primaryPerks={myData.primaryPerks}
-          subPerks={myData.subPerks}
-          isPrimary={false}
-        />
-      )}
-      {sub === 'Domination' && (
-        <Domination
-          primaryPerks={myData.primaryPerks}
-          subPerks={myData.subPerks}
-          isPrimary={false}
-        />
-      )}
-      {sub === 'Socery' && (
-        <Socery
-          primaryPerks={myData.primaryPerks}
-          subPerks={myData.subPerks}
-          isPrimary={false}
-        />
-      )}
-      {sub === 'Inspiration' && (
-        <Inspiration
-          primaryPerks={myData.primaryPerks}
-          subPerks={myData.subPerks}
-          isPrimary={false}
-        />
-      )}
-      {sub === 'Resolve' && (
-        <Resolve
-          primaryPerks={myData.primaryPerks}
-          subPerks={myData.subPerks}
-          isPrimary={false}
-        />
-      )}
+      <BuildPerksBox>
+        {sub === 'Percision' && (
+          <Percision
+            primaryPerks={myData.primaryPerks}
+            subPerks={myData.subPerks}
+            isPrimary={false}
+          />
+        )}
+        {sub === 'Domination' && (
+          <Domination
+            primaryPerks={myData.primaryPerks}
+            subPerks={myData.subPerks}
+            isPrimary={false}
+          />
+        )}
+        {sub === 'Socery' && (
+          <Socery
+            primaryPerks={myData.primaryPerks}
+            subPerks={myData.subPerks}
+            isPrimary={false}
+          />
+        )}
+        {sub === 'Inspiration' && (
+          <Inspiration
+            primaryPerks={myData.primaryPerks}
+            subPerks={myData.subPerks}
+            isPrimary={false}
+          />
+        )}
+        {sub === 'Resolve' && (
+          <Resolve
+            primaryPerks={myData.primaryPerks}
+            subPerks={myData.subPerks}
+            isPrimary={false}
+          />
+        )}
+        <BuildText>{sub}</BuildText>
+      </BuildPerksBox>
       <BuildDivider />
-      <StatsPerks statPerks={myData.statPerks} />
+      <BuildPerksBox>
+        <StatsPerks statPerks={myData.statPerks} />
+        <BuildText>Rune Stats</BuildText>
+      </BuildPerksBox>
     </BuildLayout>
   );
 };

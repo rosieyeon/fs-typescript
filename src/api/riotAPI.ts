@@ -17,6 +17,11 @@ export const riotMatchAPI = axios.create({
   },
 });
 
+export const ddragonAPI = axios.create({
+  baseURL:
+    'https://ddragon.leagueoflegends.com/cdn/12.15.1/data/en_US/champion',
+});
+
 export const getSummonerById = async (summonerId: string) => {
   const response = await riotAPI.get(`/summoner/v4/summoners/${summonerId}`);
   // console.log(response);
@@ -45,7 +50,7 @@ export const getMatchId = async (puuId: string) => {
 
 export const getMatchDetail = async (matchId: string) => {
   const response = await riotMatchAPI.get(`match/v5/matches/${matchId}`);
-  // console.log(response);
+  console.log(response);
   return matchData(response.data);
 };
 
@@ -53,5 +58,12 @@ export const getBuildDetail = async (matchId: string) => {
   const response = await riotMatchAPI.get(
     `match/v5/matches/${matchId}/timeline`
   );
+  console.log(response);
   return goldFrameData(response.data.info.frames);
 };
+
+export const getChampionDetails = async (name: string) => {
+  const response = await ddragonAPI.get(`/${name}.json`);
+  console.log(response.data.data[`${name}`]);
+};
+getChampionDetails('Ahri');

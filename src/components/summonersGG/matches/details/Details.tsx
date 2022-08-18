@@ -1,6 +1,7 @@
 import { MatchData, matchParticipants } from 'features/riot/matchDetailSlice';
 import React, { useState } from 'react';
 import { teamProps } from '../MatchItem';
+import Build from './build/Build';
 import {
   DetailsCategoryButton,
   DetailsCategoryButtonBox,
@@ -79,6 +80,7 @@ const Details = (data: DetailProps) => {
           />
         </DetailsOverView>
       )}
+      {isSelect[1] && <Build />}
       {isSelect[2] && <Etc data={data.gameData} myData={data.myData} />}
     </DetailsLayout>
   );

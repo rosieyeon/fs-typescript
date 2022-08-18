@@ -22,7 +22,6 @@ const CustomTooltip = ({
   label,
   active,
 }: TooltipProps<ValueType, NameType>) => {
-  console.log(label, payload);
   const { match } = useAppSelector((state) => state.selectedMatch);
   if (active && payload && payload[0].color) {
     return (

@@ -53,10 +53,5 @@ export const getBuildDetail = async (matchId: string) => {
   const response = await riotMatchAPI.get(
     `match/v5/matches/${matchId}/timeline`
   );
-  // console.log(response.data);
-  // console.log(goldFrameData(response.data.info.frames));
-  console.log(goldFrameData(response.data.info.frames));
   return goldFrameData(response.data.info.frames);
 };
-
-getBuildDetail('KR_6078019103');

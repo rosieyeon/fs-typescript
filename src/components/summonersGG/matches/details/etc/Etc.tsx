@@ -56,7 +56,7 @@ const Etc = (etcData: EtcProps) => {
     data.then((item) => {
       setAllData(item);
     });
-    // eslint-disable-next-line array-callback-return
+
     champSelected.map((button, id) => {
       if (button) {
         setChampSelected([
@@ -65,6 +65,7 @@ const Etc = (etcData: EtcProps) => {
           ...champSelected.slice(id + 1),
         ]);
       }
+      return null;
     });
     setChampSelected([
       ...champSelected.slice(0, myId - 1),
@@ -81,7 +82,6 @@ const Etc = (etcData: EtcProps) => {
   }, [allData]);
 
   const getActiveTab = (idx: number) => {
-    // eslint-disable-next-line array-callback-return
     graphDataSelected.map((button, id) => {
       if (button) {
         setGraphDataSelected([
@@ -90,6 +90,7 @@ const Etc = (etcData: EtcProps) => {
           ...graphDataSelected.slice(id + 1),
         ]);
       }
+      return null;
     });
     setGraphDataSelected([
       ...graphDataSelected.slice(0, idx),

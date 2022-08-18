@@ -22,6 +22,7 @@ const CustomTooltip = ({
   label,
   active,
 }: TooltipProps<ValueType, NameType>) => {
+  console.log(label, payload);
   const { match } = useAppSelector((state) => state.selectedMatch);
   if (active && payload && payload[0].color) {
     return (
@@ -42,13 +43,23 @@ const CustomTooltip = ({
                       }.png`}
                     />
                   )}
-                  <CustomTooltipYAxis>
-                    {' '}
-                    :{' '}
-                    {Math.ceil(
-                      player.payload[player.dataKey] * 1000
-                    ).toLocaleString('ko-KR')}
-                  </CustomTooltipYAxis>
+                  {player.payload.type !== 'cs' ? (
+                    <CustomTooltipYAxis>
+                      {' '}
+                      :{' '}
+                      {Math.ceil(
+                        player.payload[player.dataKey] * 1000
+                      ).toLocaleString('ko-KR')}
+                    </CustomTooltipYAxis>
+                  ) : (
+                    <CustomTooltipYAxis>
+                      {' '}
+                      :{' '}
+                      {Math.ceil(player.payload[player.dataKey]).toLocaleString(
+                        'ko-KR'
+                      )}
+                    </CustomTooltipYAxis>
+                  )}
                 </CustomTooltipData>
               )
           )}

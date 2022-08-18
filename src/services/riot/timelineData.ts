@@ -92,6 +92,7 @@ export interface GoldFrames {
   8: number;
   9: number;
   10: number;
+  type: string;
 }
 
 export interface GraphData {
@@ -104,7 +105,7 @@ export const goldFrameData = (data: FramesDto[]) => {
   const csData: GoldFrames[] = [];
 
   data.map((item: FramesDto, index) => {
-    goldData.push({
+    return goldData.push({
       time: index,
       1: item.participantFrames[1].totalGold / 1000,
       2: item.participantFrames[2].totalGold / 1000,
@@ -116,10 +117,12 @@ export const goldFrameData = (data: FramesDto[]) => {
       8: item.participantFrames[8].totalGold / 1000,
       9: item.participantFrames[9].totalGold / 1000,
       10: item.participantFrames[10].totalGold / 1000,
+      type: 'gold',
     });
   });
+
   data.map((item: FramesDto, index) => {
-    xpData.push({
+    return xpData.push({
       time: index,
       1: item.participantFrames[1].xp / 1000,
       2: item.participantFrames[2].xp / 1000,
@@ -131,10 +134,12 @@ export const goldFrameData = (data: FramesDto[]) => {
       8: item.participantFrames[8].xp / 1000,
       9: item.participantFrames[9].xp / 1000,
       10: item.participantFrames[10].xp / 1000,
+      type: 'xp',
     });
   });
+
   data.map((item: FramesDto, index) => {
-    csData.push({
+    return csData.push({
       time: index,
       1: item.participantFrames[1].minionsKilled,
       2: item.participantFrames[2].minionsKilled,
@@ -146,92 +151,11 @@ export const goldFrameData = (data: FramesDto[]) => {
       8: item.participantFrames[8].minionsKilled,
       9: item.participantFrames[9].minionsKilled,
       10: item.participantFrames[10].minionsKilled,
+      type: 'cs',
     });
   });
-  // const frameData = {
-  //   gold: goldData,
-  //   xp: xpData,
-  //   cs: csData,
-  // };
+
   const frameData = [];
   frameData.push([goldData, xpData, csData]);
   return frameData;
-  // return data.map((item: FramesDto, index) => {
-  //   goldData.push({
-  //     time: index,
-  //     1: item.participantFrames[1].totalGold / 1000,
-  //     2: item.participantFrames[2].totalGold / 1000,
-  //     3: item.participantFrames[3].totalGold / 1000,
-  //     4: item.participantFrames[4].totalGold / 1000,
-  //     5: item.participantFrames[5].totalGold / 1000,
-  //     6: item.participantFrames[6].totalGold / 1000,
-  //     7: item.participantFrames[7].totalGold / 1000,
-  //     8: item.participantFrames[8].totalGold / 1000,
-  //     9: item.participantFrames[9].totalGold / 1000,
-  //     10: item.participantFrames[10].totalGold / 1000,
-  //   });
-  //   xpData.push({
-  //     time: index,
-  //     1: item.participantFrames[1].xp / 1000,
-  //     2: item.participantFrames[2].xp / 1000,
-  //     3: item.participantFrames[3].xp / 1000,
-  //     4: item.participantFrames[4].xp / 1000,
-  //     5: item.participantFrames[5].xp / 1000,
-  //     6: item.participantFrames[6].xp / 1000,
-  //     7: item.participantFrames[7].xp / 1000,
-  //     8: item.participantFrames[8].xp / 1000,
-  //     9: item.participantFrames[9].xp / 1000,
-  //     10: item.participantFrames[10].xp / 1000,
-  //   });
-  //   csData.push({
-  //     time: index,
-  //     1: item.participantFrames[1].minionsKilled,
-  //     2: item.participantFrames[2].minionsKilled,
-  //     3: item.participantFrames[3].minionsKilled,
-  //     4: item.participantFrames[4].minionsKilled,
-  //     5: item.participantFrames[5].minionsKilled,
-  //     6: item.participantFrames[6].minionsKilled,
-  //     7: item.participantFrames[7].minionsKilled,
-  //     8: item.participantFrames[8].minionsKilled,
-  //     9: item.participantFrames[9].minionsKilled,
-  //     10: item.participantFrames[10].minionsKilled,
-  //   });
-  // const frameData: EtcFrames = {
-  //   gold: goldData,
-  //   xp: xpData,
-  //   cs: csData,
-  // };
-  // return frameData;
-  // return {
-  //   time: index,
-  //   1: item.participantFrames[1].totalGold / 1000,
-  //   2: item.participantFrames[2].totalGold / 1000,
-  //   3: item.participantFrames[3].totalGold / 1000,
-  //   4: item.participantFrames[4].totalGold / 1000,
-  //   5: item.participantFrames[5].totalGold / 1000,
-  //   6: item.participantFrames[6].totalGold / 1000,
-  //   7: item.participantFrames[7].totalGold / 1000,
-  //   8: item.participantFrames[8].totalGold / 1000,
-  //   9: item.participantFrames[9].totalGold / 1000,
-  //   10: item.participantFrames[10].totalGold / 1000,
-  // };
-  // });
-};
-
-export const xpFrameData = (data: FramesDto[]) => {
-  return data.map((item: FramesDto, index) => {
-    return {
-      time: index,
-      1: item.participantFrames[1].xp / 1000,
-      2: item.participantFrames[2].xp / 1000,
-      3: item.participantFrames[3].xp / 1000,
-      4: item.participantFrames[4].xp / 1000,
-      5: item.participantFrames[5].xp / 1000,
-      6: item.participantFrames[6].xp / 1000,
-      7: item.participantFrames[7].xp / 1000,
-      8: item.participantFrames[8].xp / 1000,
-      9: item.participantFrames[9].xp / 1000,
-      10: item.participantFrames[10].xp / 1000,
-    };
-  });
 };

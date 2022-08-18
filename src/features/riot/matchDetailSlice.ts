@@ -70,6 +70,9 @@ export interface matchParticipants {
   totalDamageDealtToChampions: number;
   totalDamageTaken: number;
   goldEarned: number;
+  statPerks: { defense: number; flex: number; offense: number };
+  primaryPerks: { style: number; 0: number; 1: number; 2: number; 3: number };
+  subPerks: { style: number; 0: number; 1: number };
 }
 
 interface matchDetailState {

@@ -8,6 +8,7 @@ export const EtcLayout = styled.div`
   background-color: #282830;
 `;
 export const EtcCategoryBox = styled.div`
+  font-family: 'Roboto', sans-serif;
   display: flex;
   height: 36px;
   border-radius: 4px;
@@ -15,6 +16,7 @@ export const EtcCategoryBox = styled.div`
   background-color: #31313c;
 `;
 export const EtcCategory = styled.button<{ selected: boolean }>`
+  font-family: 'Roboto', sans-serif;
   display: block;
   width: 100%;
   height: 36px;

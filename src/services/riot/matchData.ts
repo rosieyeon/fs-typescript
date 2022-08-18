@@ -143,6 +143,7 @@ interface ChallengesDto {
 
 interface PerksDto {
   styles: PerksStylesDto[];
+  statPerks: { defense: number; flex: number; offense: number };
 }
 
 interface PerksStylesDto {
@@ -153,6 +154,9 @@ interface PerksStylesDto {
 
 interface PerksSelectionsDto {
   perk: number;
+  var1: number;
+  var2: number;
+  var3: number;
 }
 
 interface TeamsDto {
@@ -219,6 +223,23 @@ const matchData = (resData: ResponseDto) => {
       totalDamageDealtToChampions: player.totalDamageDealtToChampions,
       totalDamageTaken: player.totalDamageTaken,
       goldEarned: player.goldEarned,
+      statPerks: {
+        defense: player.perks.statPerks.defense,
+        flex: player.perks.statPerks.flex,
+        offense: player.perks.statPerks.offense,
+      },
+      primaryPerks: {
+        style: player.perks.styles[0].style,
+        0: player.perks.styles[0].selections[0].perk,
+        1: player.perks.styles[0].selections[1].perk,
+        2: player.perks.styles[0].selections[2].perk,
+        3: player.perks.styles[0].selections[3].perk,
+      },
+      subPerks: {
+        style: player.perks.styles[1].style,
+        0: player.perks.styles[1].selections[0].perk,
+        1: player.perks.styles[1].selections[1].perk,
+      },
     });
   });
   return {

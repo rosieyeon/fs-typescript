@@ -16,6 +16,7 @@ export const DetailsCategoryButtonBox = styled.div`
 `;
 
 export const DetailsCategoryButton = styled.button<{ selected: boolean }>`
+  font-family: 'Roboto', sans-serif;
   display: block;
   width: 100%;
   height: 28px;

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { championSpells } from 'services/riot/championData';
 import matchData from 'services/riot/matchData';
 import { summonerInfoData, summonerTierData } from 'services/riot/summonerData';
 import { goldFrameData } from 'services/riot/timelineData';
@@ -65,5 +66,7 @@ export const getBuildDetail = async (matchId: string) => {
 export const getChampionDetails = async (name: string) => {
   const response = await ddragonAPI.get(`/${name}.json`);
   console.log(response.data.data[`${name}`]);
+  return championSpells(response.data.data[`${name}`]);
 };
+
 getChampionDetails('Ahri');

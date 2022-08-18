@@ -88,7 +88,7 @@ const Details = (data: DetailProps) => {
           />
         </DetailsOverView>
       )}
-      {isSelect[1] && <Build />}
+      {isSelect[1] && <Build myData={data.myData} />}
       {isSelect[2] && <Etc data={data.gameData} myData={data.myData} />}
     </DetailsLayout>
   );

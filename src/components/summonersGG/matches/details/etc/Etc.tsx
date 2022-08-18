@@ -1,7 +1,5 @@
 import { getBuildDetail } from 'api/riotAPI';
-import { useAppDispatch } from 'app/store';
 import { MatchData, matchParticipants } from 'features/riot/matchDetailSlice';
-import { setMatch } from 'features/riot/selectedMatchSlice';
 import React, { useEffect, useState } from 'react';
 import {
   CartesianGrid,
@@ -23,11 +21,6 @@ interface EtcProps {
 }
 
 const Etc = (etcData: EtcProps) => {
-  // const dispatch = useAppDispatch();
-  // useEffect(() => {
-  //   dispatch(setMatch(etcData.data.participants));
-  // }, [dispatch, etcData.data]);
-
   const matchId = etcData.data.matchId;
   const myId = etcData.myData.participantId;
   const data = getBuildDetail(matchId);

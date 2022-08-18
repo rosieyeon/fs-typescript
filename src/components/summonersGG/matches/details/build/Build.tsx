@@ -1,15 +1,20 @@
 import { useAppSelector } from 'app/store';
+import { matchParticipants } from 'features/riot/matchDetailSlice';
 import React, { useEffect, useState } from 'react';
-import { BuildLayout } from './Build.styled';
+import { BuildDivider, BuildLayout } from './Build.styled';
 import Domination from './perks/Domination';
 import Inspiration from './perks/Inspiration';
 import Percision from './perks/Percision';
 import Resolve from './perks/Resolve';
 import Socery from './perks/Socery';
 
-const Build = () => {
-  const { myData } = useAppSelector((state) => state.selectedMatch);
-  console.log(myData);
+interface BuildDataProps {
+  myData: matchParticipants;
+}
+
+const Build = (data: BuildDataProps) => {
+  const myData = data.myData;
+
   const [primary, setPrimary] = useState('');
   const [sub, setSub] = useState('');
   const primaryStyle = myData?.primaryPerks.style;
@@ -87,7 +92,7 @@ const Build = () => {
           isPrimary={true}
         />
       )}
-
+      <BuildDivider />
       {sub === 'Percision' && (
         <Percision
           primaryPerks={myData.primaryPerks}
@@ -123,6 +128,7 @@ const Build = () => {
           isPrimary={false}
         />
       )}
+      <BuildDivider />
     </BuildLayout>
   );
 };

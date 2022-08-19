@@ -113,9 +113,10 @@ const Youtube: React.FC = () => {
   );
 
   const getActiveButton = (idx: number) => {
-    // eslint-disable-next-line array-callback-return
     // TODO points 그냥 다 false로 넣어버리는 것도 좋을듯
+    // eslint-disable-next-line array-callback-return
     isSelect.map((button, id) => {
+      console.log(isSelect, 0);
       if (button) {
         setIsSelect([
           ...isSelect.slice(0, id),
@@ -125,13 +126,14 @@ const Youtube: React.FC = () => {
         ]);
       }
     });
+    setIsSelect([false, false, false, false, false, false]);
+    console.log(isSelect);
     setIsSelect([
       ...isSelect.slice(0, idx),
       !isSelect[idx], //TODO true 어떤값이 들어갈지 명확하게 해주기
       ...isSelect.slice(idx + 1),
     ]);
   };
-  console.log(playList);
 
   return (
     <YoutubeLayout>
